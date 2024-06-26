@@ -104,3 +104,17 @@ body,
     transform: scaleY(-1) rotate(-135deg);
   }
 }
+
+.custom-pagination {
+  width: 32px !important;
+  height: 4px !important;
+}
+.splide__pagination__page.is-active {
+  background-color: #000 !important;
+}
+.splide__pagination {
+  bottom: 8rem !important;
+}
+.splide__pagination__page:hover {
+  background-color: #727272 !important;
+}
