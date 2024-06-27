@@ -1,7 +1,7 @@
 let isEmailValid = false;
 let isPasswordValid = false;
 
-export const login = function () {
+export function login() {
   const div = document.createElement("div");
   div.innerHTML = `
       <div class="mx-auto w-[380px] h-full font-inter">
@@ -44,7 +44,7 @@ export const login = function () {
       </div>
     `;
   return div;
-};
+}
 
 export const emailInputHandler = function () {
   const mailIcon = document.getElementById("mail-icon");

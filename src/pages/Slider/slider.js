@@ -1,4 +1,4 @@
-export const slider = function () {
+export function slider() {
   const div = document.createElement("div");
   div.innerHTML = `
          <section class="splide w-full h-screen p-0" aria-labelledby="carousel-heading">
@@ -27,4 +27,4 @@ export const slider = function () {
         `;
 
   return div;
-};
+}

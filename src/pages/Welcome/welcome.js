@@ -1,4 +1,4 @@
-export const welcome = function () {
+export function welcome() {
   const div = document.createElement("div");
   div.innerHTML = `
       <div
@@ -26,4 +26,4 @@ export const welcome = function () {
       </div>
       `;
   return div;
-};
+}

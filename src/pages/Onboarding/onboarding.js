@@ -1,4 +1,4 @@
-export const onboarding = function () {
+export function onboarding() {
   const div = document.createElement("div");
   div.innerHTML = `
     <div class= "h-screen">
@@ -17,4 +17,4 @@ export const onboarding = function () {
       </div>
     `;
   return div;
-};
+}
