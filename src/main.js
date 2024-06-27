@@ -1,6 +1,15 @@
 import Splide from "@splidejs/splide";
 import "@splidejs/splide/css/sea-green";
 import Navigo from "navigo";
+import {
+  login,
+  emailValidation,
+  passwordValidation,
+  passwordInputHandler,
+  emailInputHandler,
+  showPasswordHandler,
+  formIsValid,
+} from "../pages/Login/login";
 import { onboarding } from "../pages/Onboarding/onboarding";
 import { slider } from "../pages/Slider/slider";
 import { welcome } from "../pages/Welcome/welcome";
@@ -12,6 +21,7 @@ export const routes = {
   welcome: "/welcome",
   register: "/register",
   slider: "/slider",
+  login: "/login",
 };
 export const root = document.getElementById("app");
 
@@ -48,6 +58,26 @@ router
       //   console.log("hi");
       // });
     });
+  })
+  .on(routes.login, () => {
+    render(login());
+    document
+      .getElementById("email")
+      .addEventListener("keyup", emailInputHandler);
+    document
+      .getElementById("password")
+      .addEventListener("keyup", passwordInputHandler);
+    document.getElementById("email").addEventListener("blur", () => {
+      emailValidation();
+      formIsValid();
+    });
+    document.getElementById("password").addEventListener("blur", () => {
+      passwordValidation();
+      formIsValid();
+    });
+    document
+      .getElementById("eye-icon")
+      .addEventListener("click", showPasswordHandler);
   })
   .resolve();
 
