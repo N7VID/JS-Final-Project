@@ -1,19 +1,20 @@
 import Splide from "@splidejs/splide";
 import "@splidejs/splide/css/sea-green";
 import Navigo from "navigo";
+import { homePage } from "./pages/Home/home";
 import {
-  login,
-  emailValidation,
-  passwordValidation,
-  passwordInputHandler,
   emailInputHandler,
-  showPasswordHandler,
+  emailValidation,
   formIsValid,
-} from "../pages/Login/login";
-import { onboarding } from "../pages/Onboarding/onboarding";
-import { slider } from "../pages/Slider/slider";
-import { welcome } from "../pages/Welcome/welcome";
-import "../src/style.css";
+  login,
+  passwordInputHandler,
+  passwordValidation,
+  showPasswordHandler,
+} from "./pages/Login/login";
+import { onboarding } from "./pages/Onboarding/onboarding";
+import { slider } from "./pages/Slider/slider";
+import { welcome } from "./pages/Welcome/welcome";
+import "./style.css";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -22,12 +23,13 @@ export const routes = {
   register: "/register",
   slider: "/slider",
   login: "/login",
+  home: "/",
 };
 export const root = document.getElementById("app");
 
 function render(content, eventListeners) {
   root.innerHTML = "";
-  root.appendChild(content);
+  root.append(content);
   if (eventListeners && eventListeners.length > 0) {
     eventListeners.forEach((event) => {
       event();
@@ -36,6 +38,7 @@ function render(content, eventListeners) {
 }
 
 router
+  .on(routes.home, render(homePage()))
   .on(routes.onboarding, () => render(onboarding()))
   .on(routes.welcome, () => render(welcome()))
   .on(routes.slider, () => {
