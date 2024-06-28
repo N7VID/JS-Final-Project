@@ -20,6 +20,7 @@
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
     "axios": "^1.7.2",
+    "gsap": "^3.12.5",
     "jsonwebtoken": "^9.0.2",
     "navigo": "^8.11.1"
   }

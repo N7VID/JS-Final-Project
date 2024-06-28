@@ -1,11 +1,13 @@
+import { router } from "../../main";
+
 export function welcome() {
   const div = document.createElement("div");
   div.innerHTML = `
       <div
-        class="relative bg-welcome-image bg-cover bg-center h-screen bg-no-repeat bg-opacity-50"
+        class="my-bg relative bg-welcome-image bg-cover bg-center h-screen bg-no-repeat bg-opacity-50"
       >
         <div
-          class="absolute bottom-20 text-white font-inter font-medium px-8 space-y-6"
+          class="my-welcome-title absolute bottom-20 text-white font-inter font-medium px-8 space-y-6"
         >
           <div
             class="text-[30px] inline-flex items-center font-medium min-[341px]:text-[42px]"
@@ -25,5 +27,8 @@ export function welcome() {
         </div>
       </div>
       `;
+  setTimeout(() => {
+    router.navigate("/slider");
+  }, 4000);
   return div;
 }

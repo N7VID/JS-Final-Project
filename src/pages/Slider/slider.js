@@ -4,7 +4,7 @@ import { render, root } from "../../main";
 export function slider() {
   const div = document.createElement("div");
   div.innerHTML = `
-         <section class="splide w-full h-screen p-0" aria-labelledby="carousel-heading">
+         <section class="my-bg splide w-full h-screen p-0" aria-labelledby="carousel-heading">
 
         <div class="splide__track mx-auto my-0 w-full font-inter"> 
           <ul class="splide__list">
