@@ -8,7 +8,7 @@ export function signupPage() {
 
           <h2 class="font-semibold text-[32px] text-[#152536] tracking-wide cursor-default text-center">Create Your Account</h2>
 
-          <form class="flex flex-col justify-center gap-2 ">
+          <form class="flex flex-col justify-center gap-2" id="signup-form">
 
               <div class="relative">
                 <img src="./images/envelop-1.svg" id="mail-icon" alt="email-logo" class="w-5 absolute left-3 top-2">
@@ -44,4 +44,28 @@ export function signupPage() {
     </div>    
     `;
   return div;
+}
+
+export function styleHandler() {
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const eyeIcon = document.getElementById("eye-icon");
+
+  emailInput.addEventListener("keyup", emailInputHandler);
+  passwordInput.addEventListener("keyup", passwordInputHandler);
+  eyeIcon.addEventListener("click", showPasswordHandler);
+}
+
+export function checkValidation() {
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+
+  emailInput.addEventListener("blur", () => {
+    emailValidation();
+    formIsValid();
+  });
+  passwordInput.addEventListener("blur", () => {
+    passwordValidation();
+    formIsValid();
+  });
 }
