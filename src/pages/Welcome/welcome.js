@@ -1,3 +1,4 @@
+import gsap from "gsap";
 import { router } from "../../main";
 
 export function welcome() {
@@ -31,4 +32,19 @@ export function welcome() {
     router.navigate("/slider");
   }, 4000);
   return div;
+}
+
+export function welcomeAnimation() {
+  gsap.fromTo(".my-bg", { opacity: "0" }, { opacity: "1", duration: 1.7 });
+  gsap.fromTo(
+    ".my-bg",
+    { opacity: "1" },
+    { opacity: "0", duration: 1.5, delay: 2.6 }
+  );
+  gsap.fromTo(".my-welcome-title", { x: "100vw" }, { x: "0", duration: 1.7 });
+  gsap.fromTo(
+    ".my-welcome-title",
+    { x: "0" },
+    { x: "100vw", duration: 1.7, delay: 2.8 }
+  );
 }

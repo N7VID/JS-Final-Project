@@ -1,3 +1,14 @@
+import {
+  emailValidation,
+  formIsValid,
+  passwordValidation,
+} from "../../utility/checkValidation";
+import {
+  emailInputHandler,
+  passwordInputHandler,
+  showPasswordHandler,
+} from "../../utility/handleStyleLogin";
+
 export function login() {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -44,4 +55,28 @@ export function login() {
       </div>
     `;
   return div;
+}
+
+export function styleHandler() {
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const eyeIcon = document.getElementById("eye-icon");
+
+  emailInput.addEventListener("keyup", emailInputHandler);
+  passwordInput.addEventListener("keyup", passwordInputHandler);
+  eyeIcon.addEventListener("click", showPasswordHandler);
+}
+
+export function checkValidation() {
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+
+  emailInput.addEventListener("blur", () => {
+    emailValidation();
+    formIsValid();
+  });
+  passwordInput.addEventListener("blur", () => {
+    passwordValidation();
+    formIsValid();
+  });
 }

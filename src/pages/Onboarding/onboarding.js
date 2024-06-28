@@ -1,3 +1,4 @@
+import gsap from "gsap";
 import { router } from "../../main";
 
 export function onboarding() {
@@ -22,4 +23,12 @@ export function onboarding() {
     router.navigate("/welcome");
   }, 2500);
   return div;
+}
+
+export function onboardingAnimation() {
+  gsap.fromTo(
+    ".bg-onboard",
+    { opacity: "1" },
+    { opacity: "0", duration: 0.5, delay: 2 }
+  );
 }

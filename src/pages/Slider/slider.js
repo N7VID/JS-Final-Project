@@ -1,5 +1,6 @@
 import Splide from "@splidejs/splide";
-import { render, root } from "../../main";
+import { root } from "../../main";
+import gsap from "gsap";
 
 export function slider() {
   const div = document.createElement("div");
@@ -28,7 +29,12 @@ export function slider() {
         </div>
       </section>
         `;
-  render(div);
+  return div;
+}
+export function sliderAnimation() {
+  gsap.fromTo(".my-bg", { x: "100vw" }, { x: "0", duration: 1.7 });
+}
+export function splide() {
   const splide = new Splide(".splide", {
     classes: {
       arrows: "splide__arrows hidden",
