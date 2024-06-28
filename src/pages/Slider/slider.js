@@ -1,3 +1,6 @@
+import Splide from "@splidejs/splide";
+import { render, root } from "../../main";
+
 export function slider() {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -25,6 +28,26 @@ export function slider() {
         </div>
       </section>
         `;
-
-  return div;
+  render(div);
+  const splide = new Splide(".splide", {
+    classes: {
+      arrows: "splide__arrows hidden",
+      page: "splide__pagination__page custom-pagination",
+    },
+  }).mount();
+  root.querySelector("#next-btn").addEventListener("click", () => {
+    if (splide.index + 1 === 3) {
+      router.navigate("/welcome");
+    } else {
+      splide.go(splide.index + 1);
+    }
+  });
+  splide.on("pagination:updated", () => {
+    console.log(splide.index + 1);
+    if (splide.index + 1 === 3) {
+      root.querySelector("#next-btn").innerHTML = "Get Started";
+    } else {
+      root.querySelector("#next-btn").innerHTML = "Next";
+    }
+  });
 }
