@@ -1,23 +1,12 @@
-import {
-  emailValidation,
-  formIsValid,
-  passwordValidation,
-} from "../../utility/checkValidation";
-import {
-  emailInputHandler,
-  passwordInputHandler,
-  showPasswordHandler,
-} from "../../utility/handleStyleLogin";
-
-export function login() {
+export function signupPage() {
   const div = document.createElement("div");
   div.innerHTML = `
-      <div class="mx-auto w-[380px] h-full font-inter">
+    <div class="mx-auto w-[380px] h-full font-inter">
         <div class="bottom-64 flex flex-col justify-center items-center gap-10 laptop:bottom-44">
 
           <img src="./images/Vector 1.svg" alt="logo" class=" cursor-pointer mb-16 mt-32"/>
 
-          <h2 class="font-semibold text-[32px] text-[#152536] tracking-wide cursor-default">Login to Your Account</h2>
+          <h2 class="font-semibold text-[32px] text-[#152536] tracking-wide cursor-default text-center">Create Your Account</h2>
 
           <form class="flex flex-col justify-center gap-2 ">
 
@@ -39,7 +28,7 @@ export function login() {
                 <label for="rmbr">Remember me</label>
               </div>
               <div class="flex justify-center mt-1">
-                <p>Don't have an account? <a href="/signup" data-navigo class="text-blue-700">Sign Up</a></p>
+                <p>Already have an account? <a href="/login" data-navigo class="text-blue-700">Log in</a></p>
               </div>
 
               <button
@@ -48,35 +37,11 @@ export function login() {
                 id="submit-btn"
                 class="absolute bottom-10 bg-[#212529] text-white w-[380px] h-[47px] rounded-[30px] font-medium text-[14px] opacity-[.65] mt-24"
                 >
-                Sign In
+                Sign Up
               </button>
           </form>
         </div>
-      </div>
+    </div>    
     `;
   return div;
-}
-
-export function styleHandler() {
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-  const eyeIcon = document.getElementById("eye-icon");
-
-  emailInput.addEventListener("keyup", emailInputHandler);
-  passwordInput.addEventListener("keyup", passwordInputHandler);
-  eyeIcon.addEventListener("click", showPasswordHandler);
-}
-
-export function checkValidation() {
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-
-  emailInput.addEventListener("blur", () => {
-    emailValidation();
-    formIsValid();
-  });
-  passwordInput.addEventListener("blur", () => {
-    passwordValidation();
-    formIsValid();
-  });
 }
