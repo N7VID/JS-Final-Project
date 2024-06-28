@@ -43,7 +43,6 @@ export function slider() {
     }
   });
   splide.on("pagination:updated", () => {
-    console.log(splide.index + 1);
     if (splide.index + 1 === 3) {
       root.querySelector("#next-btn").innerHTML = "Get Started";
     } else {
