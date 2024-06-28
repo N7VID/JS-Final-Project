@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "email": "isabeljones32@gmail.com",
+      "password": "$2a$10$P1JRo//ewdDYUAW2YdzSuuaqa85tosBtoIaw0NpWfNOxUSMYknw9.",
+      "id": 1
+    },
+    {
+      "email": "Sarah.Mann27@hotmail.com",
+      "password": "$2a$10$0xcep78KpFgMec/OA9.P8OMIUCt7kqvFzRZszPZT9gMcOw4h9yQ1.",
+      "id": 2
+    }
+  ]
+}

@@ -1,10 +1,14 @@
 import "@splidejs/splide/css/sea-green";
-
 import Navigo from "navigo";
 import { homePage } from "./pages/Home/home";
-import { checkValidation, login, styleHandler } from "./pages/Login/login";
+import {
+  checkValidation,
+  login,
+  loginPage,
+  styleHandler,
+} from "./pages/Login/login";
 import { onboarding, onboardingAnimation } from "./pages/Onboarding/onboarding";
-import { signupPage } from "./pages/Signup/signup";
+import { signup, signupPage } from "./pages/Signup/signup";
 import { slider, sliderAnimation, splide } from "./pages/Slider/slider";
 import { welcome, welcomeAnimation } from "./pages/Welcome/welcome";
 import "./style.css";
@@ -31,11 +35,35 @@ export function render(content, eventListeners) {
   }
 }
 
+function checkAuth(next) {
+  if (localStorage.getItem("accessToken")) {
+    next();
+  } else {
+    router.navigate("/login");
+  }
+}
+
+function protectedRoute(next) {
+  if (!localStorage.getItem("accessToken")) {
+    next();
+  } else {
+    router.navigate("/");
+  }
+}
+
 router
-  .on(routes.home, render(homePage()))
+  .on(routes.home, () => checkAuth(() => render(homePage())))
   .on(routes.onboarding, () => render(onboarding(), [onboardingAnimation]))
-  .on(routes.login, () => render(login(), [styleHandler, checkValidation]))
+  .on(routes.login, () =>
+    protectedRoute(() =>
+      render(loginPage(), [styleHandler, checkValidation, login])
+    )
+  )
   .on(routes.welcome, () => render(welcome(), [welcomeAnimation]))
   .on(routes.slider, () => render(slider(), [sliderAnimation, splide]))
-  .on(routes.signup, () => render(signupPage()))
+  .on(routes.signup, () =>
+    protectedRoute(() =>
+      render(signupPage(), [styleHandler, checkValidation, signup])
+    )
+  )
   .resolve();

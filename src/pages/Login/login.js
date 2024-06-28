@@ -8,8 +8,10 @@ import {
   passwordInputHandler,
   showPasswordHandler,
 } from "../../utility/handleStyleLogin";
+import { router } from "../../main";
+import { loginApi } from "./api/login-api";
 
-export function login() {
+export function loginPage() {
   const div = document.createElement("div");
   div.innerHTML = `
       <div class="mx-auto w-[380px] h-full font-inter">
@@ -19,7 +21,7 @@ export function login() {
 
           <h2 class="font-semibold text-[32px] text-[#152536] tracking-wide cursor-default">Login to Your Account</h2>
 
-          <form class="flex flex-col justify-center gap-2 ">
+          <form id="login-form" class="flex flex-col justify-center gap-2 ">
 
               <div class="relative">
                 <img src="./images/envelop-1.svg" id="mail-icon" alt="email-logo" class="w-5 absolute left-3 top-2">
@@ -79,4 +81,24 @@ export function checkValidation() {
     passwordValidation();
     formIsValid();
   });
+}
+
+export function login() {
+  const form = document.getElementById("login-form");
+  const passwordInput = document.getElementById("password");
+  const emailInput = document.getElementById("email");
+
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const newObj = {
+        email: emailInput.value,
+        password: passwordInput.value,
+      };
+      loginApi(newObj).then((data) => {
+        localStorage.setItem("accessToken", data?.data?.accessToken);
+        router.navigate("/");
+      });
+    });
+  }
 }

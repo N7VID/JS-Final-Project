@@ -1,3 +1,5 @@
+import { signupApi } from "./api/signup-api";
+
 export function signupPage() {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -68,4 +70,23 @@ export function checkValidation() {
     passwordValidation();
     formIsValid();
   });
+}
+
+export function signup() {
+  const form = document.getElementById("signup-form");
+  const passwordInput = document.getElementById("password");
+  const emailInput = document.getElementById("email");
+
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const newObj = {
+        email: emailInput.value,
+        password: passwordInput.value,
+      };
+      signupApi(newObj).then((data) => {
+        localStorage.setItem("accessToken", data?.data?.accessToken);
+      });
+    });
+  }
 }
