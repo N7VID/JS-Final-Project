@@ -2,19 +2,16 @@ import "@splidejs/splide/css/sea-green";
 import Navigo from "navigo";
 import { gsap } from "gsap";
 import { homePage } from "./pages/Home/home";
-import {
-  emailInputHandler,
-  emailValidation,
-  formIsValid,
-  login,
-  passwordInputHandler,
-  passwordValidation,
-  showPasswordHandler,
-} from "./pages/Login/login";
 import { onboarding } from "./pages/Onboarding/onboarding";
 import { slider } from "./pages/Slider/slider";
 import { welcome } from "./pages/Welcome/welcome";
 import "./style.css";
+import { login } from "./pages/Login/login";
+import {
+  emailInputHandler,
+  passwordInputHandler,
+  showPasswordHandler,
+} from "./utility/handleStyleLogin";
 
 export const router = new Navigo("/");
 export const routes = {
