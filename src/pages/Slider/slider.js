@@ -1,5 +1,5 @@
 import Splide from "@splidejs/splide";
-import { root } from "../../main";
+import { root, router } from "../../main";
 import gsap from "gsap";
 
 export function slider() {
@@ -43,7 +43,7 @@ export function splide() {
   }).mount();
   root.querySelector("#next-btn").addEventListener("click", () => {
     if (splide.index + 1 === 3) {
-      router.navigate("/welcome");
+      router.navigate("/login");
     } else {
       splide.go(splide.index + 1);
     }
