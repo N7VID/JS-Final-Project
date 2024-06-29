@@ -10,6 +10,7 @@ import {
 } from "../../utility/handleStyleLogin";
 import { router } from "../../main";
 import { loginApi } from "./api/login-api";
+import { Button } from "../../components/button/button";
 
 export function loginPage() {
   const div = document.createElement("div");
@@ -52,6 +53,13 @@ export function loginPage() {
                 >
                 Sign In
               </button>
+              ${Button({
+                content: "sign In",
+                variant: "type1",
+                additional: "opacity-[.65] mt-24 absolute bottom-10",
+                id: "submit-btn",
+                type: "submit",
+              })}
           </form>
         </div>
       </div>
