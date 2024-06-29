@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="transparent"></rect>
+<g transform="matrix(1 0 0 1 540 540)" id="6418294a-999f-4ad4-bd55-d66a80bece5e"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="9e94dbfb-5d7e-4f89-b328-ed6202e4ff4b"  >
+</g>
+<g transform="matrix(45 0 0 45 540 540)"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(64,64,64); fill-opacity: 0; fill-rule: evenodd; opacity: 1;"  transform=" translate(-12, -12)" d="M 12 2.25 C 6.615 2.25 2.25 6.615 2.25 12 C 2.25 17.384999999999998 6.615 21.75 12 21.75 C 17.384999999999998 21.75 21.75 17.384999999999998 21.75 12 C 21.75 6.615000000000002 17.385 2.25 12 2.25 Z M 12 10.875 C 11.378679656440358 10.875 10.875 11.378679656440358 10.875 12 C 10.875 12.621320343559642 11.378679656440358 13.125 12 13.125 C 12.621320343559642 13.125 13.125 12.621320343559642 13.125 12 C 13.125 11.378679656440358 12.621320343559642 10.875 12 10.875 Z M 15.375 12 C 15.375 11.378679656440358 15.878679656440358 10.875 16.5 10.875 C 17.121320343559642 10.875 17.625 11.378679656440358 17.625 12 C 17.625 12.621320343559642 17.121320343559642 13.125 16.5 13.125 C 15.878679656440358 13.125 15.375 12.621320343559642 15.375 12 Z M 7.5 10.875 C 6.878679656440357 10.875 6.375 11.378679656440358 6.375 12 C 6.375 12.621320343559642 6.878679656440357 13.125 7.5 13.125 C 8.121320343559642 13.125 8.625 12.621320343559642 8.625 12 C 8.625 11.378679656440358 8.121320343559642 10.875 7.5 10.875 Z" stroke-linecap="round" />
+</g>
+</svg>
