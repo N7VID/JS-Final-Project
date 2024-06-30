@@ -8,7 +8,6 @@ export function Category({ content, ...restProps }) {
   div.classList =
     "scroll-hidden flex justify-evenly items-center gap-3 overflow-x-auto flex-nowrap whitespace-nowrap py-3 px-6";
   const categoryName = content;
-  console.log(categoryName);
   categoryName.forEach((name) => {
     const inner = document.createElement("div");
     inner.innerHTML = `
