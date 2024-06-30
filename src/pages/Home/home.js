@@ -1,4 +1,5 @@
 import { Card } from "../../components/product card/produtCard";
+import { homePageApi } from "./api/product-api";
 
 export function homePage() {
   const div = document.createElement("div");
@@ -102,14 +103,24 @@ export function homePage() {
       </nav>
     </div>
   `;
-  const card = Card({
-    content: "K-Swiss ista Train...",
-    price: "85.00",
-    imgSrc: "/images/shoe1.png",
-    id: 1,
-  });
-  const cardContainer = div.querySelector("#card-container");
-  cardContainer.append(card);
-  div.classList = "font-inter bg-white flex flex-col min-h-screen";
+  homePageApi()
+    .then((res) => {
+      render(res.data);
+    })
+    .catch((e) => console.log(e));
+
+  function render(data) {
+    data.forEach((product) => {
+      const card = Card({
+        content: product.name,
+        price: product.price,
+        imgSrc: product.images[0],
+        id: product.id,
+      });
+      const cardContainer = div.querySelector("#card-container");
+      cardContainer.append(card);
+      div.classList = "font-inter bg-white flex flex-col min-h-screen";
+    });
+  }
   return div;
 }
