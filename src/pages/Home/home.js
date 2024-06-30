@@ -1,3 +1,5 @@
+import { Card } from "../../components/product card/produtCard";
+
 export function homePage() {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -69,6 +71,9 @@ export function homePage() {
         <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">New Balance</div>
         <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Converse</div>
       </div>
+
+      <div class="grid grid-cols-2 px-6 py-4 gap-x-3 gap-y-5" id="card-container"></div>
+
     </div>
     <div class="w-full">
       <nav class="my-0 mx-auto w-full">
@@ -97,6 +102,14 @@ export function homePage() {
       </nav>
     </div>
   `;
+  const card = Card({
+    content: "K-Swiss ista Train...",
+    price: "85.00",
+    imgSrc: "/images/shoe1.png",
+    id: 1,
+  });
+  const cardContainer = div.querySelector("#card-container");
+  cardContainer.append(card);
   div.classList = "font-inter bg-white flex flex-col min-h-screen";
   return div;
 }
