@@ -19,7 +19,7 @@ export function Card({
   div.innerHTML = `
     <div class="${className}" ${attributesString(restProps)}>
         <div class="bg-[#F3F3F3] rounded-[24px] h-[180px] w-[180px] flex justify-center items-center">
-          <img src=${imgSrc} alt="shoe picture" class="w-[142px] object-contain">
+          <img src=${imgSrc} alt="shoe picture" class="w-[142px] h-[142px] object-contain rounded-full">
         </div>
         <div class="flex flex-col gap-1">
           <span class="font-bold text-[20px] text-[#152536] pt-2 text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight">${content}</span>
