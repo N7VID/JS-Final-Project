@@ -22,52 +22,52 @@ export function homePage() {
     </div>
     <div class="grid grid-cols-4 gap-y-6 gap-x-6 py-4 px-6">
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/nike-4-logo-svgrepo-com.svg" alt="nike-logo" class="w-[35px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/nike-4-logo-svgrepo-com.svg" alt="nike-logo" class="w-[32px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm overflow-hidden text-nowrap overflow-ellipsis cursor-pointer">Nike</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/adidas-svgrepo-com.svg" alt="adidas-logo" class="w-[30px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/adidas-svgrepo-com.svg" alt="adidas-logo" class="w-[25px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer">Adidas</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/puma_logo_icon_248754.svg" alt="puma-logo" class="w-[30px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/puma_logo_icon_248754.svg" alt="puma-logo" class="w-[25px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer">Puma</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/asics.svg" alt="asics-logo" class="w-[30px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/asics.svg" alt="asics-logo" class="w-[25px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer">Asics</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/reebok_logo_icon_248669.svg" alt="reebok-logo" class="w-[30px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/reebok_logo_icon_248669.svg" alt="reebok-logo" class="w-[25px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer">Reebok</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/newbalance_logo_icon_248383.svg" alt="newbalance-logo" class="w-[30px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/newbalance_logo_icon_248383.svg" alt="newbalance-logo" class="w-[25px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer">New Balance</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/Converse_(shoe_company)-Icon-Logo.wine.svg" alt="converse-logo" class="w-[30px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/Converse_(shoe_company)-Icon-Logo.wine.svg" alt="converse-logo" class="w-[25px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer">Converse</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/more-outline.svg" alt="nike-logo" class="w-[30px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/more-outline.svg" alt="nike-logo" class="w-[25px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer">More...</p>
       </div>
     </div>
     <div class="flex-grow flex-col items-center justify-center">
-      <div class="flex justify-between items-center w-full px-6">
+      <div class="flex justify-between items-center w-full px-6 py-2">
         <div><span class="text-[#152536] font-semibold text-xl cursor-default">Most Popular</span></div>
         <div><span class="text-[#152536] font-bold text-[16.2px] cursor-pointer">See All</span></div>
       </div>
       <div class="flex justify-start items-center gap-4 overflow-x-auto flex-nowrap whitespace-nowrap py-2 px-6">
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[39px] border-[#343A40] border-[3px] rounded-[25px] py-[5.5px] px-4 text-center text-[#343A40] font-semibold">All</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[39px] border-[#343A40] border-[3px] rounded-[25px] py-[5.5px] px-4 text-center text-[#343A40] font-semibold">Nike</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[39px] border-[#343A40] border-[3px] rounded-[25px] py-[5.5px] px-4 text-center text-[#343A40] font-semibold">Adidas</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[39px] border-[#343A40] border-[3px] rounded-[25px] py-[5.5px] px-4 text-center text-[#343A40] font-semibold">Puma</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[39px] border-[#343A40] border-[3px] rounded-[25px] py-[5.5px] px-4 text-center text-[#343A40] font-semibold">Asics</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[39px] border-[#343A40] border-[3px] rounded-[25px] py-[5.5px] px-4 text-center text-[#343A40] font-semibold">Reebok</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[39px] border-[#343A40] border-[3px] rounded-[25px] py-[5.5px] px-4 text-center text-[#343A40] font-semibold">New Balance</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[39px] border-[#343A40] border-[3px] rounded-[25px] py-[5.5px] px-4 text-center text-[#343A40] font-semibold">Converse</div>
+        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">All</div>
+        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Nike</div>
+        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Adidas</div>
+        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Puma</div>
+        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Asics</div>
+        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Reebok</div>
+        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">New Balance</div>
+        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Converse</div>
       </div>
     </div>
     <div class="w-full">
