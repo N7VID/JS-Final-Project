@@ -44,26 +44,20 @@ export function loginPage() {
               <div class="flex justify-center mt-1">
                 <p>Don't have an account? <a href="/signup" data-navigo class="text-blue-700">Sign Up</a></p>
               </div>
-
-              <button
-                disabled
-                type="submit"
-                id="submit-btn"
-                class="absolute bottom-10 bg-[#212529] text-white w-[380px] h-[47px] rounded-[30px] font-medium text-[14px] opacity-[.65] mt-24"
-                >
-                Sign In
-              </button>
-              ${Button({
-                content: "sign In",
-                variant: "type1",
-                additional: "opacity-[.65] mt-24 absolute bottom-10",
-                id: "submit-btn",
-                type: "submit",
-              })}
+              <div id="button-container"></div>
           </form>
         </div>
       </div>
     `;
+  const button = Button({
+    content: "sign In",
+    variant: "type1",
+    additional: "opacity-[.65] mt-24 absolute bottom-10",
+    id: "submit-btn",
+    type: "submit",
+  });
+  const buttonContainer = div.querySelector("#button-container");
+  buttonContainer.append(button);
   return div;
 }
 

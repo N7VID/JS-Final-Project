@@ -1,4 +1,4 @@
-export const emailInputHandler = function () {
+export function emailInputHandler() {
   const mailIcon = document.getElementById("mail-icon");
   const emailInput = document.getElementById("email");
   if (emailInput.value !== "") {
@@ -6,8 +6,8 @@ export const emailInputHandler = function () {
   } else {
     mailIcon.src = "/images/envelop-1.svg";
   }
-};
-export const passwordInputHandler = function () {
+}
+export function passwordInputHandler() {
   const passInput = document.getElementById("password");
   const passIcon = document.getElementById("pass-icon");
   const eyeIcon = document.getElementById("eye-icon");
@@ -26,9 +26,9 @@ export const passwordInputHandler = function () {
       eyeIcon.src = "/images/eye-open-1.svg";
     }
   }
-};
+}
 
-export const showPasswordHandler = function () {
+export function showPasswordHandler() {
   const passInput = document.getElementById("password");
   const eyeIcon = document.getElementById("eye-icon");
 
@@ -45,4 +45,4 @@ export const showPasswordHandler = function () {
         ? "/images/eye-close-2.svg"
         : "/images/eye-close-1.svg";
   }
-};
+}
