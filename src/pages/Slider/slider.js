@@ -1,6 +1,7 @@
 import Splide from "@splidejs/splide";
 import { root, router } from "../../main";
 import gsap from "gsap";
+import { Button } from "../../components/button/button";
 
 export function slider() {
   const div = document.createElement("div");
@@ -22,13 +23,14 @@ export function slider() {
               <p class="text-[32px] font-semibold text-center pt-8 px-3">Let’s fulfill your fashion needs with shoea right now!</p>
             </li>
           </ul>
-          <div class="w-full flex justify-center items-center mt-16">
-            <button id="next-btn" class="bg-[#212529] text-white w-[380px] h-[47px] rounded-[30px] font-medium text-[14px] ">Next</button>
-          </div>
-          
+          <div class="w-full flex justify-center items-center mt-[87px]" id="button-container"></div>
+       
         </div>
       </section>
         `;
+  const button = Button({ content: "Next", variant: "type1", id: "next-btn" });
+  const buttonContainer = div.querySelector("#button-container");
+  buttonContainer.appendChild(button);
   return div;
 }
 export function sliderAnimation() {
