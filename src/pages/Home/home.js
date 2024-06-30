@@ -1,4 +1,5 @@
 import { Card } from "../../components/product card/produtCard";
+import { Category } from "../../components/scrollable category/category";
 import { homePageApi } from "./api/product-api";
 
 export function homePage() {
@@ -62,23 +63,15 @@ export function homePage() {
         <div><span class="text-[#152536] font-semibold text-xl cursor-default">Most Popular</span></div>
         <div><span class="text-[#152536] font-bold text-[16.2px] cursor-pointer">See All</span></div>
       </div>
-      <div class="flex justify-start items-center gap-4 overflow-x-auto flex-nowrap whitespace-nowrap py-2 px-6">
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">All</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Nike</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Adidas</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Puma</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Asics</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Reebok</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">New Balance</div>
-        <div class="inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.4px] rounded-[25px] py-[3.5px] px-4 text-center text-[#343A40] font-semibold">Converse</div>
-      </div>
+
+      <div id="category-scroll-container" class="max-w-[1024px] my-0 mx-auto overflow-hidden"></div>
 
       <div class="grid grid-cols-2 px-6 py-4 gap-x-3 gap-y-5" id="card-container"></div>
 
     </div>
-    <div class="w-full">
+    <div class="w-full fixed bg-white bottom-0">
       <nav class="my-0 mx-auto w-full">
-        <ul class="flex gap-12 justify-center items-center px-6 text-[#152536]">
+        <ul class="flex gap-12 justify-center items-center px-6 py-4 text-[#152536]">
           <li class="text-center flex flex-col cursor-pointer">
             <img src="/images/home-outline.svg" class="w-[30px]">
             <span class="text-[10px] font-semibold tracking-tight">Home</span>
@@ -103,6 +96,7 @@ export function homePage() {
       </nav>
     </div>
   `;
+
   homePageApi()
     .then((res) => {
       render(res.data);
@@ -122,5 +116,22 @@ export function homePage() {
       div.classList = "font-inter bg-white flex flex-col min-h-screen";
     });
   }
+
+  const category = Category({
+    content: [
+      "All",
+      "Nike",
+      "Adidas",
+      "Puma",
+      "Asics",
+      "Reebok",
+      "New Balance",
+      "Converse",
+    ],
+    id: 1,
+  });
+  const categoryContainer = div.querySelector("#category-scroll-container");
+  categoryContainer.append(category);
+
   return div;
 }
