@@ -10,7 +10,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        inter: ["inter", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        Poppins: ["Poppins", "serif"],
       },
       backgroundImage: {
         "welcome-image": "url('/images/WallpaperDog-20534610 1.png')",

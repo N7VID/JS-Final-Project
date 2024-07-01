@@ -12,6 +12,7 @@ import { signup, signupPage } from "./pages/Signup/signup";
 import { slider, sliderAnimation, splide } from "./pages/Slider/slider";
 import { welcome, welcomeAnimation } from "./pages/Welcome/welcome";
 import "./style.css";
+import { productPage, splideProduct } from "./pages/product/product";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -22,6 +23,7 @@ export const routes = {
   login: "/login",
   home: "/",
   signup: "/signup",
+  product: "/product",
 };
 export const root = document.getElementById("app");
 
@@ -66,4 +68,5 @@ router
       render(signupPage(), [styleHandler, checkValidation, signup])
     )
   )
+  .on(routes.product, () => render(productPage(), [splideProduct]))
   .resolve();
