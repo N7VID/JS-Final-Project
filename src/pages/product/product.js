@@ -3,8 +3,8 @@ import Splide from "@splidejs/splide";
 export function productPage() {
   const div = document.createElement("div");
   div.innerHTML = `
-    <section class="my-bg splide w-[428px] h-[428px] p-0" aria-labelledby="carousel-heading">
-
+  <section class="my-bg splide w-[428px] h-[428px] p-0" aria-labelledby="carousel-heading">
+        <a href="/" data-navigo class="absolute top-[16px] left-[24px] z-10"><img src="/public/images/arrow-left.svg" class="w-7"></a>
         <div class="splide__track mx-auto my-0 w-full"> 
           <ul class="splide__list">
             <li class="splide__slide">
