@@ -38,7 +38,7 @@ export function homePage() {
         <p class="font-semibold text-sm cursor-pointer">Puma</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/asics.svg" alt="asics-logo" class="w-[25px] mix-blend-multiply"></div>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/public/images/asics.svg" alt="asics-logo" class="w-[25px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer">Asics</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
@@ -50,8 +50,8 @@ export function homePage() {
         <p class="font-semibold text-sm cursor-pointer">New Balance</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/Converse_(shoe_company)-Icon-Logo.wine.svg" alt="converse-logo" class="w-[25px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm cursor-pointer">Converse</p>
+        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/public/images/fila-2.svg" alt="converse-logo" class="w-[40px] mix-blend-multiply"></div>
+        <p class="font-semibold text-sm cursor-pointer">Fila</p>
       </div>
       <div class="flex-col flex justify-between text-center h-[91px] items-center">
         <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/more-outline.svg" alt="nike-logo" class="w-[25px] mix-blend-multiply"></div>
@@ -126,7 +126,7 @@ export function homePage() {
       "Asics",
       "Reebok",
       "New Balance",
-      "Converse",
+      "Fila",
     ],
     id: 1,
   });
