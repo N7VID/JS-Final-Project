@@ -1,6 +1,7 @@
 import { Card } from "../../components/product card/produtCard";
 import { Category } from "../../components/scrollable category/category";
-import { homePageApi } from "./api/product-api";
+import { root } from "../../main";
+import { homePageApi, homePageCategoryApi } from "./api/product-api";
 
 export function homePage() {
   const div = document.createElement("div");
@@ -97,26 +98,6 @@ export function homePage() {
     </div>
   `;
 
-  homePageApi()
-    .then((res) => {
-      render(res.data);
-    })
-    .catch((e) => console.log(e));
-
-  function render(data) {
-    data.forEach((product) => {
-      const card = Card({
-        content: product.name,
-        price: product.price,
-        imgSrc: product.images[0],
-        id: product.id,
-      });
-      const cardContainer = div.querySelector("#card-container");
-      cardContainer.append(card);
-      div.classList = "font-inter bg-white flex flex-col min-h-screen";
-    });
-  }
-
   const category = Category({
     content: [
       "All",
@@ -128,10 +109,57 @@ export function homePage() {
       "New Balance",
       "Fila",
     ],
-    id: 1,
   });
   const categoryContainer = div.querySelector("#category-scroll-container");
   categoryContainer.append(category);
 
   return div;
+}
+function render(data) {
+  const cardContainer = root.querySelector("#card-container");
+  cardContainer.innerHTML = "";
+  data.forEach((product) => {
+    const card = Card({
+      content: product.name,
+      price: product.price,
+      imgSrc: product.images[0],
+      id: product.id,
+    });
+    cardContainer.append(card);
+    root.classList = "font-inter bg-white flex flex-col min-h-screen";
+  });
+}
+
+homePageApi()
+  .then((res) => {
+    render(res.data);
+  })
+  .catch((e) => console.log(e));
+
+export function getCategory() {
+  const categoriesNode = root.querySelectorAll(".category");
+  const categoriesItem = Object.values(categoriesNode);
+  categoriesItem.map((category) => {
+    category.addEventListener("click", (e) => {
+      const category = e.target.id.toUpperCase();
+      homePageCategoryApi(category)
+        .then((res) => render(res.data))
+        .catch((error) => console.log(error));
+    });
+  });
+}
+
+export function handleStyleCategoryHomepage() {
+  const categoriesNode = root.querySelectorAll(".category");
+  const categoriesItem = Object.values(categoriesNode);
+  categoriesItem.forEach((category) => {
+    category.addEventListener("click", () => {
+      categoriesItem.forEach((category) => {
+        category.classList.add("text-[#343A40]", "font-semibold");
+        category.classList.remove("text-white", "bg-[#343A40]");
+      });
+      category.classList.remove("text-[#343A40]", "font-semibold");
+      category.classList.add("text-white", "bg-[#343A40]");
+    });
+  });
 }

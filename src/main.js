@@ -1,6 +1,10 @@
 import "@splidejs/splide/css/sea-green";
 import Navigo from "navigo";
-import { homePage } from "./pages/Home/home";
+import {
+  getCategory,
+  handleStyleCategoryHomepage,
+  homePage,
+} from "./pages/Home/home";
 import {
   checkValidation,
   login,
@@ -54,7 +58,11 @@ function protectedRoute(next) {
 }
 
 router
-  .on(routes.home, () => checkAuth(() => render(homePage())))
+  .on(routes.home, () =>
+    checkAuth(() =>
+      render(homePage(), [getCategory, handleStyleCategoryHomepage])
+    )
+  )
   .on(routes.onboarding, () => render(onboarding(), [onboardingAnimation]))
   .on(routes.login, () =>
     protectedRoute(() =>
