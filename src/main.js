@@ -1,10 +1,6 @@
 import "@splidejs/splide/css/sea-green";
 import Navigo from "navigo";
-import {
-  getCategory,
-  handleStyleCategoryHomepage,
-  homePage,
-} from "./pages/Home/home";
+import { homePage } from "./pages/Home/home";
 import {
   checkValidation,
   login,
@@ -17,6 +13,10 @@ import { slider, sliderAnimation, splide } from "./pages/Slider/slider";
 import { welcome, welcomeAnimation } from "./pages/Welcome/welcome";
 import "./style.css";
 import { productPage, splideProduct } from "./pages/product/product";
+import { mostPopularPage } from "./pages/Most popular/mostPopular";
+import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
+import { getCategory } from "./utility/getCategory";
+import { getProduct } from "./utility/getProduct";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -28,6 +28,7 @@ export const routes = {
   home: "/",
   signup: "/signup",
   product: "/product",
+  mostPopular: "/mostPopular",
 };
 export const root = document.getElementById("app");
 
@@ -60,7 +61,7 @@ function protectedRoute(next) {
 router
   .on(routes.home, () =>
     checkAuth(() =>
-      render(homePage(), [getCategory, handleStyleCategoryHomepage])
+      render(homePage(), [getProduct, getCategory, handleStyleCategoryHomepage])
     )
   )
   .on(routes.onboarding, () => render(onboarding(), [onboardingAnimation]))
@@ -77,4 +78,11 @@ router
     )
   )
   .on(routes.product, () => render(productPage(), [splideProduct]))
+  .on(routes.mostPopular, () =>
+    render(mostPopularPage(), [
+      getProduct,
+      getCategory,
+      handleStyleCategoryHomepage,
+    ])
+  )
   .resolve();

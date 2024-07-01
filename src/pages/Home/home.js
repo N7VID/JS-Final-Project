@@ -1,7 +1,4 @@
-import { Card } from "../../components/product card/produtCard";
 import { Category } from "../../components/scrollable category/category";
-import { root } from "../../main";
-import { homePageApi, homePageCategoryApi } from "./api/product-api";
 
 export function homePage() {
   const div = document.createElement("div");
@@ -62,7 +59,7 @@ export function homePage() {
     <div class="flex-grow flex-col items-center justify-center">
       <div class="flex justify-between items-center w-full px-6 py-2">
         <div><span class="text-[#152536] font-semibold text-xl cursor-default">Most Popular</span></div>
-        <div><span class="text-[#152536] font-bold text-[16.2px] cursor-pointer">See All</span></div>
+        <a href="/mostPopular" data-navigo><span class="text-[#152536] font-bold text-[16.2px] cursor-pointer">See All</span></a>
       </div>
 
       <div id="category-scroll-container" class="max-w-[1024px] my-0 mx-auto overflow-hidden"></div>
@@ -114,52 +111,4 @@ export function homePage() {
   categoryContainer.append(category);
 
   return div;
-}
-function render(data) {
-  const cardContainer = root.querySelector("#card-container");
-  cardContainer.innerHTML = "";
-  data.forEach((product) => {
-    const card = Card({
-      content: product.name,
-      price: product.price,
-      imgSrc: product.images[0],
-      id: product.id,
-    });
-    cardContainer.append(card);
-    root.classList = "font-inter bg-white flex flex-col min-h-screen";
-  });
-}
-
-homePageApi()
-  .then((res) => {
-    render(res.data);
-  })
-  .catch((e) => console.log(e));
-
-export function getCategory() {
-  const categoriesNode = root.querySelectorAll(".category");
-  const categoriesItem = Object.values(categoriesNode);
-  categoriesItem.map((category) => {
-    category.addEventListener("click", (e) => {
-      const category = e.target.id.toUpperCase();
-      homePageCategoryApi(category)
-        .then((res) => render(res.data))
-        .catch((error) => console.log(error));
-    });
-  });
-}
-
-export function handleStyleCategoryHomepage() {
-  const categoriesNode = root.querySelectorAll(".category");
-  const categoriesItem = Object.values(categoriesNode);
-  categoriesItem.forEach((category) => {
-    category.addEventListener("click", () => {
-      categoriesItem.forEach((category) => {
-        category.classList.add("text-[#343A40]", "font-semibold");
-        category.classList.remove("text-white", "bg-[#343A40]");
-      });
-      category.classList.remove("text-[#343A40]", "font-semibold");
-      category.classList.add("text-white", "bg-[#343A40]");
-    });
-  });
 }
