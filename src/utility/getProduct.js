@@ -1,4 +1,4 @@
-import { Card } from "../components/product card/produtCard";
+import { Card } from "../components/product card/productCard";
 import { root } from "../main";
 import { homePageApi } from "../pages/Home/api/product-api";
 
