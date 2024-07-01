@@ -66,7 +66,7 @@ export function homePage() {
 
       <div id="category-scroll-container" class="max-w-[1024px] my-0 mx-auto overflow-hidden"></div>
 
-      <div class="grid grid-cols-2 px-6 py-4 gap-x-3 gap-y-5" id="card-container"></div>
+      <div class="max-w-[1300px] my-0 mx-auto mb-[80px] grid grid-cols-2 px-6 py-4 gap-x-3 gap-y-5 laptop:grid-cols-4 laptop:gap-x-0 tablet:grid-cols-3" id="card-container"></div>
 
     </div>
     <div class="w-full fixed bg-white bottom-0">

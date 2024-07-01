@@ -17,7 +17,9 @@ export function Card({
   const className = variantClasses[variant] || "";
   const div = document.createElement("div");
   div.innerHTML = `
-    <div class="${className}" ${attributesString(restProps)}>
+    <div class="${className} my-0 mx-auto max-w-[182px] cursor-pointer" ${attributesString(
+    restProps
+  )}>
         <div class="bg-[#F3F3F3] rounded-[24px] h-[180px] w-[180px] flex justify-center items-center">
           <img src=${imgSrc} alt="shoe picture" class="w-[142px] h-[142px] object-contain rounded-full">
         </div>
