@@ -18,7 +18,7 @@
         "brand": "NIKE",
         "price": 160,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -35,7 +35,7 @@
         "brand": "NIKE",
         "price": 130,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -52,13 +52,13 @@
         "brand": "NIKE",
         "price": 120,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
           "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-33b0a0a5-c171-46cc-ad20-04a768703e47/air-zoom-pegasus-37-womens-running-shoe-Jl0bDf.jpg"
         ],
-        "description": "The Nike Air Zoom Pegasus 37 is a versatile running shoe that combines a Zoom Air unit with React foam for responsive cushioning. It is engineered for a snug fit and delivers a springy and smooth running experience. Ideal for daily training and race day performance.",
+        "description": "The Nike Air Zoom Pegasus 37 is a versatile running shoe that combines a Zoom Air unit with React foam for responsive cushioning. It is engineebg-[#FF0000] for a snug fit and delivers a springy and smooth running experience. Ideal for daily training and race day performance.",
         "vote": 5,
         "review": 35,
         "sold": 88
@@ -69,7 +69,7 @@
         "brand": "NIKE",
         "price": 180,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -86,13 +86,13 @@
         "brand": "NIKE",
         "price": 250,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
           "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/9dda6202-e2ff-4711-9a09-0fcb7d90c164/mercurial-vapor-13-elite-fg-firm-ground-soccer-cleat-14MsF2.jpg"
         ],
-        "description": "The Nike Mercurial Vapor 13 Elite FG is engineered for explosive speed and superior ball control. Featuring a lightweight upper and a Nike Aerotrak zone for improved traction, this soccer cleat is designed for top-level performance on firm ground pitches.",
+        "description": "The Nike Mercurial Vapor 13 Elite FG is engineebg-[#FF0000] for explosive speed and superior ball control. Featuring a lightweight upper and a Nike Aerotrak zone for improved traction, this soccer cleat is designed for top-level performance on firm ground pitches.",
         "vote": 5,
         "review": 40,
         "sold": 102
@@ -103,11 +103,11 @@
         "brand": "ADIDAS",
         "price": 180,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
-          "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f3048d697abb461986c2ac5300b2f1c6_9366/Ultraboost_20_Running_Shoes_Black_FZ0174_06_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/6899f3652da84540a495ac5300b1e674_9366/Ultraboost_20_Running_Shoes_Black_FZ0174_01_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/06934f2d63644d09b08aac5300b30492_9366/Ultraboost_20_Running_Shoes_Black_FZ0174_04_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/4810aec2c17545d0a81aac5300b30b18_9366/Ultraboost_20_Running_Shoes_Black_FZ0174_05_standard.jpg"
+          "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f3048d697abb461986c2ac5300b2f1c6_9366/Ultraboost_20_Running_Shoes_#000_FZ0174_06_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/6899f3652da84540a495ac5300b1e674_9366/Ultraboost_20_Running_Shoes_#000_FZ0174_01_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/06934f2d63644d09b08aac5300b30492_9366/Ultraboost_20_Running_Shoes_#000_FZ0174_04_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/4810aec2c17545d0a81aac5300b30b18_9366/Ultraboost_20_Running_Shoes_#000_FZ0174_05_standard.jpg"
         ],
         "description": "The Adidas Ultraboost 20 combines high-performance technology with modern style. Its Boost midsole delivers energy return with every step, while the Primeknit upper provides a supportive and adaptable fit. Perfect for both running and everyday wear.",
         "vote": 4,
@@ -120,11 +120,11 @@
         "brand": "ADIDAS",
         "price": 140,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
-          "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/e7b9199a7b82484cbc6cad6a00f91d5f_9366/NMD_R1_Shoes_White_GZ9261_06_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0e03e7a2a9cb44dfac2bad6a00f95888_9366/NMD_R1_Shoes_White_GZ9261_01_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/ac542acaa2324d378be6ad6a00f8a724_9366/NMD_R1_Shoes_White_GZ9261_04_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c5f466717e0941fb9a1fad6a00f9e005_9366/NMD_R1_Shoes_White_GZ9261_05_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/6640f8f1400a4b21a477ad6a00f8d3b4_9366/NMD_R1_Shoes_White_GZ9261_41_detail.jpg"
+          "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/e7b9199a7b82484cbc6cad6a00f91d5f_9366/NMD_R1_Shoes_bg-[#FFFFFF]_GZ9261_06_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0e03e7a2a9cb44dfac2bad6a00f95888_9366/NMD_R1_Shoes_bg-[#FFFFFF]_GZ9261_01_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/ac542acaa2324d378be6ad6a00f8a724_9366/NMD_R1_Shoes_bg-[#FFFFFF]_GZ9261_04_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c5f466717e0941fb9a1fad6a00f9e005_9366/NMD_R1_Shoes_bg-[#FFFFFF]_GZ9261_05_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/6640f8f1400a4b21a477ad6a00f8d3b4_9366/NMD_R1_Shoes_bg-[#FFFFFF]_GZ9261_41_detail.jpg"
         ],
         "description": "The Adidas NMD_R1 offers a sleek and futuristic design with superior comfort. Featuring a Boost midsole for exceptional cushioning and a snug textile upper, this shoe is perfect for urban adventures and casual wear.",
         "vote": 4,
@@ -137,11 +137,11 @@
         "brand": "ADIDAS",
         "price": 220,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
-          "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/3309b7c847254e44926aab61012a61ec_9366/YEEZY_BOOST_350_V2_Beige_FX9028_01_standard1_hover.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8cddd88362c74a86ae4fab61012a5f93_9366/YEEZY_BOOST_350_V2_Beige_FX9028_01_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/49852affde7f49dcb970a9ae017c284e_9366/YEEZY_BOOST_350_V2_White_EF2905_01_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/265347698c4c46ee9fe9a9ae017c25f4_9366/YEEZY_BOOST_350_V2_White_EF2905_01_standard2.jpg"
+          "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/3309b7c847254e44926aab61012a61ec_9366/YEEZY_BOOST_350_V2_Beige_FX9028_01_standard1_hover.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8cddd88362c74a86ae4fab61012a5f93_9366/YEEZY_BOOST_350_V2_Beige_FX9028_01_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/49852affde7f49dcb970a9ae017c284e_9366/YEEZY_BOOST_350_V2_bg-[#FFFFFF]_EF2905_01_standard.jpg","https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/265347698c4c46ee9fe9a9ae017c25f4_9366/YEEZY_BOOST_350_V2_bg-[#FFFFFF]_EF2905_01_standard2.jpg"
         ],
         "description": "The Adidas Yeezy Boost 350 V2 is a stylish and highly sought-after sneaker designed in collaboration with Kanye West. It features a Primeknit upper for a snug fit and a Boost midsole for responsive cushioning, making it a perfect blend of fashion and function.",
         "vote": 5,
@@ -154,7 +154,7 @@
         "brand": "ADIDAS",
         "price": 85,
         "sizes": [36, 37, 38],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -171,7 +171,7 @@
         "brand": "PUMA",
         "price": 110,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -188,7 +188,7 @@
         "brand": "PUMA",
         "price": 70,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -205,13 +205,13 @@
         "brand": "PUMA",
         "price": 80,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
           "https://images.puma.com/image/upload/f_auto,q_auto,t_vertical_product,w_500/global/399028/01/sv01/fnd/GBR/fmt/png/Easy-Rider-Vintage-Sneakers","https://images.puma.com/image/upload/f_auto,q_auto,t_vertical_product,w_500/global/399028/03/sv01/fnd/GBR/fmt/png/Easy-Rider-Vintage-Sneakers","https://images.puma.com/image/upload/f_auto,q_auto,t_vertical_product,w_500/global/399028/10/sv01/fnd/GBR/fmt/png/Easy-Rider-Vintage-Sneakers","https://images.puma.com/image/upload/f_auto,q_auto,t_vertical_product,w_500/global/399028/19/sv01/fnd/GBR/fmt/png/Easy-Rider-Vintage-Sneakers"
         ],
-        "description": "The Puma Future Rider is a retro-inspired sneaker with a modern twist. It features a lightweight design with a cushioned midsole and durable outsole, making it perfect for both everyday wear and athletic activities.",
+        "description": "The Puma Future Rider is a retro-inspibg-[#FF0000] sneaker with a modern twist. It features a lightweight design with a cushioned midsole and durable outsole, making it perfect for both everyday wear and athletic activities.",
         "vote": 3,
         "review": 26,
         "sold": 68
@@ -222,7 +222,7 @@
         "brand": "NEW BALANCE",
         "price": 175,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -239,7 +239,7 @@
         "brand": "NEW BALANCE",
         "price": 150,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -256,7 +256,7 @@
         "brand": "NEW BALANCE",
         "price": 110,
         "sizes": [41, 43, 45],
-        "colors": ["black", "navy", "white", "gray"],
+        "colors": ["bg-[#000000]", "navy", "bg-[#FFFFFF]", "gray"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -273,7 +273,7 @@
         "brand": "NEW BALANCE",
         "price": 90,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -290,7 +290,7 @@
         "brand": "ASICS",
         "price": 160,
         "sizes": [41, 43, 45],
-        "colors": ["black", "white"],
+        "colors": ["bg-[#000000]", "bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -310,7 +310,7 @@
         "brand": "ASICS",
         "price": 150,
         "sizes": [41, 43, 45, 46],
-        "colors": ["black","white"],
+        "colors": ["bg-[#000000]","bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -330,7 +330,7 @@
         "brand": "ASICS",
         "price": 120,
         "sizes": [41, 43, 45],
-        "colors": ["black", "white"],
+        "colors": ["bg-[#000000]", "bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -350,7 +350,7 @@
         "brand": "ASICS",
         "price": 130,
         "sizes": [41, 43, 45],
-        "colors": ["yellow", "orange", "white", "blue", "navy"],
+        "colors": ["yellow", "orange", "bg-[#FFFFFF]", "bg-[#0000FF]", "navy"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -370,7 +370,7 @@
         "brand": "ASICS",
         "price": 120,
         "sizes": [41, 43, 45],
-        "colors": ["black", "yellow", "white", "blue", "lime"],
+        "colors": ["bg-[#000000]", "yellow", "bg-[#FFFFFF]", "bg-[#0000FF]", "lime"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -390,7 +390,7 @@
         "brand": "UNDER ARMOUR",
         "price": 140,
         "sizes": [41, 43, 45],
-        "colors": ["black", "green", "white"],
+        "colors": ["bg-[#000000]", "green", "bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -410,7 +410,7 @@
         "brand": "UNDER ARMOUR",
         "price": 70,
         "sizes": [41, 43, 45],
-        "colors": ["black", "white"],
+        "colors": ["bg-[#000000]", "bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -430,7 +430,7 @@
         "brand": "UNDER ARMOUR",
         "price": 75,
         "sizes": [41, 43, 45],
-        "colors": ["black","white"],
+        "colors": ["bg-[#000000]","bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -447,7 +447,7 @@
         "brand": "UNDER ARMOUR",
         "price": 75.43,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red", "green"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]", "green"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -467,7 +467,7 @@
         "brand": "REEBOK",
         "price": 140,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -484,7 +484,7 @@
         "brand": "REEBOK",
         "price": 70,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "gray"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "gray"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -501,7 +501,7 @@
         "brand": "REEBOK",
         "price": 115,
         "sizes": [41, 43, 45],
-        "colors": ["black", "brown", "white", "blue", "navy"],
+        "colors": ["bg-[#000000]", "bg-[#964B00]", "bg-[#FFFFFF]", "bg-[#0000FF]", "navy"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -518,13 +518,13 @@
         "brand": "REEBOK",
         "price": 57.04,
         "sizes": [41, 43, 45],
-        "colors": ["black", "white", "blue", "red"],
+        "colors": ["bg-[#000000]", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
-          "https://startfitness.co.uk/cdn/shop/products/reebok-floatride-run-fast-2-0-mens-running-shoes-blue-28825557434576.jpg?v=1681805080&width=823",
-          "https://startfitness.co.uk/cdn/shop/products/reebok-floatride-run-fast-2-0-mens-running-shoes-blue-28825557434576.jpg?v=1681805080&width=823","https://startfitness.co.uk/cdn/shop/products/reebok-floatride-run-fast-2-0-mens-running-shoes-blue-28825557565648.jpg?v=1681804479&width=823",
-          "https://startfitness.co.uk/cdn/shop/products/reebok-floatride-run-fast-2-0-mens-running-shoes-blue-28825557598416.jpg?v=1681804545&width=823"
+          "https://startfitness.co.uk/cdn/shop/products/reebok-floatride-run-fast-2-0-mens-running-shoes-bg-[#0000FF]-28825557434576.jpg?v=1681805080&width=823",
+          "https://startfitness.co.uk/cdn/shop/products/reebok-floatride-run-fast-2-0-mens-running-shoes-bg-[#0000FF]-28825557434576.jpg?v=1681805080&width=823","https://startfitness.co.uk/cdn/shop/products/reebok-floatride-run-fast-2-0-mens-running-shoes-bg-[#0000FF]-28825557565648.jpg?v=1681804479&width=823",
+          "https://startfitness.co.uk/cdn/shop/products/reebok-floatride-run-fast-2-0-mens-running-shoes-bg-[#0000FF]-28825557598416.jpg?v=1681804545&width=823"
         ],
         "description": "The Reebok Floatride Run Fast 2 is a lightweight running shoe designed for speed. Featuring Floatride Foam for responsive cushioning and a breathable upper, it provides a comfortable and fast ride, perfect for both training and race day.",
         "vote": 4,
@@ -537,7 +537,7 @@
         "brand": "REEBOK",
         "price": 164.97,
         "sizes": [41, 43, 45],
-        "colors": ["black", "orange", "white"],
+        "colors": ["bg-[#000000]", "orange", "bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -554,7 +554,7 @@
         "brand": "FILA",
         "price": 70.00,
         "sizes": [41, 43, 45],
-        "colors": ["white","pink"],
+        "colors": ["bg-[#FFFFFF]","pink"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -571,7 +571,7 @@
         "brand": "FILA",
         "price": 60.00,
         "sizes": [41, 43, 45],
-        "colors": ["navy", "white", "blue", "red"],
+        "colors": ["navy", "bg-[#FFFFFF]", "bg-[#0000FF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -588,7 +588,7 @@
         "brand": "FILA",
         "price": 80.00,
         "sizes": [41, 43, 45],
-        "colors": ["black", "white", "red"],
+        "colors": ["bg-[#000000]", "bg-[#FFFFFF]", "bg-[#FF0000]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -605,7 +605,7 @@
         "brand": "FILA",
         "price": 90.00,
         "sizes": [41, 43, 45],
-        "colors": ["gold", "white"],
+        "colors": ["gold", "bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [
@@ -622,7 +622,7 @@
         "brand": "FILA",
         "price": 100.00,
         "sizes": [41, 43, 45],
-        "colors": ["white"],
+        "colors": ["bg-[#FFFFFF]"],
         "is_in_stock": true,
         "in_stock": 10,
         "images": [

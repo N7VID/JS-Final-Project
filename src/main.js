@@ -12,7 +12,7 @@ import { signup, signupPage } from "./pages/Signup/signup";
 import { slider, sliderAnimation, splide } from "./pages/Slider/slider";
 import { welcome, welcomeAnimation } from "./pages/Welcome/welcome";
 import "./style.css";
-import { productPage, splideProduct } from "./pages/product/product";
+import { productPage, productPageHandler } from "./pages/product/product";
 import { mostPopularPage } from "./pages/Most popular/mostPopular";
 import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
 import { getCategory } from "./utility/getCategory";
@@ -68,6 +68,7 @@ router
         getCategory,
         handleStyleCategoryHomepage,
         categoryPageHandler,
+        productPageHandler,
       ])
     )
   )
@@ -84,7 +85,7 @@ router
       render(signupPage(), [styleHandler, checkValidation, signup])
     )
   )
-  .on(routes.product, () => render(productPage(), [splideProduct]))
+  .on(routes.product, () => render(productPage()))
   .on(routes.mostPopular, () =>
     render(mostPopularPage(), [
       getProduct,

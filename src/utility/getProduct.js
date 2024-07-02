@@ -1,4 +1,5 @@
 import { Card } from "../components/product card/productCard";
+import { SingleProduct } from "../components/single product/singleProduct";
 import { root } from "../main";
 import { homePageApi } from "../pages/Home/api/product-api";
 
@@ -17,6 +18,25 @@ export function renderProduct(data) {
   });
 }
 
+export function renderSingleProduct(product) {
+  console.log(product);
+  const productContainer = root.querySelector("#product-Container");
+  productContainer.innerHTML = "";
+  const single = SingleProduct({
+    images: product.images,
+    name: product.name,
+    sold: product.sold,
+    vote: product.vote,
+    reviews: product.review,
+    description: product.description,
+    sizes: product.sizes,
+    colors: product.colors,
+    price: product.price,
+  });
+  // data.forEach((product) => {
+  productContainer.append(single);
+  // });
+}
 export async function getProduct() {
   await homePageApi()
     .then((res) => {

@@ -134,20 +134,17 @@ body,
   display: none;
 }
 
-.custom-pagination-product {
-  width: 70px !important;
-  height: 10px !important;
-}
-.custom-pagination-product .splide__pagination__page.is-active {
+.custom-pagination-product.splide__pagination__page.is-active {
   background-color: #000 !important;
-  width: 40px !important;
+  width: 35px !important;
+  height: 9px !important;
   border-radius: 50px !important;
 }
 .splide__pagination {
-  top: 24rem !important;
+  top: 24.5rem !important;
 }
-.custom-pagination-product .splide__pagination__page {
-  width: 10px !important;
-  height: 10px !important;
+.custom-pagination-product.splide__pagination__page {
+  width: 8px !important;
+  height: 8px !important;
   border-radius: 50% !important;
 }

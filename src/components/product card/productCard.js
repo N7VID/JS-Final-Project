@@ -10,16 +10,16 @@ export function Card({
     homePage: "",
   };
   const attributesString = (props) => {
-    Object.entries(props)
+    return Object.entries(props)
       .map(([key, value]) => `${key}="${value}"`)
       .join(" ");
   };
   const className = variantClasses[variant] || "";
   const div = document.createElement("div");
   div.innerHTML = `
-    <div class="${className} my-0 mx-auto max-w-[182px] cursor-pointer" ${attributesString(
-    restProps
-  )}>
+    <div ${attributesString(
+      restProps
+    )} class="${className}card my-0 mx-auto max-w-[182px] cursor-pointer">
         <div class="bg-[#F3F3F3] rounded-[24px] h-[180px] w-[180px] flex justify-center items-center">
           <img src=${imgSrc} alt="shoe picture" class="w-[142px] h-[142px] object-contain rounded-full">
         </div>
