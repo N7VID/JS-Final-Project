@@ -13,6 +13,9 @@ export default {
         inter: ["Inter", "sans-serif"],
         Poppins: ["Poppins", "serif"],
       },
+      boxShadow: {
+        cart: "rgba(0, 0, 0, 0.1) 0px 10px 50px",
+      },
       backgroundImage: {
         "welcome-image": "url('/images/WallpaperDog-20534610 1.png')",
       },

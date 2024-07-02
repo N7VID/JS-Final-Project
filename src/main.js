@@ -18,6 +18,7 @@ import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
 import { getCategory } from "./utility/getCategory";
 import { getProduct } from "./utility/getProduct";
 import { categoryPage, categoryPageHandler } from "./pages/Category/category";
+import { cartPage } from "./pages/cart/cart";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -31,6 +32,7 @@ export const routes = {
   product: "/product",
   mostPopular: "/mostPopular",
   category: "/category/:brand",
+  cart: "/cart",
 };
 export const root = document.getElementById("app");
 
@@ -94,4 +96,5 @@ router
     ])
   )
   .on(routes.category, (slug) => render(categoryPage(slug.data.brand)))
+  .on(routes.cart, () => render(cartPage()))
   .resolve();
