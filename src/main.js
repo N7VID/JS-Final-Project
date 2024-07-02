@@ -17,6 +17,7 @@ import { mostPopularPage } from "./pages/Most popular/mostPopular";
 import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
 import { getCategory } from "./utility/getCategory";
 import { getProduct } from "./utility/getProduct";
+import { categoryPage, categoryPageHandler } from "./pages/Category/category";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -29,6 +30,7 @@ export const routes = {
   signup: "/signup",
   product: "/product",
   mostPopular: "/mostPopular",
+  category: "/category/:brand",
 };
 export const root = document.getElementById("app");
 
@@ -61,7 +63,12 @@ function protectedRoute(next) {
 router
   .on(routes.home, () =>
     checkAuth(() =>
-      render(homePage(), [getProduct, getCategory, handleStyleCategoryHomepage])
+      render(homePage(), [
+        getProduct,
+        getCategory,
+        handleStyleCategoryHomepage,
+        categoryPageHandler,
+      ])
     )
   )
   .on(routes.onboarding, () => render(onboarding(), [onboardingAnimation]))
@@ -85,4 +92,5 @@ router
       handleStyleCategoryHomepage,
     ])
   )
+  .on(routes.category, (slug) => render(categoryPage(slug.data.brand)))
   .resolve();

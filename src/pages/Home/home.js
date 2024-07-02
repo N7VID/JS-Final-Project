@@ -23,37 +23,37 @@ export function homePage() {
       </div>
     </div>
     <div class="grid grid-cols-4 gap-y-6 gap-x-6 py-4 px-6">
-      <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/nike-4-logo-svgrepo-com.svg" alt="nike-logo" class="w-[32px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm overflow-hidden text-nowrap overflow-ellipsis cursor-pointer">Nike</p>
+      <div id="Nike" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
+        <div id="Nike" class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img id="Nike" src="/images/nike-4-logo-svgrepo-com.svg" alt="nike-logo" class="w-[32px] mix-blend-multiply"></div>
+        <p id="Nike" class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">Nike</p>
       </div>
-      <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/adidas-svgrepo-com.svg" alt="adidas-logo" class="w-[25px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm cursor-pointer">Adidas</p>
+      <div id="Adidas" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
+        <div id="Adidas" class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img id="Adidas" src="/images/adidas-svgrepo-com.svg" alt="adidas-logo" class="w-[25px] mix-blend-multiply"></div>
+        <p id="Adidas" class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">Adidas</p>
       </div>
-      <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/puma_logo_icon_248754.svg" alt="puma-logo" class="w-[25px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm cursor-pointer">Puma</p>
+      <div id="Puma" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
+        <div id="Puma" class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img id="Puma" src="/images/puma_logo_icon_248754.svg" alt="puma-logo" class="w-[25px] mix-blend-multiply"></div>
+        <p id="Puma" class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">Puma</p>
       </div>
-      <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/public/images/asics.svg" alt="asics-logo" class="w-[25px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm cursor-pointer">Asics</p>
+      <div id="Asics" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
+        <div id="Asics" class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img id="Asics" src="/public/images/asics.svg" alt="asics-logo" class="w-[25px] mix-blend-multiply"></div>
+        <p id="Asics" class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">Asics</p>
       </div>
-      <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/reebok_logo_icon_248669.svg" alt="reebok-logo" class="w-[25px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm cursor-pointer">Reebok</p>
+      <div id="Reebok" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
+        <div id="Reebok" class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img id="Reebok" src="/images/reebok_logo_icon_248669.svg" alt="reebok-logo" class="w-[25px] mix-blend-multiply"></div>
+        <p id="Reebok" class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">Reebok</p>
       </div>
-      <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/newbalance_logo_icon_248383.svg" alt="newbalance-logo" class="w-[25px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm cursor-pointer">New Balance</p>
+      <div id="New-Balance" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
+        <div id="New-Balance" class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img id="New-Balance" src="/images/newbalance_logo_icon_248383.svg" alt="newbalance-logo" class="w-[25px] mix-blend-multiply"></div>
+        <p id="New-Balance" class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">New Balance</p>
       </div>
-      <div class="flex-col flex justify-between text-center h-[91px] items-center">
-        <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/public/images/fila-2.svg" alt="converse-logo" class="w-[40px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm cursor-pointer">Fila</p>
+      <div id="Fila" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
+        <div id="Fila" class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img id="Fila" src="/public/images/fila-2.svg" alt="converse-logo" class="w-[40px] mix-blend-multiply"></div>
+        <p id="Fila" class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">Fila</p>
       </div>
-      <div class="flex-col flex justify-between text-center h-[91px] items-center">
+      <div id="More" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
         <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/more-outline.svg" alt="nike-logo" class="w-[25px] mix-blend-multiply"></div>
-        <p class="font-semibold text-sm cursor-pointer">More...</p>
+        <p class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">More...</p>
       </div>
     </div>
     <div class="flex-grow flex-col items-center justify-center">
