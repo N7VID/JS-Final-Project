@@ -13,27 +13,19 @@ export function categoryPage(brand) {
   return div;
 }
 export function categoryPageHandler() {
-  const buttons = [];
-  const Nike = document.getElementById("Nike");
-  const Adidas = document.getElementById("Adidas");
-  const Puma = document.getElementById("Puma");
-  const Asics = document.getElementById("Asics");
-  const Reebok = document.getElementById("Reebok");
-  const NewBalance = document.getElementById("New-Balance");
-  const Fila = document.getElementById("Fila");
-  buttons.push(Nike, Adidas, Puma, Asics, Reebok, NewBalance, Fila);
-  buttons.forEach((icon) => {
-    icon.addEventListener("click", (e) => {
-      let target = e.target.id;
-      target = target.split("-").join(" ");
-      router.navigate(`/category/${target}`);
-      categoryApi(target)
-        .then((res) => renderProduct(res.data))
-        .catch((err) => console.log(err));
+  const buttons = document.querySelectorAll(".categoryButton");
+  buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      let target = e.target.closest("[id]");
+      console.log(target);
+      if (target) {
+        let categoryId = target.id;
+        categoryId = categoryId.split("-").join(" ");
+        router.navigate(`/category/${categoryId}`);
+        categoryApi(categoryId)
+          .then((res) => renderProduct(res.data))
+          .catch((err) => console.log(err));
+      }
     });
   });
-}
-export function categoryHandler() {
-  console.log("hi");
-  router.navigate(`/category/${e.target.id}`);
 }
