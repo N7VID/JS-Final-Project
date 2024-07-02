@@ -17,7 +17,6 @@ export function categoryPageHandler() {
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
       let target = e.target.closest("[id]");
-      console.log(target);
       if (target) {
         let categoryId = target.id;
         categoryId = categoryId.split("-").join(" ");

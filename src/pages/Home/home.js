@@ -1,3 +1,4 @@
+import { NavBar } from "../../components/navbar mobile/navbar";
 import { Category } from "../../components/scrollable category/category";
 
 export function homePage() {
@@ -67,32 +68,7 @@ export function homePage() {
       <div class="max-w-[1300px] my-0 mx-auto mb-[80px] grid grid-cols-2 px-6 py-4 gap-x-3 gap-y-5 laptop:grid-cols-4 laptop:gap-x-0 tablet:grid-cols-3" id="card-container"></div>
 
     </div>
-    <div class="w-full fixed bg-white bottom-0">
-      <nav class="my-0 mx-auto w-full">
-        <ul class="flex gap-12 justify-center items-center px-6 py-4 text-[#152536]">
-          <li class="text-center flex flex-col cursor-pointer">
-            <img src="/images/home-outline.svg" class="w-[30px]">
-            <span class="text-[10px] font-semibold tracking-tight">Home</span>
-          </li>
-          <li class="text-center flex flex-col cursor-pointer">
-            <img src="/images/cart-outline.svg" class="w-[30px]">
-            <span class="text-[10px] font-semibold tracking-tight">Cart</span>
-          </li>
-          <li class="text-center flex flex-col cursor-pointer">
-            <img src="/images/shop-outline.svg" class="w-[30px]">
-            <span class="text-[10px] font-semibold tracking-tight">Orders</span>
-          </li>
-          <li class="text-center flex flex-col cursor-pointer">
-            <img src="/images/wallet-outline.svg" class="w-[30px]">
-            <span class="text-[10px] font-semibold tracking-tight">Wallet</span>
-          </li>
-          <li class="text-center flex flex-col cursor-pointer">
-            <img src="/images/profile-outline.svg" class="w-[30px]">
-            <span class="text-[10px] font-semibold tracking-tight">Profile</span>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <div id="navbar-container"></div>
   `;
 
   const category = Category({
@@ -109,6 +85,10 @@ export function homePage() {
   });
   const categoryContainer = div.querySelector("#category-scroll-container");
   categoryContainer.append(category);
+
+  const navbar = NavBar();
+  const navbarContainer = div.querySelector("#navbar-container");
+  navbarContainer.append(navbar);
 
   return div;
 }

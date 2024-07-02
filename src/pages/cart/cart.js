@@ -1,3 +1,5 @@
+import { NavBar } from "../../components/navbar mobile/navbar";
+
 export function cartPage() {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -38,6 +40,11 @@ export function cartPage() {
             </div>
     </div>
   </div>  
+  <div id="navbar-container"></div>
     `;
+  const navbar = NavBar();
+  const navbarContainer = div.querySelector("#navbar-container");
+  navbarContainer.append(navbar);
+
   return div;
 }

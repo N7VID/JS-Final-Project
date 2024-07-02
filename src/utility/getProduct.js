@@ -19,7 +19,6 @@ export function renderProduct(data) {
 }
 
 export function renderSingleProduct(product) {
-  console.log(product);
   const productContainer = root.querySelector("#product-Container");
   productContainer.innerHTML = "";
   const single = SingleProduct({
