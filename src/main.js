@@ -20,6 +20,11 @@ import { getProduct } from "./utility/getProduct";
 import { categoryPage, categoryPageHandler } from "./pages/Category/category";
 import { cartPage } from "./pages/cart/cart";
 import { checkoutPage } from "./pages/checkout/checkout";
+import {
+  addressPage,
+  handleRadioButtons,
+  handleSubmitRadio,
+} from "./pages/address/address";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -35,6 +40,7 @@ export const routes = {
   category: "/category/:brand",
   cart: "/cart",
   checkout: "/checkout",
+  chooseAddress: "/chooseAddress",
 };
 export const root = document.getElementById("app");
 
@@ -100,4 +106,7 @@ router
   .on(routes.category, (slug) => render(categoryPage(slug.data.brand)))
   .on(routes.cart, () => render(cartPage()))
   .on(routes.checkout, () => render(checkoutPage()))
+  .on(routes.chooseAddress, () =>
+    render(addressPage(), [handleRadioButtons, handleSubmitRadio])
+  )
   .resolve();
