@@ -39,6 +39,16 @@ export function cartPage() {
                 </div>
             </div>
     </div>
+    <div class="fixed bottom-[77px] w-full h-[90px] rounded-t-3xl flex items-center justify-around gap-4 border-t-2 border-[#e9e9e9]">
+      <div class="flex flex-col">
+          <span class="text-[#757475] text-sm">Total price</span>
+          <span class="text-2xl font-extrabold">$240.00</span>
+      </div>
+      <div id="button-container" onclick="goHome" class="bg-black rounded-full py-4 min-w-20 px-[70px] text-white font-medium shadow-cart flex justify-between gap-2 items-center">
+      <div>Checkout</div>
+      <img src="/public/images/arrow-right-white.svg" class="w-6">
+      </div>
+    </div>
   </div>  
   <div id="navbar-container"></div>
     `;
