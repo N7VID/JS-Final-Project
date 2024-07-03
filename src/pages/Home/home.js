@@ -4,7 +4,7 @@ import { Category } from "../../components/scrollable category/category";
 export function homePage() {
   const div = document.createElement("div");
   div.innerHTML = `
-    <header class="flex justify-between w-screen my-0 mx-auto py-4 px-6">
+    <header class="flex justify-between w-screen my-0 mx-auto py-4 px-6 max-w-[1300px]">
       <div class="flex gap-3">
         <img src="/images/default user profile.svg" alt="user-profile" class="rounded-full w-[48px]  cursor-pointer">
         <div class="flex-col justify-between">
@@ -58,7 +58,7 @@ export function homePage() {
       </div>
     </div>
     <div class="flex-grow flex-col items-center justify-center">
-      <div class="flex justify-between items-center w-full px-6 py-2">
+      <div class="flex justify-between items-center w-full px-6 py-2 max-w-[1300px] my-0 mx-auto">
         <div><span class="text-[#152536] font-semibold text-xl cursor-default">Most Popular</span></div>
         <a href="/mostPopular" data-navigo><span class="text-[#152536] font-bold text-[16.2px] cursor-pointer">See All</span></a>
       </div>
