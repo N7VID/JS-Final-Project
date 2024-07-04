@@ -1,4 +1,5 @@
 import { NavBar } from "../../components/navbar mobile/navbar";
+import { router } from "../../main";
 
 export function cartPage() {
   const div = document.createElement("div");
@@ -44,7 +45,7 @@ export function cartPage() {
           <span class="text-[#757475] text-sm">Total price</span>
           <span class="text-2xl font-extrabold">$240.00</span>
       </div>
-      <div id="button-container" onclick="goHome" class="bg-black rounded-full py-4 min-w-20 px-[70px] text-white font-medium shadow-cart flex justify-between gap-2 items-center">
+      <div id="button-checkout" onclick="goHome" class="bg-black rounded-full py-4 min-w-20 px-[70px] text-white font-medium shadow-cart flex justify-between gap-2 items-center">
       <div>Checkout</div>
       <img src="/public/images/arrow-right-white.svg" class="w-6">
       </div>
@@ -57,4 +58,9 @@ export function cartPage() {
   navbarContainer.append(navbar);
 
   return div;
+}
+
+export function handleCheckoutButton() {
+  const checkoutButton = document.getElementById("button-checkout");
+  checkoutButton.addEventListener("click", () => router.navigate("/checkout"));
 }

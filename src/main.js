@@ -17,7 +17,7 @@ import { mostPopularPage } from "./pages/Most popular/mostPopular";
 import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
 import { getCategory } from "./utility/getCategory";
 import { categoryPage, categoryPageHandler } from "./pages/Category/category";
-import { cartPage } from "./pages/cart/cart";
+import { cartPage, handleCheckoutButton } from "./pages/cart/cart";
 import { checkoutPage } from "./pages/checkout/checkout";
 import {
   addressPage,
@@ -117,7 +117,9 @@ router
   .on(routes.category, (slug) =>
     render(categoryPage(slug.data.brand), [productPageHandler])
   )
-  .on(routes.cart, () => render(cartPage(), [handleNavbarStyle]))
+  .on(routes.cart, () =>
+    render(cartPage(), [handleNavbarStyle, handleCheckoutButton])
+  )
   .on(routes.checkout, () => render(checkoutPage()))
   .on(routes.chooseAddress, () =>
     render(addressPage(), [handleRadioButtons, handleSubmitRadio])

@@ -48,15 +48,15 @@ export function NavBar() {
 }
 
 export function handleNavbarStyle() {
-  const homeBtn = div.querySelector("#home");
+  const homeBtn = document.querySelector("#home");
   const homeIcon = homeBtn.querySelector("img");
-  const cartBtn = div.querySelector("#cart");
+  const cartBtn = document.querySelector("#cart");
   const cartIcon = cartBtn.querySelector("img");
-  const ordersBtn = div.querySelector("#orders");
+  const ordersBtn = document.querySelector("#orders");
   const orderIcon = ordersBtn.querySelector("img");
-  const walletBtn = div.querySelector("#wallet");
+  const walletBtn = document.querySelector("#wallet");
   const walletIcon = walletBtn.querySelector("img");
-  const profileBtn = div.querySelector("#profile");
+  const profileBtn = document.querySelector("#profile");
   const profileIcon = profileBtn.querySelector("img");
 
   homeBtn.addEventListener("click", () => {
