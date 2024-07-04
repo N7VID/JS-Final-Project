@@ -16,7 +16,7 @@ export function productPageHandler() {
     cards.forEach((card) => {
       card.addEventListener("click", (e) => {
         let target = e.target.closest("[id]");
-        router.navigate("/product");
+        router.navigate(`/product/${target.id}`);
         productApi(target.id)
           .then((res) => renderSingleProduct(res.data))
           .catch((err) => {

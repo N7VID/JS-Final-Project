@@ -41,7 +41,7 @@ export const routes = {
   login: "/login",
   home: "/",
   signup: "/signup",
-  product: "/product",
+  product: "/product/:id",
   mostPopular: "/mostPopular",
   category: "/category/:brand",
   cart: "/cart",
