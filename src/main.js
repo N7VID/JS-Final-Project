@@ -8,7 +8,12 @@ import {
   styleHandler,
 } from "./pages/Login/login";
 import { onboarding, onboardingAnimation } from "./pages/Onboarding/onboarding";
-import { signup, signupPage } from "./pages/Signup/signup";
+import {
+  checkValidationSignUp,
+  signup,
+  signupPage,
+  styleHandlerSignup,
+} from "./pages/Signup/signup";
 import { slider, sliderAnimation, splide } from "./pages/Slider/slider";
 import { welcome, welcomeAnimation } from "./pages/Welcome/welcome";
 import "./style.css";
@@ -97,7 +102,7 @@ router
   .on(routes.slider, () => render(slider(), [sliderAnimation, splide]))
   .on(routes.signup, () =>
     protectedRoute(() =>
-      render(signupPage(), [styleHandler, checkValidation, signup])
+      render(signupPage(), [styleHandlerSignup, checkValidationSignUp, signup])
     )
   )
   .on(routes.product, () => render(productPage()))

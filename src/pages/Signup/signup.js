@@ -1,3 +1,15 @@
+import { router } from "../../main";
+import {
+  emailValidation,
+  formIsValid,
+  passwordValidation,
+} from "../../utility/checkValidation";
+import {
+  emailInputHandler,
+  nameInputHandler,
+  passwordInputHandler,
+  showPasswordHandler,
+} from "../../utility/handleStyleLogin";
 import { signupApi } from "./api/signup-api";
 
 export function signupPage() {
@@ -11,6 +23,12 @@ export function signupPage() {
           <h2 class="font-semibold text-[32px] text-[#152536] tracking-wide cursor-default text-center">Create Your Account</h2>
 
           <form class="flex flex-col justify-center gap-2" id="signup-form">
+
+              <div class="relative">
+                <img src="/public/images/profile-1.svg" id="name-icon" alt="name-logo" class="w-5 absolute left-3 top-2">
+                <input autocomplete="on" type="text" placeholder="Full Name" id="name" class="rounded-[4px] w-[380px] h-[37px] bg-[#FAFAFA] pl-10 placeholder:text-[#6C757D]"/>
+                <p id="error1" class="text-[12px] text-[#f71616] font-semibold mt-3"></p>
+              </div>
 
               <div class="relative">
                 <img src="./images/envelop-1.svg" id="mail-icon" alt="email-logo" class="w-5 absolute left-3 top-2">
@@ -48,17 +66,19 @@ export function signupPage() {
   return div;
 }
 
-export function styleHandler() {
+export function styleHandlerSignup() {
   const emailInput = document.getElementById("email");
+  const nameInput = document.getElementById("name");
   const passwordInput = document.getElementById("password");
   const eyeIcon = document.getElementById("eye-icon");
 
+  nameInput.addEventListener("keyup", nameInputHandler);
   emailInput.addEventListener("keyup", emailInputHandler);
   passwordInput.addEventListener("keyup", passwordInputHandler);
   eyeIcon.addEventListener("click", showPasswordHandler);
 }
 
-export function checkValidation() {
+export function checkValidationSignUp() {
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
 
@@ -76,16 +96,20 @@ export function signup() {
   const form = document.getElementById("signup-form");
   const passwordInput = document.getElementById("password");
   const emailInput = document.getElementById("email");
+  const nameInput = document.getElementById("name");
 
   if (form) {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const newObj = {
+        name: nameInput.value,
         email: emailInput.value,
         password: passwordInput.value,
       };
       signupApi(newObj).then((data) => {
         localStorage.setItem("accessToken", data?.data?.accessToken);
+        localStorage.setItem("fullName", data.data.user.name);
+        router.navigate("/");
       });
     });
   }

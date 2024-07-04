@@ -99,6 +99,7 @@ export function login() {
       };
       loginApi(newObj).then((data) => {
         localStorage.setItem("accessToken", data?.data?.accessToken);
+        localStorage.setItem("fullName", data.data.user.name);
         router.navigate("/");
       });
     });

@@ -7,6 +7,17 @@ export function emailInputHandler() {
     mailIcon.src = "/images/envelop-1.svg";
   }
 }
+
+export function nameInputHandler() {
+  const nameIcon = document.getElementById("name-icon");
+  const nameInput = document.getElementById("name");
+  if (nameInput.value !== "") {
+    nameIcon.src = "/public/images/profile-solid.svg";
+  } else {
+    nameIcon.src = "/public/images/profile-1.svg";
+  }
+}
+
 export function passwordInputHandler() {
   const passInput = document.getElementById("password");
   const passIcon = document.getElementById("pass-icon");

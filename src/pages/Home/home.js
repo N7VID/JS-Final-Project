@@ -10,7 +10,7 @@ export function homePage(data) {
         <img src="/images/default user profile.svg" alt="user-profile" class="rounded-full w-[48px]  cursor-pointer">
         <div class="flex-col justify-between">
             <span class="text-[#757475] flex items-center gap-1 cursor-default">Good Morning <img src="/images/waving-hand-sign_1f44b.png" class="w-[16px]"></span>
-            <span class="font-bold cursor-pointer">Saeed Abdilar</span>
+            <span class="font-bold cursor-pointer" id="welcome-name"></span>
         </div>
       </div>
       <div class="flex w-16 justify-between">
@@ -103,5 +103,9 @@ export function homePage(data) {
     cardContainer.appendChild(card);
     div.classList = "font-inter bg-white flex flex-col min-h-screen";
   });
+
+  const welcomeName = div.querySelector("#welcome-name");
+  welcomeName.innerHTML = localStorage.getItem("fullName");
+
   return div;
 }
