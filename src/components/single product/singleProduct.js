@@ -53,7 +53,7 @@ export function SingleProduct({
             <div class="pt-4 flex items-center gap-8">
                 <div class="flex-col flex">
                     <div class="text-xl font-extrabold pb-2">Size</div>
-                    <div id="size-container" class="flex items-center justify-between gap-3">
+                    <div id="size-container" class="flex items-center justify-between gap-3 h-[45px]">
                     ${sizes
                       .map(
                         (size) => `
@@ -66,12 +66,11 @@ export function SingleProduct({
                 </div>
                 <div class="scroll-hidden flex-col flex overflow-x-auto flex-nowrap whitespace-nowraps">
                     <div class="text-xl font-extrabold pb-2">Color</div>
-                    <div class="flex items-center gap-2 w-full">
+                    <div class="flex items-center gap-2 h-[45px]">
                     ${colors
                       .map((color) => {
-                        const colorCode = color.match(/\[(.*?)\]/)[1];
                         return `
-                          <div class="w-10 h-10 flex items-center justify-center border-[#000000] border-2 font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${colorCode};"></div>
+                          <div class="w-10 h-10 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"></div>
                         `;
                       })
                       .join("")}
