@@ -16,7 +16,6 @@ import { productPage, productPageHandler } from "./pages/product/product";
 import { mostPopularPage } from "./pages/Most popular/mostPopular";
 import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
 import { getCategory } from "./utility/getCategory";
-import { getProduct } from "./utility/getProduct";
 import { categoryPage, categoryPageHandler } from "./pages/Category/category";
 import { cartPage } from "./pages/cart/cart";
 import { checkoutPage } from "./pages/checkout/checkout";
@@ -25,6 +24,7 @@ import {
   handleRadioButtons,
   handleSubmitRadio,
 } from "./pages/address/address";
+import { homePageApi } from "./pages/Home/api/product-api";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -72,15 +72,18 @@ function protectedRoute(next) {
 
 router
   .on(routes.home, () =>
-    checkAuth(() =>
-      render(homePage(), [
-        getProduct,
-        getCategory,
-        handleStyleCategoryHomepage,
-        categoryPageHandler,
-        productPageHandler,
-      ])
-    )
+    homePageApi()
+      .then((res) => {
+        checkAuth(() =>
+          render(homePage(res.data), [
+            getCategory,
+            handleStyleCategoryHomepage,
+            categoryPageHandler,
+            productPageHandler,
+          ])
+        );
+      })
+      .catch((e) => console.log(e))
   )
   .on(routes.onboarding, () => render(onboarding(), [onboardingAnimation]))
   .on(routes.login, () =>
@@ -97,13 +100,21 @@ router
   )
   .on(routes.product, () => render(productPage()))
   .on(routes.mostPopular, () =>
-    render(mostPopularPage(), [
-      getProduct,
-      getCategory,
-      handleStyleCategoryHomepage,
-    ])
+    homePageApi()
+      .then((res) => {
+        checkAuth(() =>
+          render(mostPopularPage(res.data), [
+            getCategory,
+            handleStyleCategoryHomepage,
+            productPageHandler,
+          ])
+        );
+      })
+      .catch((e) => console.log(e))
   )
-  .on(routes.category, (slug) => render(categoryPage(slug.data.brand)))
+  .on(routes.category, (slug) =>
+    render(categoryPage(slug.data.brand), [productPageHandler])
+  )
   .on(routes.cart, () => render(cartPage()))
   .on(routes.checkout, () => render(checkoutPage()))
   .on(routes.chooseAddress, () =>

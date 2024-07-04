@@ -1,7 +1,8 @@
 import { NavBar } from "../../components/navbar mobile/navbar";
+import { Card } from "../../components/product card/productCard";
 import { Category } from "../../components/scrollable category/category";
 
-export function homePage() {
+export function homePage(data) {
   const div = document.createElement("div");
   div.innerHTML = `
     <header class="flex justify-between w-screen my-0 mx-auto py-4 px-6 max-w-[1300px]">
@@ -90,5 +91,17 @@ export function homePage() {
   const navbarContainer = div.querySelector("#navbar-container");
   navbarContainer.append(navbar);
 
+  const cardContainer = div.querySelector("#card-container");
+  cardContainer.innerHTML = "";
+  data.forEach((product) => {
+    const card = Card({
+      content: product.name,
+      price: product.price,
+      imgSrc: product.images[0],
+      id: product.id,
+    });
+    cardContainer.appendChild(card);
+    div.classList = "font-inter bg-white flex flex-col min-h-screen";
+  });
   return div;
 }
