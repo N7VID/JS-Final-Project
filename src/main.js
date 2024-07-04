@@ -25,6 +25,7 @@ import {
   handleSubmitRadio,
 } from "./pages/address/address";
 import { homePageApi } from "./pages/Home/api/product-api";
+import { handleNavbarStyle } from "./components/navbar mobile/navbar";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -80,6 +81,7 @@ router
             handleStyleCategoryHomepage,
             categoryPageHandler,
             productPageHandler,
+            handleNavbarStyle,
           ])
         );
       })
@@ -115,7 +117,7 @@ router
   .on(routes.category, (slug) =>
     render(categoryPage(slug.data.brand), [productPageHandler])
   )
-  .on(routes.cart, () => render(cartPage()))
+  .on(routes.cart, () => render(cartPage(), [handleNavbarStyle]))
   .on(routes.checkout, () => render(checkoutPage()))
   .on(routes.chooseAddress, () =>
     render(addressPage(), [handleRadioButtons, handleSubmitRadio])

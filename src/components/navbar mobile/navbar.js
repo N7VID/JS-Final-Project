@@ -43,6 +43,11 @@ export function NavBar() {
         </ul>
     </nav>
   `;
+
+  return div;
+}
+
+export function handleNavbarStyle() {
   const homeBtn = div.querySelector("#home");
   const homeIcon = homeBtn.querySelector("img");
   const cartBtn = div.querySelector("#cart");
@@ -111,8 +116,8 @@ export function NavBar() {
         break;
     }
   }
-  return div;
 }
+
 function handleActiveIcon() {
   window.location.pathname === "/"
     ? (icons.home = "/public/images/home-solid.svg")
