@@ -23,6 +23,8 @@ function renderSingleProduct(product) {
     sizes: product.sizes,
     colors: product.colors,
     price: product.price,
+    isInStock: product.is_in_stock,
+    inStock: product.in_stock,
   });
 
   productContainer.append(single);

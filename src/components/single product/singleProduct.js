@@ -1,4 +1,5 @@
 import Splide from "@splidejs/splide";
+import { DotLottie } from "@lottiefiles/dotlottie-web";
 
 export function SingleProduct({
   images,
@@ -10,6 +11,8 @@ export function SingleProduct({
   sizes,
   colors,
   price,
+  isInStock,
+  inStock,
 }) {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -57,7 +60,7 @@ export function SingleProduct({
                     ${sizes
                       .map(
                         (size) => `
-                        <div class="sizeButton w-10 h-10 border-[3px] flex items-center justify-center border-[#6C757D] text-[#6C757D] font-bold rounded-full">${size}</div>
+                        <div data-selected="false" class="sizeButton w-10 h-10 border-[3px] flex items-center justify-center border-[#6C757D] text-[#6C757D] font-bold rounded-full">${size}</div>
                       `
                       )
                       .join("")}
@@ -70,7 +73,7 @@ export function SingleProduct({
                     ${colors
                       .map((color) => {
                         return `
-                          <div class="colorButton w-10 h-10 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"><img src="" id="check-img" class="w-8"></div>
+                          <div data-color="${color.colorName}" data-selected="false" class="colorButton w-10 h-10 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"><img src="" id="check-img" class="w-8"></div>
                         `;
                       })
                       .join("")}
@@ -80,24 +83,31 @@ export function SingleProduct({
             <div class="py-4 flex items-center gap-6">
                  <div class="text-xl font-extrabold">Quantity</div>
                  <div class="bg-[#e9e9e9] rounded-3xl flex items-center gap-4 py-2 px-4">
-                    <div><img src="/public/images/minus.svg" class="w-6 cursor-pointer"></div>
-                    <div class="text-xl font-extrabold">4</div>
-                    <div><img src="/public/images/add.svg" class="w-6 cursor-pointer"></div>
+                    <div><img src="/public/images/minus.svg" id="minus-button" class="w-6 cursor-pointer"></div>
+                    <div class="text-xl font-extrabold" id="quantity-number">1</div>
+                    <div><img src="/public/images/add.svg" id="add-button" class="w-6 cursor-pointer"></div>
                  </div>
             </div>
             <div class="pt-4 flex items-center justify-between gap-6 border-t-2 border-[#e9e9e9]">
                 <div class="flex flex-col">
                     <span class="text-[#757475]">Total price</span>
-                    <span class="text-2xl font-extrabold">$${price}</span>
+                    <span class="text-2xl font-extrabold">$<span id="price-number">${price}</span></span>
                 </div>
-                <div id="button-container" class="bg-black rounded-full py-4 min-w-20 px-[70px] text-white font-medium shadow-[#acacac] shadow-md flex justify-between gap-2 items-center">
+                <div id="button-submit" class="bg-black rounded-full py-4 min-w-[260px] px-[70px] max-h-[56px] text-white font-medium shadow-[#acacac] shadow-md flex justify-between gap-2 items-center">
                     <img src="/public/images/cart-single.svg" class="w-6">
                     <div>Add to Cart</div>
+                    <canvas id="dotlottie-canvas" class="hidden" style="width: 80px; height:80px;"></canvas>
                 </div>
             </div>
         </div>
     </div>
   `;
+  const dotLottie = new DotLottie({
+    autoplay: true,
+    loop: false,
+    canvas: div.querySelector("#dotlottie-canvas"),
+    src: "https://lottie.host/acfa36d8-0bd0-4048-9dc2-85ce33e76bd6/uasjdk6loC.json", // or .json file
+  });
   setTimeout(() => {
     new Splide(".splide", {
       classes: {
@@ -113,6 +123,7 @@ export function SingleProduct({
       sizeButtons.forEach((button) => {
         button.classList.add("border-[#6C757D]", "text-[#6C757D]", "font-bold");
         button.classList.remove("bg-black", "text-white", "border-black");
+        button.setAttribute("data-selected", "false");
       });
       button.classList.remove(
         "border-[#6C757D]",
@@ -120,22 +131,85 @@ export function SingleProduct({
         "font-bold"
       );
       button.classList.add("bg-black", "text-white", "border-black");
+      button.setAttribute("data-selected", "true");
     });
   });
 
   const colorButtons = div.querySelectorAll(".colorButton");
-
   colorButtons.forEach((button) => {
     button.addEventListener("click", () => {
       colorButtons.forEach((button) => {
         button.querySelector("#check-img").src = "";
+        button.setAttribute("data-selected", "false");
       });
       const bgColor = window.getComputedStyle(button).backgroundColor;
 
       button.querySelector("#check-img").src = isColorDark(bgColor)
         ? "/public/images/check-white.svg"
         : "/public/images/check-black.svg";
+      button.setAttribute("data-selected", "true");
     });
+  });
+
+  const addButton = div.querySelector("#add-button");
+  const minusButton = div.querySelector("#minus-button");
+  const quantityNumber = div.querySelector("#quantity-number");
+  const priceNumber = div.querySelector("#price-number");
+  let currentPrice = priceNumber.innerHTML;
+  addButton.addEventListener("click", () => {
+    let currentQuantity = parseInt(quantityNumber.innerHTML);
+    if (currentQuantity < inStock) {
+      currentQuantity++;
+      priceNumber.innerHTML = `${currentQuantity * currentPrice}`;
+    } else {
+      console.log("No more in stock!");
+    }
+    quantityNumber.innerHTML = `${currentQuantity}`;
+  });
+  minusButton.addEventListener("click", () => {
+    let currentQuantity = parseInt(quantityNumber.innerHTML);
+    if (currentQuantity > 1) {
+      currentQuantity--;
+      priceNumber.innerHTML = `${currentQuantity * currentPrice}`;
+    } else {
+      console.log("Minimum order quantity!");
+    }
+    quantityNumber.innerHTML = `${currentQuantity}`;
+  });
+
+  let selectedSize, selectedColorName, selectedColorCode;
+  const submitButton = div.querySelector("#button-submit");
+  submitButton.addEventListener("click", () => {
+    const div = submitButton.querySelector("div");
+    const canvas = submitButton.querySelector("#dotlottie-canvas");
+    div.classList.add("hidden");
+    canvas.classList.remove("hidden");
+
+    Object.values(colorButtons).forEach((colorButton) => {
+      if (colorButton.dataset.selected === "true") {
+        selectedColorName = colorButton.dataset.color;
+        selectedColorCode = colorButton.style.backgroundColor;
+      }
+    });
+    Object.values(sizeButtons).forEach((sizeButton) => {
+      if (sizeButton.dataset.selected === "true") {
+        selectedSize = sizeButton.firstChild.data;
+      }
+    });
+    localStorage.setItem(
+      "cart",
+      JSON.stringify([
+        {
+          name: `${name}`,
+          price: `${price}`,
+          thumbnail: `${images[0]}`,
+          quantity: `${quantityNumber.innerHTML}`,
+          size: `${selectedSize}`,
+          colorName: `${selectedColorName}`,
+          colorCode: `${selectedColorCode}`,
+        },
+      ])
+    );
   });
 
   return div;
