@@ -57,7 +57,7 @@ export function SingleProduct({
                     ${sizes
                       .map(
                         (size) => `
-                        <div class="w-10 h-10 border-2 flex items-center justify-center border-black font-bold rounded-full">${size}</div>
+                        <div class="sizeButton w-10 h-10 border-[3px] flex items-center justify-center border-[#6C757D] text-[#6C757D] font-bold rounded-full">${size}</div>
                       `
                       )
                       .join("")}
@@ -70,7 +70,7 @@ export function SingleProduct({
                     ${colors
                       .map((color) => {
                         return `
-                          <div class="w-10 h-10 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"></div>
+                          <div class="colorButton w-10 h-10 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"><img src="" id="check-img" class="w-8"></div>
                         `;
                       })
                       .join("")}
@@ -106,5 +106,51 @@ export function SingleProduct({
       },
     }).mount();
   }, 0);
+
+  const sizeButtons = div.querySelectorAll(".sizeButton");
+  sizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      sizeButtons.forEach((button) => {
+        button.classList.add("border-[#6C757D]", "text-[#6C757D]", "font-bold");
+        button.classList.remove("bg-black", "text-white", "border-black");
+      });
+      button.classList.remove(
+        "border-[#6C757D]",
+        "text-[#6C757D]",
+        "font-bold"
+      );
+      button.classList.add("bg-black", "text-white", "border-black");
+    });
+  });
+
+  const colorButtons = div.querySelectorAll(".colorButton");
+
+  colorButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      colorButtons.forEach((button) => {
+        button.querySelector("#check-img").src = "";
+      });
+      const bgColor = window.getComputedStyle(button).backgroundColor;
+
+      button.querySelector("#check-img").src = isColorDark(bgColor)
+        ? "/public/images/check-white.svg"
+        : "/public/images/check-black.svg";
+    });
+  });
+
   return div;
+}
+
+function isColorDark(color) {
+  const rgb = color
+    .replace(/[^\d,]/g, "")
+    .split(",")
+    .map(Number);
+  const r = rgb[0],
+    g = rgb[1],
+    b = rgb[2];
+
+  // Calculate luminance
+  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return luminance < 128;
 }
