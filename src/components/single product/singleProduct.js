@@ -1,5 +1,4 @@
 import Splide from "@splidejs/splide";
-import { DotLottie } from "@lottiefiles/dotlottie-web";
 
 export function SingleProduct({
   images,
@@ -96,18 +95,12 @@ export function SingleProduct({
                 <div id="button-submit" class="bg-black rounded-full py-4 min-w-[260px] px-[70px] max-h-[56px] text-white font-medium shadow-[#acacac] shadow-md flex justify-between gap-2 items-center">
                     <img src="/public/images/cart-single.svg" class="w-6">
                     <div>Add to Cart</div>
-                    <canvas id="dotlottie-canvas" class="hidden" style="width: 80px; height:80px;"></canvas>
                 </div>
             </div>
         </div>
     </div>
   `;
-  const dotLottie = new DotLottie({
-    autoplay: true,
-    loop: false,
-    canvas: div.querySelector("#dotlottie-canvas"),
-    src: "https://lottie.host/acfa36d8-0bd0-4048-9dc2-85ce33e76bd6/uasjdk6loC.json", // or .json file
-  });
+
   setTimeout(() => {
     new Splide(".splide", {
       classes: {
@@ -181,9 +174,6 @@ export function SingleProduct({
   const submitButton = div.querySelector("#button-submit");
   submitButton.addEventListener("click", () => {
     const div = submitButton.querySelector("div");
-    const canvas = submitButton.querySelector("#dotlottie-canvas");
-    div.classList.add("hidden");
-    canvas.classList.remove("hidden");
 
     Object.values(colorButtons).forEach((colorButton) => {
       if (colorButton.dataset.selected === "true") {
@@ -196,20 +186,23 @@ export function SingleProduct({
         selectedSize = sizeButton.firstChild.data;
       }
     });
-    localStorage.setItem(
-      "cart",
-      JSON.stringify([
-        {
-          name: `${name}`,
-          price: `${price}`,
-          thumbnail: `${images[0]}`,
-          quantity: `${quantityNumber.innerHTML}`,
-          size: `${selectedSize}`,
-          colorName: `${selectedColorName}`,
-          colorCode: `${selectedColorCode}`,
-        },
-      ])
-    );
+    if (selectedColorName && selectedColorCode && selectedSize) {
+      let records = localStorage.getItem("cart");
+      records = records ? JSON.parse(records) : [];
+      const newRecord = {
+        name: `${name}`,
+        price: `${price}`,
+        thumbnail: `${images[0]}`,
+        quantity: `${quantityNumber.innerHTML}`,
+        size: `${selectedSize}`,
+        colorName: `${selectedColorName}`,
+        colorCode: `${selectedColorCode}`,
+      };
+      records.push(newRecord);
+      localStorage.setItem("cart", JSON.stringify(records));
+    } else {
+      console.log("Choose size & color");
+    }
   });
 
   return div;
