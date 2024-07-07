@@ -31,6 +31,7 @@ import {
 } from "./pages/address/address";
 import { homePageApi } from "./pages/Home/api/product-api";
 import { handleNavbarStyle } from "./components/navbar mobile/navbar";
+import { shippingPage } from "./pages/shipping/shipping";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -47,6 +48,7 @@ export const routes = {
   cart: "/cart",
   checkout: "/checkout",
   chooseAddress: "/chooseAddress",
+  chooseShipping: "/chooseShipping",
 };
 export const root = document.getElementById("app");
 
@@ -129,4 +131,5 @@ router
   .on(routes.chooseAddress, () =>
     render(addressPage(), [handleRadioButtons, handleSubmitRadio])
   )
+  .on(routes.chooseShipping, () => render(shippingPage(), [handleRadioButtons]))
   .resolve();

@@ -89,7 +89,7 @@ export function checkoutPage() {
                 </div>
             </div>
             <div class="">
-                <a><img src="/public/images/chevron-right.svg" class="w-7"></a>  
+                <a href="/chooseShipping" data-navigo><img src="/public/images/chevron-right.svg" class="w-7"></a>  
             </div>
         </div>
     </div>
