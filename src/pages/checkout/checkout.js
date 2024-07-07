@@ -81,17 +81,7 @@ export function checkoutPage() {
 
     <div class="border-[#eee] mx-auto my-0 w-[400px] pb-6 cursor-default border-y-2">
         <p class="py-4 px-2 text-lg font-semibold">Choose Shipping</p>
-        <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[70px] px-4 my-0 mx-auto cursor-pointer">
-                <img class="w-8 h-8" src="/public/images/shipping-truck.svg">
-            <div class="flex flex-col w-[210px]">
-                <div class="flex items-center justify-between">
-                    <span class="font-bold leading-6 tracking-tight w-[160px]">Choose Shipping Type</span> 
-                </div>
-            </div>
-            <div class="">
-                <a href="/chooseShipping" data-navigo><img src="/public/images/chevron-right.svg" class="w-7"></a>  
-            </div>
-        </div>
+        <div id="shipping-container"></div>
     </div>
 
 
@@ -133,11 +123,54 @@ export function checkoutPage() {
 
   const location = div.querySelector("#location");
   const address = div.querySelector("#address");
-  let record = localStorage.getItem("address");
-  record = record
-    ? JSON.parse(record)
+  let addressRecord = localStorage.getItem("address");
+  addressRecord = addressRecord
+    ? JSON.parse(addressRecord)
     : { title: "Choose Address", address: "Your Address Here..." };
-  location.innerHTML = record.title;
-  address.innerHTML = record.address;
+  location.innerHTML = addressRecord.title;
+  address.innerHTML = addressRecord.address;
+
+  const shippingContainer = div.querySelector("#shipping-container");
+  let shippingRecord = localStorage.getItem("shipping");
+  if (shippingRecord) {
+    shippingRecord = JSON.parse(shippingRecord);
+    let type = shippingRecord.type;
+    let price = shippingRecord.price;
+    let date = shippingRecord.date;
+    shippingContainer.innerHTML = `
+    <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
+        <div class="rounded-full bg-[#e2e2e2] w-14 h-14 flex justify-center items-center">
+            <img class="w-12 h-12" src="/public/images/${type}.svg">
+        </div>
+        <div class="flex flex-col w-[210px]">
+        <div class="flex items-center justify-between">
+            <span class="font-bold text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]">${type}</span> 
+        </div>
+        <div class="text-[#757475] font-medium text-[13px] mt-1">
+            <p class="text-nowrap overflow-hidden text-ellipsis">Estimated Arrival, ${date}</p>
+        </div>
+    </div>
+    <div class="font-bold leading-6 tracking-tight text-lg">$${price}</div>
+    <div class="">
+                <a href="/chooseShipping" data-navigo><img src="/public/images/edit.svg" class="w-6 cursor-pointer"></a>  
+            </div>
+    </div>  
+    `;
+  } else {
+    shippingContainer.innerHTML = `
+    <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[70px] px-4 my-0 mx-auto cursor-pointer">
+                <img class="w-8 h-8" src="/public/images/shipping-truck.svg">
+            <div class="flex flex-col w-[210px]">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold leading-6 tracking-tight w-[160px]">Choose Shipping Type</span> 
+                </div>
+            </div>
+            <div class="">
+                <a href="/chooseShipping" data-navigo><img src="/public/images/chevron-right.svg" class="w-7"></a>  
+            </div>
+        </div>
+    `;
+  }
+
   return div;
 }

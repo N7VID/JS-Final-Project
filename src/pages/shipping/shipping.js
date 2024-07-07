@@ -1,3 +1,5 @@
+import { Toast } from "../../components/toast/toast";
+
 export function shippingPage() {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -8,6 +10,7 @@ export function shippingPage() {
                 <p class="text-xl font-bold min-h-7">Shipping Shipping</p>
             </div>
         </div>
+        <div id="toast-container"></div>
         <div class="pt-8 flex flex-col gap-6">
             <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
                 <div class="rounded-full bg-[#e2e2e2] w-14 h-14 flex justify-center items-center">
@@ -22,7 +25,7 @@ export function shippingPage() {
                     </div>
                 </div>
                 <div class="font-bold leading-6 tracking-tight text-lg">$10</div>
-                <div class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
+                <div data-selected="false" data-shippingtype="Economy" data-price="10" data-arrival="Dec 20-23" class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
                     <div class="w-3 h-3 bg-black rounded-full"></div>
                 </div>
             </div>
@@ -40,7 +43,7 @@ export function shippingPage() {
                     </div>
                 </div>
                 <div class="font-bold leading-6 tracking-tight text-lg">$15</div>
-                <div class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
+                <div data-selected="false" data-shippingtype="Regular" data-price="20" data-arrival="Dec 20-22" class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
                     <div class="w-3 h-3 bg-black rounded-full hidden"></div>
                 </div>
             </div>
@@ -61,7 +64,7 @@ export function shippingPage() {
                     </div>
                 </div>
                 <div class="font-bold leading-6 tracking-tight text-lg">$20</div>
-                <div class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
+                <div data-selected="false" data-shippingtype="Cargo" data-price="20" data-arrival="Dec 19-20" class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
                     <div class="w-3 h-3 bg-black rounded-full hidden"></div>
                 </div>
             </div>
@@ -82,7 +85,7 @@ export function shippingPage() {
                     </div>
                 </div>
                 <div class="font-bold leading-6 tracking-tight text-lg">$30</div>
-                <div class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
+                <div data-selected="false" data-shippingtype="Express" data-price="30" data-arrival="Dec 18-19" class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
                     <div class="w-3 h-3 bg-black rounded-full hidden"></div>
                 </div>
             </div>  
@@ -99,5 +102,69 @@ export function shippingPage() {
             </div>        
     </div>
   `;
+
   return div;
+}
+export function handleRadioButtonsShipping() {
+  const radioButtons = document.querySelectorAll(".radio");
+  radioButtons.forEach((radio) => {
+    let records = localStorage.getItem("shipping");
+    records = records ? JSON.parse(records) : [];
+    let selectDefault = records.type;
+    if (selectDefault === radio.dataset.shippingtype) {
+      radioButtons.forEach((radio) => {
+        radio.querySelector("div").classList.add("hidden");
+        radio.setAttribute("data-selected", "false");
+      });
+      radio.querySelector("div").classList.remove("hidden");
+      radio.setAttribute("data-selected", "true");
+    } else if (!selectDefault) {
+      radioButtons.forEach((radio) => {
+        radio.querySelector("div").classList.add("hidden");
+        radio.setAttribute("data-selected", "false");
+      });
+    }
+    radio.addEventListener("click", () => {
+      radioButtons.forEach((radio) => {
+        radio.querySelector("div").classList.add("hidden");
+        radio.setAttribute("data-selected", "false");
+      });
+      radio.querySelector("div").classList.remove("hidden");
+      radio.setAttribute("data-selected", "true");
+    });
+  });
+}
+
+export function handleSubmitRadioShipping() {
+  let selectedType, selectedPrice, selectedDate;
+  const toastContainer = document.querySelector("#toast-container");
+  const applyButtons = document.querySelector("#apply-button");
+  const radioButtons = document.querySelectorAll(".radio");
+  applyButtons.addEventListener("click", () => {
+    radioButtons.forEach((radio) => {
+      if (radio.dataset.selected === "true") {
+        selectedType = radio.dataset.shippingtype;
+        selectedPrice = radio.dataset.price;
+        selectedDate = radio.dataset.arrival;
+      }
+      let records = localStorage.getItem("shipping");
+      if (records) {
+        records = [JSON.parse(records)];
+      } else {
+        records = [];
+      }
+      const recordShipping = {
+        type: selectedType,
+        price: selectedPrice,
+        date: selectedDate,
+      };
+      records.push(recordShipping);
+      localStorage.setItem("shipping", JSON.stringify(recordShipping));
+    });
+    const toast = Toast({
+      content: "Shipping Type Saved!",
+      variant: "success",
+    });
+    toastContainer.appendChild(toast);
+  });
 }
