@@ -1,4 +1,5 @@
 import Splide from "@splidejs/splide";
+import { Toast } from "../toast/toast";
 
 export function SingleProduct({
   images,
@@ -18,6 +19,7 @@ export function SingleProduct({
     <section class="my-bg splide w-[428px] h-[428px] p-0" aria-labelledby="carousel-heading">
         <a href="/" data-navigo class="absolute top-[16px] left-[24px] z-10"><img src="/public/images/arrow-left.svg" class="w-7"></a>
         <div class="splide__track mx-auto my-0 w-full"> 
+        <div id="toast-container"></div>
           <ul class="splide__list">
           ${images
             .map(
@@ -148,6 +150,7 @@ export function SingleProduct({
   const minusButton = div.querySelector("#minus-button");
   const quantityNumber = div.querySelector("#quantity-number");
   const priceNumber = div.querySelector("#price-number");
+  const toastContainer = div.querySelector("#toast-container");
   let currentPrice = priceNumber.innerHTML;
   addButton.addEventListener("click", () => {
     let currentQuantity = parseInt(quantityNumber.innerHTML);
@@ -155,7 +158,11 @@ export function SingleProduct({
       currentQuantity++;
       priceNumber.innerHTML = `${currentQuantity * currentPrice}`;
     } else {
-      console.log("No more in stock!");
+      const toast = Toast({
+        content: "No more in stock!",
+        variant: "error",
+      });
+      toastContainer.appendChild(toast);
     }
     quantityNumber.innerHTML = `${currentQuantity}`;
   });
@@ -165,7 +172,11 @@ export function SingleProduct({
       currentQuantity--;
       priceNumber.innerHTML = `${currentQuantity * currentPrice}`;
     } else {
-      console.log("Minimum order quantity!");
+      const toast = Toast({
+        content: "Minimum order quantity!",
+        variant: "error",
+      });
+      toastContainer.appendChild(toast);
     }
     quantityNumber.innerHTML = `${currentQuantity}`;
   });
@@ -201,7 +212,11 @@ export function SingleProduct({
       records.push(newRecord);
       localStorage.setItem("cart", JSON.stringify(records));
     } else {
-      console.log("Choose size & color");
+      const toast = Toast({
+        content: "Choose Size & color!",
+        variant: "error",
+      });
+      toastContainer.appendChild(toast);
     }
   });
 

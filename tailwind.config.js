@@ -9,6 +9,19 @@ export default {
       desktop: "1280px",
     },
     extend: {
+      keyframes: {
+        fadein: {
+          "0%": { right: "0", opacity: "0" },
+          "100%": { right: "10px", opacity: "1" },
+        },
+        fadeout: {
+          "0%": { right: "10px", opacity: "1" },
+          "100%": { right: "0", opacity: "0" },
+        },
+      },
+      animation: {
+        fadeinfadeout: "fadeout 0.3s ease-out 2.7s, fadein 0.3s ease-in",
+      },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         Poppins: ["Poppins", "serif"],

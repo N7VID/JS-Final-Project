@@ -1,5 +1,6 @@
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
+import { Toast } from "../../components/toast/toast";
 import { root, router } from "../../main";
 
 export function cartPage() {
@@ -13,6 +14,7 @@ export function cartPage() {
         </div>
         <a href="/" data-navigo><img src="/public/images/search icon.svg" class="w-8"></a>
     </div>
+    <div id="toast-container"></div>
     <div id="card-container" class="flex flex-col pt-8 pb-48 gap-8"></div>
     <div class="fixed bottom-[77px] w-full h-[90px] rounded-t-3xl flex items-center justify-around gap-4 border-t-2 border-[#e9e9e9] bg-white">
       <div class="flex flex-col">
@@ -53,6 +55,7 @@ export function cartPage() {
     });
   }
   const cards = Object.values(div.querySelectorAll(".card"));
+  const toastContainer = div.querySelector("#toast-container");
   let total = 0;
   let cardEndPrice = 0;
   let added = 0;
@@ -86,7 +89,11 @@ export function cartPage() {
         totalPrice.innerHTML = added + total;
         total += added;
       } else {
-        console.log("No more in stock!");
+        const toast = Toast({
+          content: "No more in stock!",
+          variant: "error",
+        });
+        toastContainer.appendChild(toast);
       }
       quantityNumber.innerHTML = `${currentQuantity}`;
     });
@@ -97,7 +104,11 @@ export function cartPage() {
         priceNumber.innerHTML = `${currentQuantity * currentPrice}`;
         total += parseInt(priceNumber.innerHTML);
       } else {
-        console.log("Minimum order quantity!");
+        const toast = Toast({
+          content: "Minimum order quantity!",
+          variant: "error",
+        });
+        toastContainer.appendChild(toast);
       }
       quantityNumber.innerHTML = `${currentQuantity}`;
     });
