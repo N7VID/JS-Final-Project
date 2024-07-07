@@ -98,6 +98,7 @@ export function homePage(data) {
       content: product.name,
       price: product.price,
       imgSrc: product.images[0],
+      variant: "homePage",
       id: product.id,
     });
     cardContainer.appendChild(card);
