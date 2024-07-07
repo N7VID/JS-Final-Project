@@ -119,6 +119,11 @@ export function handleRadioButtons() {
       });
       radio.querySelector("div").classList.remove("hidden");
       radio.setAttribute("data-selected", "true");
+    } else if (!selectDefault) {
+      radioButtons.forEach((radio) => {
+        radio.querySelector("div").classList.add("hidden");
+        radio.setAttribute("data-selected", "false");
+      });
     }
     radio.addEventListener("click", () => {
       radioButtons.forEach((radio) => {
