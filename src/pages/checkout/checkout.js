@@ -138,23 +138,23 @@ export function checkoutPage() {
     let price = shippingRecord.price;
     let date = shippingRecord.date;
     shippingContainer.innerHTML = `
-    <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
-        <div class="rounded-full bg-[#e2e2e2] w-14 h-14 flex justify-center items-center">
-            <img class="w-12 h-12" src="/public/images/${type}.svg">
-        </div>
-        <div class="flex flex-col w-[210px]">
-        <div class="flex items-center justify-between">
-            <span class="font-bold text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]">${type}</span> 
-        </div>
-        <div class="text-[#757475] font-medium text-[13px] mt-1">
-            <p class="text-nowrap overflow-hidden text-ellipsis">Estimated Arrival, ${date}</p>
-        </div>
-    </div>
-    <div class="font-bold leading-6 tracking-tight text-lg">$${price}</div>
-    <div class="">
+        <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
+            <div class="rounded-full bg-gradient-to-tr from-[#232526] to-[#414345] w-14 h-14 flex justify-center items-center">
+                <img class="w-8 h-8" src="/public/images/${type}.png">
+            </div>
+            <div class="flex flex-col w-[210px]">
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]">${type}</span> 
+                </div>
+                <div class="text-[#757475] font-medium text-[13px] mt-1">
+                    <p class="text-nowrap overflow-hidden text-ellipsis">Estimated Arrival, ${date}</p>
+                </div>
+            </div>
+            <div class="font-bold leading-6 tracking-tight text-lg">$${price}</div>
+            <div class="">
                 <a href="/chooseShipping" data-navigo><img src="/public/images/edit.svg" class="w-6 cursor-pointer"></a>  
             </div>
-    </div>  
+        </div> 
     `;
   } else {
     shippingContainer.innerHTML = `

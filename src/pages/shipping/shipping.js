@@ -7,14 +7,14 @@ export function shippingPage() {
         <div class="flex items-center justify-between px-6 pb-4 pt-8">
             <div class="space-x-6 flex">
                 <a href="/checkout" data-navigo><img src="/public/images/arrow-left.svg" class="w-7"></a>
-                <p class="text-xl font-bold min-h-7">Shipping Shipping</p>
+                <p class="text-xl font-bold min-h-7">Choose Shipping</p>
             </div>
         </div>
         <div id="toast-container"></div>
         <div class="pt-8 flex flex-col gap-6">
             <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
-                <div class="rounded-full bg-[#e2e2e2] w-14 h-14 flex justify-center items-center">
-                    <img class="w-10 h-10" src="/public/images/economy.svg">
+                <div class="rounded-full bg-gradient-to-tr from-[#232526] to-[#414345] w-14 h-14 flex justify-center items-center">
+                    <img class="w-8 h-8" src="/public/images/economy.png">
                 </div>
                 <div class="flex flex-col w-[210px]">
                     <div class="flex items-center justify-between">
@@ -31,8 +31,8 @@ export function shippingPage() {
             </div>
 
             <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
-                <div class="rounded-full bg-[#e2e2e2] w-14 h-14 flex justify-center items-center">
-                    <img class="w-10 h-10" src="/public/images/regular.svg">
+                <div class="rounded-full bg-gradient-to-tr from-[#232526] to-[#414345] w-14 h-14 flex justify-center items-center">
+                    <img class="w-8 h-8" src="/public/images/regular.png">
                 </div>
                 <div class="flex flex-col w-[210px]">
                     <div class="flex items-center justify-between">
@@ -52,8 +52,8 @@ export function shippingPage() {
 
 
             <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
-                <div class="rounded-full bg-[#e2e2e2] w-14 h-14 flex justify-center items-center">
-                    <img class="w-10 h-10" src="/public/images/cargo.svg">
+                <div class="rounded-full bg-gradient-to-tr from-[#232526] to-[#414345] w-14 h-14 flex justify-center items-center">
+                    <img class="w-7 h-7" src="/public/images/cargo.svg">
                 </div>
                 <div class="flex flex-col w-[210px]">
                     <div class="flex items-center justify-between">
@@ -73,8 +73,8 @@ export function shippingPage() {
 
 
             <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
-                <div class="rounded-full bg-[#e2e2e2] w-14 h-14 flex justify-center items-center">
-                    <img class="w-12 h-12" src="/public/images/express.svg">
+                <div class="rounded-full bg-gradient-to-tr from-[#232526] to-[#414345] w-14 h-14 flex justify-center items-center">
+                    <img class="w-7 h-7" src="/public/images/express.svg">
                 </div>
                 <div class="flex flex-col w-[210px]">
                     <div class="flex items-center justify-between">

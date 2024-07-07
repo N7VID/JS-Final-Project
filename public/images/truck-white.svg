@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="transparent"></rect>
+<g transform="matrix(1 0 0 1 540 540)" id="c575b96c-1b8a-425d-8d35-0af27e2fd0e0"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="cfdb0d1e-3c87-4e67-a34b-df124d9548bc"  >
+</g>
+<g transform="matrix(50.22 0 0 50.22 540 540)"  >
+<path style="stroke: rgb(255,255,255); stroke-width: 1.5; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-11.98, -12.75)" d="M 8.25 18.75 C 8.25 19.57842712474619 7.57842712474619 20.25 6.75 20.25 C 5.92157287525381 20.25 5.25 19.57842712474619 5.25 18.75 M 8.25 18.75 C 8.25 17.92157287525381 7.57842712474619 17.25 6.75 17.25 C 5.92157287525381 17.25 5.25 17.92157287525381 5.25 18.75 M 8.25 18.75 L 14.25 18.75 M 5.25 18.75 L 3.375 18.75 C 2.753679656440357 18.75 2.25 18.246320343559642 2.25 17.625 L 2.25 14.25 M 19.5 18.75 C 19.5 19.57842712474619 18.82842712474619 20.25 18 20.25 C 17.17157287525381 20.25 16.5 19.57842712474619 16.5 18.75 M 19.5 18.75 C 19.5 17.92157287525381 18.82842712474619 17.25 18 17.25 C 17.17157287525381 17.25 16.5 17.92157287525381 16.5 18.75 M 19.5 18.75 L 20.625 18.75 C 21.246 18.75 21.754 18.246 21.715 17.626 C 21.5140546621299 14.32364161337587 20.40190252961314 11.1415642544507 18.501999999999995 8.433000000000003 C 18.135339702456044 7.918916181242722 17.55278584566749 7.601829904762875 16.921999999999997 7.573000000000002 L 14.25 7.573000000000001 M 16.5 18.75 L 14.25 18.75 M 14.25 7.573 L 14.25 6.615 C 14.25 6.047000000000001 13.828 5.567 13.263 5.509 C 9.929953974848125 5.163027839603046 6.570046025151887 5.163027839603055 3.2370000000000125 5.5090000000000074 C 2.673062538416798 5.5700214485923505 2.2467081624763825 6.047780252837638 2.25 6.614999999999999 L 2.25 14.25 M 14.25 7.573 L 14.25 14.25 M 14.25 18.75 L 14.25 14.25 M 14.25 14.25 L 2.25 14.25" stroke-linecap="round" />
+</g>
+</svg>
