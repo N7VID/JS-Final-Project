@@ -58,7 +58,6 @@ export function cartPage() {
   const toastContainer = div.querySelector("#toast-container");
   let total = 0;
   let cardEndPrice = 0;
-  let added = 0;
   cards.map((card, cardIndex) => {
     const addButton = card.querySelector("#add");
     const minusButton = card.querySelector("#minus");
@@ -78,16 +77,14 @@ export function cartPage() {
     });
 
     priceNumber.innerHTML = `${currentQuantity * currentPrice}`;
-    total += parseInt(priceNumber.innerHTML);
+    total += currentPrice;
     addButton.addEventListener("click", () => {
       if (currentQuantity < 10) {
         currentQuantity++;
         cardEndPrice = currentQuantity * currentPrice;
         priceNumber.innerHTML = cardEndPrice;
-        // console.log(parseInt(cardEndPrice - currentPrice));
-        added = parseInt(cardEndPrice - currentPrice);
-        totalPrice.innerHTML = added + total;
-        total += added;
+        total = total + currentPrice;
+        totalPrice.innerHTML = total;
       } else {
         const toast = Toast({
           content: "No more in stock!",
@@ -101,8 +98,10 @@ export function cartPage() {
     minusButton.addEventListener("click", () => {
       if (currentQuantity > 1) {
         currentQuantity--;
-        priceNumber.innerHTML = `${currentQuantity * currentPrice}`;
-        total += parseInt(priceNumber.innerHTML);
+        cardEndPrice = currentQuantity * currentPrice;
+        priceNumber.innerHTML = cardEndPrice;
+        total = total - currentPrice;
+        totalPrice.innerHTML = total;
       } else {
         const toast = Toast({
           content: "Minimum order quantity!",
