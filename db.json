@@ -4,8 +4,13 @@
       "email": "navidaliakbari.206@gmail.com",
       "password": "$2a$10$x1reC4lqMWZiLd1OKPRhkeEKJHm7lWnGW4g7daRiekqcBRgKPGHPG",
       "name": "Navid Aliakbari",
-      "id": 1
+      "id": 1,
+      "address":{
+        "title":"Home",
+        "address":"61480 Sunbrook Park, PC 56794"
+      }
     }
+    
   ],
   "products": [
     {

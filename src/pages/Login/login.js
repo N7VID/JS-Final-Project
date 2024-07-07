@@ -100,6 +100,13 @@ export function login() {
       loginApi(newObj).then((data) => {
         localStorage.setItem("accessToken", data?.data?.accessToken);
         localStorage.setItem("fullName", data.data.user.name);
+        localStorage.setItem(
+          "address",
+          JSON.stringify({
+            title: data.data.user.address.title,
+            address: data.data.user.address.address,
+          })
+        );
         router.navigate("/");
       });
     });

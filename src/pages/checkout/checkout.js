@@ -17,10 +17,10 @@ export function checkoutPage() {
             </div>
             <div class="flex flex-col w-[210px]">
                 <div class="flex items-center justify-between">
-                    <span class="font-bold text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]">Home</span> 
+                    <span id="location" class="font-bold text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]"></span> 
                 </div>
                 <div class="text-[#757475] font-medium text-[13px] mt-1">
-                    <p class="text-nowrap overflow-hidden text-ellipsis">61480 Sunbrook Park, PC 56794</p>
+                    <p id="address" class="text-nowrap overflow-hidden text-ellipsis"></p>
                 </div>
             </div>
             <div class="">
@@ -130,5 +130,14 @@ export function checkoutPage() {
 
      </div>
   `;
+
+  const location = div.querySelector("#location");
+  const address = div.querySelector("#address");
+  let record = localStorage.getItem("address");
+  record = record
+    ? JSON.parse(record)
+    : { title: "Choose Address", address: "Your Address Here..." };
+  location.innerHTML = record.title;
+  address.innerHTML = record.address;
   return div;
 }
