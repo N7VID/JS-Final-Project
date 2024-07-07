@@ -56,6 +56,48 @@ export function Card({
                   </div>
       </div>
     `,
+    checkout: `
+      <div
+        class="flex items-center justify-between shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[150px] px-4 my-0 mx-auto gap-4"
+      >
+        <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
+          <img
+            class="rounded-3xl w-[120px] h-[120px]"
+            src=${imgSrc}
+          />
+        </div>
+        <div class="flex flex-col w-[210px] gap-2">
+          <div class="flex items-center justify-between">
+            <span
+              class="font-bold text-lg text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]"
+              >${content}</span
+            >
+          </div>
+          <div
+            class="flex items-center gap-3 text-[#757475] font-medium text-[13px] -mt-[1px]"
+          >
+            <div
+              class="flex items-center gap-2 border-r-2 border-[#757475] pr-3 h-[14px]"
+            >
+              <div
+                style="background-color: ${colorCode}"
+                class="w-3 h-3  shadow-sm shadow-black flex items-center justify-center font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto"
+              ></div>
+              ${colorName}
+            </div>
+            <div>Size=${size}</div>
+          </div>
+          <div class="flex justify-between items-center mt-2">
+            <div class="font-bold text-xl">$${price}</div>
+            <div
+              class="bg-[#F3F3F3] rounded-full w-10 h-10 flex justify-center items-center"
+            >
+              <div class="font-extrabold">${quantity}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
   };
   const className = variantClasses[variant] || "";
   const div = document.createElement("div");

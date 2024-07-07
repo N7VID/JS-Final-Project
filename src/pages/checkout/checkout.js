@@ -1,3 +1,5 @@
+import { Card } from "../../components/product card/productCard";
+
 export function checkoutPage() {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -29,54 +31,7 @@ export function checkoutPage() {
         </div>
     </div>
     <p class="pt-4 px-6 text-lg font-semibold max-w-[428px] mx-auto my-0">Order List</p>
-    <div class="card-container flex flex-col pt-4 pb-6 gap-8">
-        <div class="flex items-center justify-between shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[150px] px-4 my-0 mx-auto gap-4">
-            <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
-                <img class="rounded-3xl w-[120px] h-[120px]" src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-5cc7de3b-2afc-49c2-a1e4-0508997d09e6/react-miler-mens-running-shoe-DgF6nr.jpg">
-            </div>
-            <div class="flex flex-col w-[210px] gap-2">
-                <div class="flex items-center justify-between">
-                    <span class="font-bold text-lg text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]">New Balance 996XPro 220</span>
-                </div>
-                <div class="flex items-center gap-3 text-[#757475] font-medium text-[13px] -mt-[1px]">
-                    <div class="flex items-center gap-2 border-r-2 border-[#757475]  pr-3 h-[14px]">
-                        <div class="w-3 h-3 flex items-center justify-center border-[#000000] border font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto"></div>
-                        Black
-                    </div>
-                    <div>Size=42</div>
-                </div>
-                <div class="flex justify-between items-center mt-2">
-                    <div class="font-bold text-xl">$105.00</div>
-                    <div class="bg-[#F3F3F3] rounded-full w-10 h-10 flex justify-center items-center">
-                        <div class="font-extrabold">1</div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center justify-between shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[150px] px-4 my-0 mx-auto gap-4">
-            <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
-                <img class="rounded-3xl w-[120px] h-[120px]" src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-5cc7de3b-2afc-49c2-a1e4-0508997d09e6/react-miler-mens-running-shoe-DgF6nr.jpg">
-            </div>
-            <div class="flex flex-col w-[210px] gap-2">
-                <div class="flex items-center justify-between">
-                    <span class="font-bold text-lg text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]">New Balance 996XPro 220</span>
-                </div>
-                <div class="flex items-center gap-3 text-[#757475] font-medium text-[13px] -mt-[1px]">
-                    <div class="flex items-center gap-2 border-r-2 border-[#757475]  pr-3 h-[14px]">
-                        <div class="w-3 h-3 flex items-center justify-center border-[#000000] border font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto"></div>
-                        Black
-                    </div>
-                    <div>Size=42</div>
-                </div>
-                <div class="flex justify-between items-center mt-2">
-                    <div class="font-bold text-xl">$105.00</div>
-                    <div class="bg-[#F3F3F3] rounded-full w-10 h-10 flex justify-center items-center">
-                    <div class="font-extrabold">1</div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="card-container flex flex-col pt-4 pb-6 gap-8"></div>
     </div>
 
     <div class="border-[#eee] mx-auto my-0 w-[400px] pb-6 cursor-default border-y-2">
@@ -170,6 +125,26 @@ export function checkoutPage() {
             </div>
         </div>
     `;
+  }
+
+  const cardContainer = div.querySelector(".card-container");
+  let records = JSON.parse(localStorage.getItem("cart"));
+  if (!records || records.length === 0) {
+    cardContainer.innerHTML = "EMPTY :)";
+  } else {
+    records.forEach((record) => {
+      const card = Card({
+        content: record.name,
+        price: record.price,
+        imgSrc: record.thumbnail,
+        variant: "checkout",
+        colorCode: record.colorCode,
+        colorName: record.colorName,
+        quantity: record.quantity,
+        size: record.size,
+      });
+      cardContainer.append(card);
+    });
   }
 
   return div;
