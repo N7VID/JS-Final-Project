@@ -144,5 +144,10 @@ export function checkoutPage() {
     cardContainer.append(card);
   });
 
+  const quantity = cardContainer.querySelector("#quantity");
+  const price = cardContainer.querySelector("#price");
+  let endPrice = parseInt(quantity.innerHTML) * parseInt(price.innerHTML);
+  price.innerHTML = endPrice.toString();
+
   return div;
 }

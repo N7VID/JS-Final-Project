@@ -61,6 +61,7 @@ export function Card({
       >
         <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
           <img
+            id="img"
             class="rounded-3xl w-[120px] h-[120px]"
             src=${imgSrc}
           />
@@ -68,6 +69,7 @@ export function Card({
         <div class="flex flex-col w-[210px] gap-2">
           <div class="flex items-center justify-between">
             <span
+              id="title"
               class="font-bold text-lg text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]"
               >${content}</span
             >
@@ -79,19 +81,20 @@ export function Card({
               class="flex items-center gap-2 border-r-2 border-[#757475] pr-3 h-[14px]"
             >
               <div
+                id="color"
                 style="background-color: ${colorCode}"
                 class="w-3 h-3  shadow-sm shadow-black flex items-center justify-center font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto"
               ></div>
               ${colorName}
             </div>
-            <div>Size=${size}</div>
+            <div>Size=<span id="size">${size}</span></div>
           </div>
           <div class="flex justify-between items-center mt-2">
-            <div class="font-bold text-xl">$${price}</div>
+            <div class="font-bold text-xl">$<span id="price">${price}</span></div>
             <div
               class="bg-[#F3F3F3] rounded-full w-10 h-10 flex justify-center items-center"
             >
-              <div class="font-extrabold">${quantity}</div>
+              <div id="quantity" class="font-extrabold">${quantity}</div>
             </div>
           </div>
         </div>
