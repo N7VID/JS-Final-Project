@@ -129,23 +129,20 @@ export function checkoutPage() {
 
   const cardContainer = div.querySelector(".card-container");
   let records = JSON.parse(localStorage.getItem("cart"));
-  if (!records || records.length === 0) {
-    cardContainer.innerHTML = "EMPTY :)";
-  } else {
-    records.forEach((record) => {
-      const card = Card({
-        content: record.name,
-        price: record.price,
-        imgSrc: record.thumbnail,
-        variant: "checkout",
-        colorCode: record.colorCode,
-        colorName: record.colorName,
-        quantity: record.quantity,
-        size: record.size,
-      });
-      cardContainer.append(card);
+
+  records.forEach((record) => {
+    const card = Card({
+      content: record.name,
+      price: record.price,
+      imgSrc: record.thumbnail,
+      variant: "checkout",
+      colorCode: record.colorCode,
+      colorName: record.colorName,
+      quantity: record.quantity,
+      size: record.size,
     });
-  }
+    cardContainer.append(card);
+  });
 
   return div;
 }

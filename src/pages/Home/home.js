@@ -95,11 +95,11 @@ export function homePage(data) {
   cardContainer.innerHTML = "";
   data.forEach((product) => {
     const card = Card({
+      id: product.id,
       content: product.name,
       price: product.price,
       imgSrc: product.images[0],
       variant: "homePage",
-      id: product.id,
     });
     cardContainer.appendChild(card);
     div.classList = "font-inter bg-white flex flex-col min-h-screen";

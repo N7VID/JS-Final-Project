@@ -41,10 +41,17 @@ export function cartPage() {
 
   let records = JSON.parse(localStorage.getItem("cart"));
   if (!records || records.length === 0) {
-    cardContainer.innerHTML = "EMPTY :)";
+    cardContainer.innerHTML = `
+      <div class="flex-grow flex flex-col justify-center items-center pt-16">
+        <img src="/public/images/Empty state icon..svg">
+        <div class="font-bold text-[22px]">Your Cart is Empty!</div>
+        <div class="font-semibold text-[#757475] pt-4">You can see the products on the Home page.</div>
+      </div>
+    `;
   } else {
     records.forEach((record) => {
       const card = Card({
+        id: record.id,
         content: record.name,
         price: record.price,
         imgSrc: record.thumbnail,
@@ -53,7 +60,6 @@ export function cartPage() {
         colorName: record.colorName,
         quantity: record.quantity,
         size: record.size,
-        "data-id": `${record.id}`,
       });
       cardContainer.append(card);
     });
@@ -63,7 +69,7 @@ export function cartPage() {
 
   let total = 0;
   let cardEndPrice = 0;
-  cards.forEach((card, cardIndex) => {
+  cards.forEach((card) => {
     const addButton = card.querySelector("#add");
     const minusButton = card.querySelector("#minus");
     const quantityNumber = card.querySelector("#quantity");
@@ -75,7 +81,8 @@ export function cartPage() {
     deleteButtonCard.addEventListener("click", () => {
       const modalContainer = div.querySelector("#modal-container");
       let carts = JSON.parse(localStorage.getItem("cart"));
-      const cardId = card.getAttribute("data-id");
+      const cardId = card.id;
+      console.log(card);
       let selectedCart = carts.find((cart) => cart.id === cardId);
       console.log(selectedCart);
       if (selectedCart) {
@@ -119,16 +126,15 @@ export function cartPage() {
           { once: true }
         );
       });
-      removeButton.addEventListener("click", (e) => {
+      removeButton.addEventListener("click", () => {
         let cartLocal = JSON.parse(localStorage.getItem("cart"));
-        let updatedCards = cartLocal.filter(
-          (value, index) => index !== cardIndex
-        );
+        let updatedCards = cartLocal.filter((value) => value.id !== cardId);
+        let deletedCard = cartLocal.filter((value) => value.id === cardId);
         total = total - currentPrice * currentQuantity;
         totalPrice.innerHTML = total;
-        console.log(total);
-        console.log(cardContainer.childNodes[cardIndex]);
-        cardContainer.childNodes[cardIndex].remove();
+        cardContainer
+          .querySelector("#" + CSS.escape(deletedCard[0].id))
+          .remove();
         localStorage.setItem("cart", JSON.stringify(updatedCards));
 
         modalDiv.classList.remove("animate-fadeinmodalcontainer");
@@ -174,7 +180,16 @@ export function cartPage() {
     total += currentPrice * currentQuantity;
     addButton.addEventListener("click", () => {
       if (currentQuantity < 10) {
+        let cardId = addButton.getAttribute("data-cardId");
+        let cartLocal = JSON.parse(localStorage.getItem("cart"));
+        let editedCard = cartLocal.find((value) => value.id === cardId);
+        let editedQuantity = parseInt(editedCard.quantity);
+        editedQuantity++;
+        editedCard.quantity = editedQuantity.toString();
+        localStorage.setItem("cart", JSON.stringify(cartLocal));
+
         currentQuantity++;
+        console.log(editedQuantity);
         cardEndPrice = currentQuantity * currentPrice;
         priceNumber.innerHTML = cardEndPrice;
         total = total + currentPrice;
@@ -191,6 +206,14 @@ export function cartPage() {
 
     minusButton.addEventListener("click", () => {
       if (currentQuantity > 1) {
+        let cardId = addButton.getAttribute("data-cardId");
+        let cartLocal = JSON.parse(localStorage.getItem("cart"));
+        let editedCard = cartLocal.find((value) => value.id === cardId);
+        let editedQuantity = parseInt(editedCard.quantity);
+        editedQuantity--;
+        editedCard.quantity = editedQuantity.toString();
+        localStorage.setItem("cart", JSON.stringify(cartLocal));
+
         currentQuantity--;
         cardEndPrice = currentQuantity * currentPrice;
         priceNumber.innerHTML = cardEndPrice;
@@ -212,5 +235,10 @@ export function cartPage() {
 
 export function handleCheckoutButton() {
   const checkoutButton = document.getElementById("button-checkout");
-  checkoutButton.addEventListener("click", () => router.navigate("/checkout"));
+  let records = JSON.parse(localStorage.getItem("cart"));
+  if (records && records.length !== 0) {
+    checkoutButton.addEventListener("click", () => {
+      router.navigate("/checkout");
+    });
+  }
 }
