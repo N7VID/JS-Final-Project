@@ -18,9 +18,29 @@ export default {
           "0%": { right: "10px", opacity: "1" },
           "100%": { right: "0", opacity: "0" },
         },
+        fadeinmodalcontainer: {
+          "0%": { bottom: "0", opacity: "0" },
+          "100%": { bottom: "50px", opacity: "1" },
+        },
+        fadeoutmodalcontainer: {
+          "0%": { bottom: "50px", opacity: "1" },
+          "100%": { bottom: "0", opacity: "0" },
+        },
+        fadeinmodal: {
+          "0%": { opacity: "0", transform: "translateY(100%)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeoutmodal: {
+          "0%": { opacity: "1", transform: "translateY(0)" },
+          "100%": { opacity: "0", transform: "translateY(100%)" },
+        },
       },
       animation: {
         fadeinfadeout: "fadeout 0.3s ease-out 2.7s, fadein 0.3s ease-in",
+        fadeinmodalcontainer: "fadeinmodalcontainer 0.4s ease-in",
+        fadeoutmodalcontainer: "fadeoutmodalcontainer 0.4s ease-out",
+        fadeinmodal: "fadeinmodal 0.3s ease-in",
+        fadeoutmodal: "fadeoutmodal 0.3s ease-out",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

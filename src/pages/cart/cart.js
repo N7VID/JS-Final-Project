@@ -2,6 +2,7 @@ import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
 import { Toast } from "../../components/toast/toast";
 import { root, router } from "../../main";
+import { Modal } from "./components/modal/modal";
 
 export function cartPage() {
   const div = document.createElement("div");
@@ -28,6 +29,8 @@ export function cartPage() {
     </div>
   </div>  
   <div id="navbar-container"></div>
+
+  <div id="modal-container"></div>  
     `;
   const navbar = NavBar();
   const navbarContainer = div.querySelector("#navbar-container");
@@ -50,30 +53,118 @@ export function cartPage() {
         colorName: record.colorName,
         quantity: record.quantity,
         size: record.size,
+        "data-id": `${record.id}`,
       });
       cardContainer.append(card);
     });
   }
   const cards = Object.values(div.querySelectorAll(".card"));
   const toastContainer = div.querySelector("#toast-container");
+
   let total = 0;
   let cardEndPrice = 0;
-  cards.map((card, cardIndex) => {
+  cards.forEach((card, cardIndex) => {
     const addButton = card.querySelector("#add");
     const minusButton = card.querySelector("#minus");
     const quantityNumber = card.querySelector("#quantity");
     const priceNumber = card.querySelector("#end-price");
-    const deleteButton = card.querySelector("#delete");
+    const deleteButtonCard = card.querySelector("#delete");
     let currentQuantity = parseInt(quantityNumber.innerHTML);
     let currentPrice = parseInt(priceNumber.innerHTML);
 
-    deleteButton.addEventListener("click", () => {
-      let cartLocal = JSON.parse(localStorage.getItem("cart"));
-      let updatedCards = cartLocal.filter(
-        (value, index) => index !== cardIndex
-      );
-      cardContainer.childNodes[cardIndex].remove();
-      localStorage.setItem("cart", JSON.stringify(updatedCards));
+    deleteButtonCard.addEventListener("click", () => {
+      const modalContainer = div.querySelector("#modal-container");
+      let carts = JSON.parse(localStorage.getItem("cart"));
+      const cardId = card.getAttribute("data-id");
+      let selectedCart = carts.find((cart) => cart.id === cardId);
+      console.log(selectedCart);
+      if (selectedCart) {
+        modalContainer.innerHTML = "";
+        const modal = Modal({
+          content: selectedCart.name,
+          price: selectedCart.price,
+          imgSrc: selectedCart.thumbnail,
+          colorCode: selectedCart.colorCode,
+          colorName: selectedCart.colorName,
+          quantity: selectedCart.quantity,
+          size: selectedCart.size,
+        });
+        modalContainer.append(modal);
+      } else {
+        console.error("Cart not found!");
+      }
+
+      const modalDiv = div.querySelector("#modal");
+      const cancelButton = modalDiv.querySelector("#cancel-button");
+      const removeButton = modalDiv.querySelector("#remove-button");
+      const wrapper = modalDiv.querySelector("#wrapper");
+
+      modalDiv.classList.remove("hidden");
+      cancelButton.addEventListener("click", () => {
+        modalDiv.classList.remove("animate-fadeinmodalcontainer");
+        modalDiv.classList.add("animate-fadeoutmodalcontainer");
+        wrapper.classList.remove("animate-fadeinmodal");
+        wrapper.classList.add("animate-fadeoutmodal");
+        modalDiv.addEventListener(
+          "animationend",
+          () => {
+            if (modalDiv.classList.contains("animate-fadeoutmodalcontainer")) {
+              modalDiv.classList.add("hidden");
+              modalDiv.classList.add("animate-fadeinmodalcontainer");
+              modalDiv.classList.remove("animate-fadeoutmodalcontainer");
+              wrapper.classList.remove("animate-fadeoutmodal");
+              wrapper.classList.add("animate-fadeinmodal");
+            }
+          },
+          { once: true }
+        );
+      });
+      removeButton.addEventListener("click", (e) => {
+        let cartLocal = JSON.parse(localStorage.getItem("cart"));
+        let updatedCards = cartLocal.filter(
+          (value, index) => index !== cardIndex
+        );
+        console.log(cardContainer.childNodes[cardIndex]);
+        cardContainer.childNodes[cardIndex].remove();
+        localStorage.setItem("cart", JSON.stringify(updatedCards));
+
+        modalDiv.classList.remove("animate-fadeinmodalcontainer");
+        modalDiv.classList.add("animate-fadeoutmodalcontainer");
+        wrapper.classList.remove("animate-fadeinmodal");
+        wrapper.classList.add("animate-fadeoutmodal");
+        modalDiv.addEventListener(
+          "animationend",
+          () => {
+            if (modalDiv.classList.contains("animate-fadeoutmodalcontainer")) {
+              modalDiv.classList.add("hidden");
+              modalDiv.classList.add("animate-fadeinmodalcontainer");
+              modalDiv.classList.remove("animate-fadeoutmodalcontainer");
+              wrapper.classList.remove("animate-fadeoutmodal");
+              wrapper.classList.add("animate-fadeinmodal");
+            }
+          },
+          { once: true }
+        );
+      });
+      modalDiv.addEventListener("click", () => {
+        modalDiv.classList.remove("animate-fadeinmodalcontainer");
+        modalDiv.classList.add("animate-fadeoutmodalcontainer");
+        wrapper.classList.remove("animate-fadeinmodal");
+        wrapper.classList.add("animate-fadeoutmodal");
+        modalDiv.addEventListener(
+          "animationend",
+          () => {
+            if (modalDiv.classList.contains("animate-fadeoutmodalcontainer")) {
+              modalDiv.classList.add("hidden");
+              modalDiv.classList.add("animate-fadeinmodalcontainer");
+              modalDiv.classList.remove("animate-fadeoutmodalcontainer");
+              wrapper.classList.remove("animate-fadeoutmodal");
+              wrapper.classList.add("animate-fadeinmodal");
+            }
+          },
+          { once: true }
+        );
+      });
     });
 
     priceNumber.innerHTML = `${currentQuantity * currentPrice}`;

@@ -29,7 +29,9 @@ export function Card({
         </div>
     </div>`,
     cart: `
-      <div class=" card flex items-center justify-between shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[150px] px-4 my-0 mx-auto gap-4">
+      <div ${attributesString(
+        restProps
+      )} class=" card flex items-center justify-between shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[150px] px-4 my-0 mx-auto gap-4">
             <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
                 <img class="rounded-3xl w-[120px] h-[120px]" src=${imgSrc}>
             </div>

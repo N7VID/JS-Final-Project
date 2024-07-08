@@ -2,6 +2,7 @@ import Splide from "@splidejs/splide";
 import { Toast } from "../toast/toast";
 
 export function SingleProduct({
+  id,
   images,
   name,
   sold,
@@ -201,6 +202,7 @@ export function SingleProduct({
       let records = localStorage.getItem("cart");
       records = records ? JSON.parse(records) : [];
       const newRecord = {
+        id: `${id}`,
         name: `${name}`,
         price: `${price}`,
         thumbnail: `${images[0]}`,

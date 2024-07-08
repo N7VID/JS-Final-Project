@@ -14,6 +14,7 @@ function renderSingleProduct(product) {
   const productContainer = root.querySelector("#product-Container");
   productContainer.innerHTML = "";
   const single = SingleProduct({
+    id: product.id,
     images: product.images,
     name: product.name,
     sold: product.sold,
