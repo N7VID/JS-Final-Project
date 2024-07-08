@@ -161,7 +161,7 @@ export function SingleProduct({
     } else {
       const toast = Toast({
         content: "No more in stock!",
-        variant: "error",
+        variant: "info",
       });
       toastContainer.appendChild(toast);
     }
@@ -175,7 +175,7 @@ export function SingleProduct({
     } else {
       const toast = Toast({
         content: "Minimum order quantity!",
-        variant: "error",
+        variant: "info",
       });
       toastContainer.appendChild(toast);
     }
@@ -201,21 +201,43 @@ export function SingleProduct({
     if (selectedColorName && selectedColorCode && selectedSize) {
       let records = localStorage.getItem("cart");
       records = records ? JSON.parse(records) : [];
-      const newRecord = {
-        id: `${id}`,
-        name: `${name}`,
-        price: `${price}`,
-        thumbnail: `${images[0]}`,
-        quantity: `${quantityNumber.innerHTML}`,
-        size: `${selectedSize}`,
-        colorName: `${selectedColorName}`,
-        colorCode: `${selectedColorCode}`,
-      };
-      records.push(newRecord);
+      let existingCard = records.find(
+        (record) =>
+          record.id === id &&
+          record.size === selectedSize &&
+          record.colorName === selectedColorName &&
+          record.colorCode === selectedColorCode
+      );
+      if (existingCard) {
+        existingCard.quantity =
+          parseInt(existingCard.quantity) + parseInt(quantityNumber.innerHTML);
+        const toast = Toast({
+          content: "Existed card has been updated!",
+          variant: "info",
+        });
+        toastContainer.appendChild(toast);
+      } else {
+        const newRecord = {
+          id: `${id}`,
+          name: `${name}`,
+          price: `${price}`,
+          thumbnail: `${images[0]}`,
+          quantity: `${quantityNumber.innerHTML}`,
+          size: `${selectedSize}`,
+          colorName: `${selectedColorName}`,
+          colorCode: `${selectedColorCode}`,
+        };
+        records.push(newRecord);
+      }
       localStorage.setItem("cart", JSON.stringify(records));
+      const toast = Toast({
+        content: "Product has been added to the Cart!",
+        variant: "success",
+      });
+      toastContainer.appendChild(toast);
     } else {
       const toast = Toast({
-        content: "Choose Size & color!",
+        content: "Choose size & color!",
         variant: "error",
       });
       toastContainer.appendChild(toast);
