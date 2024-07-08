@@ -36,6 +36,10 @@ import {
   handleSubmitRadioShipping,
   shippingPage,
 } from "./pages/shipping/shipping";
+import {
+  handleRadioButtonsPayment,
+  paymentPage,
+} from "./pages/payment/payment";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -53,6 +57,7 @@ export const routes = {
   checkout: "/checkout",
   chooseAddress: "/chooseAddress",
   chooseShipping: "/chooseShipping",
+  payment: "/payment",
 };
 export const root = document.getElementById("app");
 
@@ -141,4 +146,5 @@ router
       handleSubmitRadioShipping,
     ])
   )
+  .on(routes.payment, () => render(paymentPage(), [handleRadioButtonsPayment]))
   .resolve();
