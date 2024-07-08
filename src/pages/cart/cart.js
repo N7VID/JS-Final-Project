@@ -124,6 +124,9 @@ export function cartPage() {
         let updatedCards = cartLocal.filter(
           (value, index) => index !== cardIndex
         );
+        total = total - currentPrice * currentQuantity;
+        totalPrice.innerHTML = total;
+        console.log(total);
         console.log(cardContainer.childNodes[cardIndex]);
         cardContainer.childNodes[cardIndex].remove();
         localStorage.setItem("cart", JSON.stringify(updatedCards));
@@ -168,7 +171,7 @@ export function cartPage() {
     });
 
     priceNumber.innerHTML = `${currentQuantity * currentPrice}`;
-    total += currentPrice;
+    total += currentPrice * currentQuantity;
     addButton.addEventListener("click", () => {
       if (currentQuantity < 10) {
         currentQuantity++;
