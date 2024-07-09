@@ -93,30 +93,54 @@ function protectedRoute(next) {
   }
 }
 
+function firstVisited(next) {
+  if (!localStorage.getItem("FirstVisited")) {
+    next();
+  } else {
+    router.navigate("/login");
+  }
+}
+
+function secondVisited(next) {
+  if (localStorage.getItem("FirstVisited")) {
+    next();
+  } else {
+    router.navigate("/onboarding");
+  }
+}
+
 router
   .on(routes.home, () =>
     homePageApi()
       .then((res) => {
-        checkAuth(() =>
-          render(homePage(res.data), [
-            getCategory,
-            handleStyleCategoryHomepage,
-            categoryPageHandler,
-            productPageHandler,
-            handleNavbarStyle,
-          ])
+        secondVisited(() =>
+          checkAuth(() =>
+            render(homePage(res.data), [
+              getCategory,
+              handleStyleCategoryHomepage,
+              categoryPageHandler,
+              productPageHandler,
+              handleNavbarStyle,
+            ])
+          )
         );
       })
       .catch((e) => console.log(e))
   )
-  .on(routes.onboarding, () => render(onboarding(), [onboardingAnimation]))
+  .on(routes.onboarding, () =>
+    firstVisited(() => render(onboarding(), [onboardingAnimation]))
+  )
   .on(routes.login, () =>
     protectedRoute(() =>
       render(loginPage(), [styleHandler, checkValidation, login])
     )
   )
-  .on(routes.welcome, () => render(welcome(), [welcomeAnimation]))
-  .on(routes.slider, () => render(slider(), [sliderAnimation, splide]))
+  .on(routes.welcome, () =>
+    firstVisited(() => render(welcome(), [welcomeAnimation]))
+  )
+  .on(routes.slider, () =>
+    firstVisited(() => render(slider(), [sliderAnimation, splide]))
+  )
   .on(routes.signup, () =>
     protectedRoute(() =>
       render(signupPage(), [styleHandlerSignup, checkValidationSignUp, signup])
