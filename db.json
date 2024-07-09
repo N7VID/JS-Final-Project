@@ -5,6 +5,10 @@
       "password": "$2a$10$x1reC4lqMWZiLd1OKPRhkeEKJHm7lWnGW4g7daRiekqcBRgKPGHPG",
       "name": "Navid Aliakbari",
       "id": 1,
+      "promo": {
+        "name":"Gold",
+        "value": 30
+      },
       "address":{
         "title":"Home",
         "address":"61480 Sunbrook Park, PC 56794"

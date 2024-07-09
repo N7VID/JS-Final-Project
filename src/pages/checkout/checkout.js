@@ -1,4 +1,7 @@
+import axios from "axios";
 import { Card } from "../../components/product card/productCard";
+import { Toast } from "../../components/toast/toast";
+import { router } from "../../main";
 
 export function checkoutPage() {
   const div = document.createElement("div");
@@ -11,6 +14,7 @@ export function checkoutPage() {
         </div>
         <a href="/" data-navigo><img src="/public/images/more-outline.svg" class="w-7"></a>
     </div>
+    <div id="toast-container"></div>
     <div class="border-b-2 border-[#eee] mx-auto my-0 w-[400px] pb-6 cursor-default">
         <p class="py-4 px-2 text-lg font-semibold">Shipping Address</p>
         <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
@@ -42,32 +46,36 @@ export function checkoutPage() {
 
     <div class="mx-auto my-0 w-[400px] pb-6 px-2 cursor-default">
             <p class="py-4 text-lg font-semibold">Promo Code</p>
-             <div class="flex items-center justify-between pb-6">
-                <div class="">
-                    <input autocomplete="on" type="text" placeholder="Enter Promo Code" id="search" class="rounded-xl w-[310px] h-11 bg-[#f5f5f5] placeholder:text-[#BAB8BC]  placeholder:font-normal pl-5 placeholder:tracking-tight"/>
+             <div class="flex items-center gap-8 pb-6">
+                <div id="input-container">
+                    <input autocomplete="on" type="text" placeholder="Enter Promo Code" id="promo-input" class="rounded-xl w-[310px] h-11 bg-[#f5f5f5] placeholder:text-[#BAB8BC]  placeholder:font-normal pl-5 placeholder:tracking-tight"/>
                 </div>
-                <button class="bg-black rounded-full w-11 h-11 flex justify-center items-center cursor-pointer"><img src="/public/images/add-white.svg" class="w-7"></button>
+                <button id="promo-button" class="bg-black rounded-full w-11 h-11 flex justify-center items-center cursor-pointer"><img src="/public/images/add-white.svg" class="w-5"></button>
             </div> 
             <div class="shadow-cart flex flex-col py-2 px-4 rounded-3xl tracking-tight">
                 <div class="border-[#eee] border-b-2">
                     <div class="flex justify-between py-2">
-                        <span class=" text-[#757475] font-medium">Amount</span>
-                        <span class="text-lg font-semibold">$585.00</span>
+                        <span class="text-[#757475] font-medium">Amount</span>
+                        <span class="font-semibold text-[18px]">$<span id="amount-span"></span></span>
                     </div>
-                    <div class="flex justify-between pt-2 pb-4">
+                    <div class="flex justify-between py-2">
                         <span class=" text-[#757475] font-medium">Shipping</span>
-                        <span class="font-semibold">-</span>
+                        <span id="shipping-span" class="font-semibold text-[18px]"></span>
                     </div>
+                    <div id="promo-container" class="flex justify-between pt-2 pb-4">
+                        <span class=" text-[#757475] font-medium">Promo</span>
+                        <span id="promo-span" class="font-semibold text-[18px]">-</span>
+                    </div>                    
                 </div>    
                 <div class="flex justify-between py-5">
                     <span class=" text-[#757475] font-medium">Total</span>
-                    <span class="font-semibold">-</span>
+                    <span id="total-span" class="font-semibold text-[20px]">-</span>
                 </div>
             </div>
 
             </div>
             <div class="w-full rounded-t-3xl flex items-center justify-around border-t-2 border-[#e9e9e9] bg-white pt-4 pb-6">
-                <div id="button-container" onclick="goHome" class="bg-black rounded-full py-4 w-[380px] px-[70px] text-white font-medium flex justify-center gap-4 items-center shadow-cart">
+                <div id="button-container" class="bg-black rounded-full py-4 w-[380px] px-[70px] text-white font-medium flex justify-center gap-4 items-center shadow-cart">
                     <div>Continue to Payment</div>
                     <img src="/public/images/arrow-right-white.svg" class="w-6">
                 </div>
@@ -105,7 +113,7 @@ export function checkoutPage() {
                     <p class="text-nowrap overflow-hidden text-ellipsis">Estimated Arrival, ${date}</p>
                 </div>
             </div>
-            <div class="font-bold leading-6 tracking-tight text-lg">$${price}</div>
+            <div class="font-bold leading-6 tracking-tight text-lg">$<span id="shipping">${price}</span></div>
             <div class="">
                 <a href="/chooseShipping" data-navigo><img src="/public/images/edit.svg" class="w-6 cursor-pointer"></a>  
             </div>
@@ -149,5 +157,97 @@ export function checkoutPage() {
   let endPrice = parseInt(quantity.innerHTML) * parseInt(price.innerHTML);
   price.innerHTML = endPrice.toString();
 
+  const amountSpan = div.querySelector("#amount-span");
+  const shippingSpan = div.querySelector("#shipping-span");
+  const promoSpan = div.querySelector("#promo-span");
+  const totalSpan = div.querySelector("#total-span");
+  let promoAmount = 0;
+  let shippingAmount = 0;
+  let totalAmount = 0;
+  let totalReceipt = 0;
+  const cards = Object.values(div.querySelectorAll(".card"));
+  cards.forEach((card) => {
+    const amount = card.querySelector("#price");
+    totalAmount += parseInt(amount.innerHTML);
+  });
+  amountSpan.innerHTML = totalAmount;
+
+  const shippingMethodSpan = shippingContainer.querySelector("#shipping");
+  if (shippingMethodSpan) {
+    shippingAmount = shippingMethodSpan.innerHTML;
+    shippingSpan.innerHTML = "$" + shippingAmount;
+  } else {
+    shippingSpan.innerHTML = "-";
+  }
+
+  const promoInput = div.querySelector("#promo-input");
+  const promoButton = div.querySelector("#promo-button");
+  const promoInputContainer = div.querySelector("#input-container");
+  const toastContainer = div.querySelector("#toast-container");
+  promoButton.addEventListener("click", () => {
+    axios.get("http://localhost:3000/Users").then((res) => {
+      let userName = localStorage.getItem("fullName");
+      let user = res.data.find((user) => user.name === userName);
+      console.log("value of input: " + promoInput.value);
+      console.log("value of promo: " + user.promo.name);
+      if (promoInput.value === user.promo.name) {
+        promoInputContainer.innerHTML = `
+            <div id="inner-container" data-promo="${user.promo.value}" class="px-7 py-2 bg-black rounded-[30px] flex items-center gap-4">
+                <div class="text-white font-semibold text-[18px]">Discount ${user.promo.value}% Off</div>
+                <div id="delete-promo" class="text-white font-semibold pb-[2px] text-[18px]">&times</div>
+            </div>
+        `;
+        promoInputContainer
+          .querySelector("#delete-promo")
+          .addEventListener("click", () => {
+            promoSpan.innerHTML = "-";
+            totalReceipt = parseFloat(totalAmount) + parseFloat(shippingAmount);
+            localStorage.setItem("totalReceipt", totalReceipt);
+            totalSpan.innerHTML = "$" + totalReceipt;
+            promoInputContainer.innerHTML = `
+                <div id="input-container">
+                    <input autocomplete="on" type="text" placeholder="Enter Promo Code" id="promo-input" class="rounded-xl w-[310px] h-11 bg-[#f5f5f5] placeholder:text-[#BAB8BC]  placeholder:font-normal pl-5 placeholder:tracking-tight"/>
+                </div>
+        `;
+          });
+        let promoValue = promoInputContainer
+          .querySelector("#inner-container")
+          .getAttribute("data-promo");
+        if (promoValue) {
+          promoAmount = (totalAmount * promoValue) / 100;
+          promoSpan.innerHTML = "-$" + promoAmount;
+          totalReceipt =
+            parseFloat(totalAmount) +
+            parseFloat(shippingAmount) -
+            parseFloat(promoAmount);
+          totalSpan.innerHTML = "$" + totalReceipt;
+          localStorage.setItem("totalReceipt", totalReceipt);
+        }
+      } else {
+        promoInput.value = "";
+        const toast = Toast({
+          content: "Incorrect Promo!",
+          variant: "error",
+        });
+        toastContainer.appendChild(toast);
+      }
+    });
+  });
+
+  totalReceipt =
+    parseFloat(totalAmount) +
+    parseFloat(shippingAmount) -
+    parseFloat(promoAmount);
+
+  totalSpan.innerHTML = "$" + totalReceipt;
+  localStorage.setItem("totalReceipt", totalReceipt);
+
   return div;
+}
+
+export function paymentContinueButtonHandler() {
+  const btn = document.querySelector("#button-container");
+  btn.addEventListener("click", () => {
+    router.navigate("/payment");
+  });
 }

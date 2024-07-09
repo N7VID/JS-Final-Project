@@ -23,7 +23,10 @@ import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
 import { getCategory } from "./utility/getCategory";
 import { categoryPage, categoryPageHandler } from "./pages/Category/category";
 import { cartPage, handleCheckoutButton } from "./pages/cart/cart";
-import { checkoutPage } from "./pages/checkout/checkout";
+import {
+  checkoutPage,
+  paymentContinueButtonHandler,
+} from "./pages/checkout/checkout";
 import {
   addressPage,
   handleRadioButtons,
@@ -136,7 +139,9 @@ router
   .on(routes.cart, () =>
     render(cartPage(), [handleNavbarStyle, handleCheckoutButton])
   )
-  .on(routes.checkout, () => render(checkoutPage()))
+  .on(routes.checkout, () =>
+    render(checkoutPage(), [paymentContinueButtonHandler])
+  )
   .on(routes.chooseAddress, () =>
     render(addressPage(), [handleRadioButtons, handleSubmitRadio])
   )
