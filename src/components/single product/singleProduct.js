@@ -1,5 +1,6 @@
 import Splide from "@splidejs/splide";
 import { Toast } from "../toast/toast";
+import { NavBar } from "../navbar mobile/navbar";
 
 export function SingleProduct({
   id,
@@ -35,7 +36,7 @@ export function SingleProduct({
           </ul>       
         </div>
     </section>
-    <div class="font-inter px-5">
+    <div class="font-inter px-5 pb-[85px]">
         <div class="pt-7 border-b-2 border-[#e9e9e9]">
             <div class="flex justify-between">
                 <p class="text-[#152536] text-3xl font-extrabold text-nowrap text-ellipsis overflow-hidden">${name}</p>
@@ -102,7 +103,12 @@ export function SingleProduct({
             </div>
         </div>
     </div>
+    <div id="navbar-container"></div>
   `;
+
+  const navbar = NavBar();
+  const navbarContainer = div.querySelector("#navbar-container");
+  navbarContainer.append(navbar);
 
   setTimeout(() => {
     new Splide(".splide", {

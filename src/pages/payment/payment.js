@@ -1,3 +1,5 @@
+import { NavBar } from "../../components/navbar mobile/navbar";
+
 export function paymentPage() {
   const div = document.createElement("div");
   div.innerHTML = `
@@ -93,13 +95,18 @@ export function paymentPage() {
 
         </div>
 
-            <div class="w-full fixed bottom-0 rounded-t-3xl flex items-center justify-around border-t-2 border-[#e9e9e9] bg-white pt-4 pb-6">
+            <div class="w-full fixed bottom-0 rounded-t-3xl flex items-center justify-around border-t-2 border-[#e9e9e9] bg-white pt-4 pb-[85px]">
                 <div id="apply-button" class="bg-black rounded-full py-4 w-[380px] px-[70px] text-white font-medium flex justify-center gap-4 items-center shadow-cart">
                     <div>Confirm Payment</div>
                 </div>
             </div>        
     </div>
+    <div id="navbar-container"></div>
   `;
+
+  const navbar = NavBar();
+  const navbarContainer = div.querySelector("#navbar-container");
+  navbarContainer.append(navbar);
   return div;
 }
 export function handleRadioButtonsPayment() {

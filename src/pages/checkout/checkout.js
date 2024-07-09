@@ -2,6 +2,7 @@ import axios from "axios";
 import { Card } from "../../components/product card/productCard";
 import { Toast } from "../../components/toast/toast";
 import { router } from "../../main";
+import { NavBar } from "../../components/navbar mobile/navbar";
 
 export function checkoutPage() {
   const div = document.createElement("div");
@@ -74,7 +75,7 @@ export function checkoutPage() {
             </div>
 
             </div>
-            <div class="w-full rounded-t-3xl flex items-center justify-around border-t-2 border-[#e9e9e9] bg-white pt-4 pb-6">
+            <div class="w-full rounded-t-3xl flex items-center justify-around border-t-2 border-[#e9e9e9] bg-white pt-4 pb-[85px]">
                 <div id="button-container" class="bg-black rounded-full py-4 w-[380px] px-[70px] text-white font-medium flex justify-center gap-4 items-center shadow-cart">
                     <div>Continue to Payment</div>
                     <img src="/public/images/arrow-right-white.svg" class="w-6">
@@ -82,6 +83,7 @@ export function checkoutPage() {
             </div>
 
      </div>
+     <div id="navbar-container"></div>
   `;
 
   const location = div.querySelector("#location");
@@ -134,6 +136,10 @@ export function checkoutPage() {
         </div>
     `;
   }
+
+  const navbar = NavBar();
+  const navbarContainer = div.querySelector("#navbar-container");
+  navbarContainer.append(navbar);
 
   const cardContainer = div.querySelector(".card-container");
   let records = JSON.parse(localStorage.getItem("cart"));
