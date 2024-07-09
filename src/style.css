@@ -148,3 +148,7 @@ body,
   height: 8px !important;
   border-radius: 50% !important;
 }
+
+.active {
+  @apply text-black border-b-4 border-black rounded-sm -mb-1;
+}

@@ -9,7 +9,7 @@ export function cartPage() {
   div.innerHTML = `
   <div class="font-inter">
     <div class="flex items-center justify-between px-6 pb-4 pt-8">
-        <div class="space-x-6 flex">
+        <div class="space-x-6 flex items-center">
             <a href="/" data-navigo><img src="/public/images/logo-balck.svg" class="w-5"></a>
             <p class="text-2xl font-bold min-h-7">My Cart</p>
         </div>
@@ -27,10 +27,10 @@ export function cartPage() {
       <img src="/public/images/arrow-right-white.svg" class="w-6">
       </div>
     </div>
+    <div id="navbar-container"></div>
+    <div id="modal-container"></div>  
   </div>  
-  <div id="navbar-container"></div>
 
-  <div id="modal-container"></div>  
     `;
   const navbar = NavBar();
   const navbarContainer = div.querySelector("#navbar-container");

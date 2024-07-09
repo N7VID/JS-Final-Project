@@ -20,7 +20,7 @@ export function NavBar() {
             <img src=${iconsSrc.cart} class="w-[30px]">
             <span class="text-[10px] font-semibold tracking-tight">Cart</span>
           </a>
-          <a id="/orders" class="icon orders text-center flex flex-col cursor-pointer">
+          <a id="/orders" href="/orders" data-navigo class="icon orders text-center flex flex-col cursor-pointer">
             <img src=${iconsSrc.orders} class="w-[30px]">
             <span class="text-[10px] font-semibold tracking-tight">Orders</span>
           </a>

@@ -100,6 +100,51 @@ export function Card({
         </div>
       </div>
     `,
+    orders: `
+      <div
+        class="card flex items-center justify-between shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[150px] px-4 my-0 mx-auto gap-4"
+      >
+        <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
+          <img
+            id="img"
+            class="rounded-3xl w-[120px] h-[120px]"
+            src=${imgSrc}
+          />
+        </div>
+        <div class="flex flex-col w-[210px] gap-2">
+          <div class="flex items-center justify-between">
+            <span
+              id="title"
+              class="font-bold text-lg text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]"
+              >${content}</span
+            >
+          </div>
+          <div
+            class="flex items-center gap-3 text-[#757475] font-medium text-[13px] -mt-[1px]"
+          >
+            <div
+              class="flex items-center gap-2 border-r-2 border-[#757475] pr-2 h-[14px]"
+            >
+              <div
+                id="color"
+                style="background-color: ${colorCode}"
+                class="w-3 h-3 shadow-sm shadow-black flex items-center justify-center font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto"
+              ></div>
+              ${colorName}
+            </div>
+            <div class="flex items-center gap-2 border-r-2 border-[#757475] pr-2 h-[14px]">Size=<span id="size">${size}</span></div>
+            <div class="flex items-center gap-2 h-[14px]">Qty=<span id="quantity">${quantity}</span></div>
+          </div>
+          <div class="flex justify-start items-center">
+            <div class="font-semibold text-[10px] bg-[#e9e9e9] w-fit py-[5px] px-3 rounded-lg">In Delivery</div>
+          </div>          
+          <div class="flex justify-between items-center">
+            <div class="font-bold text-xl">$<span id="price">${price}</span></div>
+            <div class="bg-black rounded-2xl text-white px-4 py-[6px] text-[13px]">Track Order</div>
+          </div>
+        </div>
+      </div>      
+    `,
   };
   const className = variantClasses[variant] || "";
   const div = document.createElement("div");
