@@ -22,6 +22,10 @@ export default {
           "0%": { bottom: "0", opacity: "0" },
           "100%": { bottom: "50px", opacity: "1" },
         },
+        fadeinmodalcontainerpayment: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
         fadeoutmodalcontainer: {
           "0%": { bottom: "50px", opacity: "1" },
           "100%": { bottom: "0", opacity: "0" },
@@ -41,6 +45,7 @@ export default {
         fadeoutmodalcontainer: "fadeoutmodalcontainer 0.4s ease-out",
         fadeinmodal: "fadeinmodal 0.3s ease-in",
         fadeoutmodal: "fadeoutmodal 0.3s ease-out",
+        fadeinmodalcontainerpayment: "fadeinmodalcontainerpayment 0.3 ease-in",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

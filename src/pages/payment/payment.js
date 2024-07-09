@@ -1,6 +1,9 @@
+import axios from "axios";
 import { NavBar } from "../../components/navbar mobile/navbar";
+import { ModalPayment } from "../Home/components/modal/modalPayment";
 
 export function paymentPage() {
+  let totalReceipt = JSON.parse(localStorage.getItem("totalReceipt"));
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="font-inter">
@@ -22,7 +25,7 @@ export function paymentPage() {
                         <span class="font-bold text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight w-[160px]">My Wallet</span> 
                     </div>
                 </div>
-                <div class="font-bold leading-6 tracking-tight text-lg">$10</div>
+                <div class="font-bold leading-6 tracking-tight text-lg">$${totalReceipt}</div>
                 <div data-selected="false" data-method="My Wallet" class="radio w-5 h-5 border-black border-[3px] rounded-full flex justify-center items-center">
                     <div class="w-3 h-3 bg-black rounded-full"></div>
                 </div>
@@ -101,6 +104,7 @@ export function paymentPage() {
                 </div>
             </div>        
     </div>
+    <div id="modal-container"></div>
     <div id="navbar-container"></div>
   `;
 
@@ -119,6 +123,26 @@ export function handleRadioButtonsPayment() {
       });
       radio.querySelector("div").classList.remove("hidden");
       radio.setAttribute("data-selected", "true");
+    });
+  });
+}
+
+export function handleConfirmPaymentButton() {
+  const confirmButton = document.querySelector("#apply-button");
+  const modalContainer = document.querySelector("#modal-container");
+  const cards = JSON.parse(localStorage.getItem("cart"));
+  let newObj = {
+    id: Date.now(),
+    status: "active",
+    cart: cards,
+  };
+  confirmButton.addEventListener("click", async () => {
+    await axios.post("http://localhost:3000/orders", newObj).then((res) => {
+      if (res.status === 201) {
+        localStorage.removeItem("cart");
+        const modal = ModalPayment();
+        modalContainer.append(modal);
+      }
     });
   });
 }

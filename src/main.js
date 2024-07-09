@@ -40,6 +40,7 @@ import {
   shippingPage,
 } from "./pages/shipping/shipping";
 import {
+  handleConfirmPaymentButton,
   handleRadioButtonsPayment,
   paymentPage,
 } from "./pages/payment/payment";
@@ -151,5 +152,10 @@ router
       handleSubmitRadioShipping,
     ])
   )
-  .on(routes.payment, () => render(paymentPage(), [handleRadioButtonsPayment]))
+  .on(routes.payment, () =>
+    render(paymentPage(), [
+      handleRadioButtonsPayment,
+      handleConfirmPaymentButton,
+    ])
+  )
   .resolve();
