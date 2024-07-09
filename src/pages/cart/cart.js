@@ -189,7 +189,6 @@ export function cartPage() {
         localStorage.setItem("cart", JSON.stringify(cartLocal));
 
         currentQuantity++;
-        console.log(editedQuantity);
         cardEndPrice = currentQuantity * currentPrice;
         priceNumber.innerHTML = cardEndPrice;
         total = total + currentPrice;
@@ -197,7 +196,7 @@ export function cartPage() {
       } else {
         const toast = Toast({
           content: "No more in stock!",
-          variant: "error",
+          variant: "info",
         });
         toastContainer.appendChild(toast);
       }
@@ -222,7 +221,7 @@ export function cartPage() {
       } else {
         const toast = Toast({
           content: "Minimum order quantity!",
-          variant: "error",
+          variant: "info",
         });
         toastContainer.appendChild(toast);
       }
