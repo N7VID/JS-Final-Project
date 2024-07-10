@@ -1,12 +1,13 @@
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
 import { Category } from "../../components/scrollable category/category";
+import { router } from "../../main";
 
 export function mostPopularPage(data) {
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="flex items-center space-x-6 px-6 py-4">
-        <a href="/" data-navigo><img src="/public/images/arrow-left.svg" class="w-7"></a>
+        <a id="back-home-btn"><img src="/public/images/arrow-left.svg" class="w-7"></a>
         <p class="text-[#152536] text-xl font-bold min-h-7">Most Popular</p>
     </div>
 
@@ -49,5 +50,9 @@ export function mostPopularPage(data) {
     cardContainer.appendChild(card);
     div.classList = "font-inter bg-white flex flex-col min-h-screen";
   });
+  div.querySelector("#back-home-btn").addEventListener("click", () => {
+    router.navigate("/");
+  });
+
   return div;
 }

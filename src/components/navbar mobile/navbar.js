@@ -1,3 +1,5 @@
+import { router } from "../../main";
+
 export function NavBar() {
   const iconsSrc = {
     home: "/public/images/home-outline.svg",
@@ -12,15 +14,15 @@ export function NavBar() {
   div.innerHTML = `
     <nav class="my-0 mx-auto w-full">
         <ul class="flex gap-12 justify-center items-center px-6 py-4 text-[#152536]">
-          <a id="/" href="/" data-navigo class="icon home text-center flex flex-col cursor-pointer">
+          <a id="/" class="icon home text-center flex flex-col cursor-pointer">
             <img src=${iconsSrc.home} class="w-[30px]">
             <span class="text-[10px] font-semibold tracking-tight">Home</span>
           </a>
-          <a id="/cart" href="/cart" data-navigo class="icon cart text-center flex flex-col cursor-pointer">
+          <a id="/cart" class="icon cart text-center flex flex-col cursor-pointer">
             <img src=${iconsSrc.cart} class="w-[30px]">
             <span class="text-[10px] font-semibold tracking-tight">Cart</span>
           </a>
-          <a id="/orders" href="/orders" data-navigo class="icon orders text-center flex flex-col cursor-pointer">
+          <a id="/orders" class="icon orders text-center flex flex-col cursor-pointer">
             <img src=${iconsSrc.orders} class="w-[30px]">
             <span class="text-[10px] font-semibold tracking-tight">Orders</span>
           </a>
@@ -42,6 +44,19 @@ export function NavBar() {
     if (window.location.pathname == icon.id) {
       icon.querySelector("img").src = `/public/images/${iconName}-solid.svg`;
     }
+  });
+
+  const homeIcon = div.querySelector(".home");
+  const cartIcon = div.querySelector(".cart");
+  const orderIcon = div.querySelector(".orders");
+  homeIcon.addEventListener("click", () => {
+    router.navigate("/");
+  });
+  cartIcon.addEventListener("click", () => {
+    router.navigate("/cart");
+  });
+  orderIcon.addEventListener("click", () => {
+    router.navigate("/orders");
   });
 
   return div;

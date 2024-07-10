@@ -1,6 +1,7 @@
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
 import { Category } from "../../components/scrollable category/category";
+import { router } from "../../main";
 
 export function homePage(data) {
   const div = document.createElement("div");
@@ -61,7 +62,7 @@ export function homePage(data) {
     <div class="flex-grow flex-col items-center justify-center">
       <div class="flex justify-between items-center w-full px-6 py-2 max-w-[1300px] my-0 mx-auto">
         <div><span class="text-[#152536] font-semibold text-xl cursor-default">Most Popular</span></div>
-        <a href="/mostPopular" data-navigo><span class="text-[#152536] font-bold text-[16.2px] cursor-pointer">See All</span></a>
+        <a id="see-all-btn"><span class="text-[#152536] font-bold text-[16.2px] cursor-pointer">See All</span></a>
       </div>
 
       <div id="category-scroll-container" class="max-w-[1024px] my-0 mx-auto overflow-hidden"></div>
@@ -107,6 +108,10 @@ export function homePage(data) {
 
   const welcomeName = div.querySelector("#welcome-name");
   welcomeName.innerHTML = localStorage.getItem("fullName");
+
+  div.querySelector("#see-all-btn").addEventListener("click", () => {
+    router.navigate("/mostPopular");
+  });
 
   return div;
 }

@@ -1,6 +1,7 @@
 import Splide from "@splidejs/splide";
 import { Toast } from "../toast/toast";
 import { NavBar } from "../navbar mobile/navbar";
+import { router } from "../../main";
 
 export function SingleProduct({
   id,
@@ -19,7 +20,7 @@ export function SingleProduct({
   const div = document.createElement("div");
   div.innerHTML = `
     <section class="my-bg splide w-[428px] h-[428px] p-0" aria-labelledby="carousel-heading">
-        <a href="/" data-navigo class="absolute top-[16px] left-[24px] z-10"><img src="/public/images/arrow-left.svg" class="w-7"></a>
+        <a id="back-home-btn" class="absolute top-[16px] left-[24px] z-10"><img src="/public/images/arrow-left.svg" class="w-7"></a>
         <div class="splide__track mx-auto my-0 w-full"> 
         <div id="toast-container"></div>
           <ul class="splide__list">
@@ -118,6 +119,11 @@ export function SingleProduct({
       },
     }).mount();
   }, 0);
+
+  const backHomeButton = div.querySelector("#back-home-btn");
+  backHomeButton.addEventListener("click", () => {
+    router.navigate("/");
+  });
 
   const sizeButtons = div.querySelectorAll(".sizeButton");
   sizeButtons.forEach((button) => {

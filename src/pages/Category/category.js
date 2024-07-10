@@ -11,7 +11,7 @@ export function categoryPage(brand, data) {
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="flex items-center space-x-6 px-6 py-4">
-        <a href="/" data-navigo><img src="/public/images/arrow-left.svg" class="w-7"></a>
+        <a id="back-home-btn"><img src="/public/images/arrow-left.svg" class="w-7"></a>
         <p class="text-[#152536] text-xl font-bold min-h-7">${brandName}</p>
     </div>
     <div class="max-w-[1300px] my-0 mx-auto mb-[80px] grid grid-cols-2 px-6 pt-4 pb-[85px] gap-x-3 gap-y-5 laptop:grid-cols-4 tablet:grid-cols-3" id="card-container"></div>
@@ -36,6 +36,9 @@ export function categoryPage(brand, data) {
       div.classList = "font-inter bg-white flex flex-col min-h-screen";
     });
   }
+  div.querySelector("#back-home-btn").addEventListener("click", () => {
+    router.navigate("/");
+  });
   return div;
 }
 export function categoryPageHandler() {
