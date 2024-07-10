@@ -1,5 +1,8 @@
 import "@splidejs/splide/css/sea-green";
 import Navigo from "navigo";
+import { handleNavbarStyle } from "./components/navbar mobile/navbar";
+import { categoryPage, categoryPageHandler } from "./pages/Category/category";
+import { homePageApi } from "./pages/Home/api/product-api";
 import { homePage } from "./pages/Home/home";
 import {
   checkValidation,
@@ -7,6 +10,7 @@ import {
   loginPage,
   styleHandler,
 } from "./pages/Login/login";
+import { mostPopularPage } from "./pages/Most popular/mostPopular";
 import { onboarding, onboardingAnimation } from "./pages/Onboarding/onboarding";
 import {
   checkValidationSignUp,
@@ -16,35 +20,31 @@ import {
 } from "./pages/Signup/signup";
 import { slider, sliderAnimation, splide } from "./pages/Slider/slider";
 import { welcome, welcomeAnimation } from "./pages/Welcome/welcome";
-import "./style.css";
-import { productPage, productPageHandler } from "./pages/product/product";
-import { mostPopularPage } from "./pages/Most popular/mostPopular";
-import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
-import { getCategory } from "./utility/getCategory";
-import { categoryPage, categoryPageHandler } from "./pages/Category/category";
-import { cartPage, handleCheckoutButton } from "./pages/cart/cart";
-import {
-  checkoutPage,
-  paymentContinueButtonHandler,
-} from "./pages/checkout/checkout";
 import {
   addressPage,
   handleRadioButtons,
   handleSubmitRadio,
 } from "./pages/address/address";
-import { homePageApi } from "./pages/Home/api/product-api";
-import { handleNavbarStyle } from "./components/navbar mobile/navbar";
+import { cartPage, handleCheckoutButton } from "./pages/cart/cart";
 import {
-  handleRadioButtonsShipping,
-  handleSubmitRadioShipping,
-  shippingPage,
-} from "./pages/shipping/shipping";
+  checkoutPage,
+  paymentContinueButtonHandler,
+} from "./pages/checkout/checkout";
+import { ordersPage } from "./pages/orders/orders";
 import {
   handleConfirmPaymentButton,
   handleRadioButtonsPayment,
   paymentPage,
 } from "./pages/payment/payment";
-import { ordersPage } from "./pages/orders/orders";
+import { productPage, productPageHandler } from "./pages/product/product";
+import {
+  handleRadioButtonsShipping,
+  handleSubmitRadioShipping,
+  shippingPage,
+} from "./pages/shipping/shipping";
+import "./style.css";
+import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
+import { getCategory } from "./utility/getCategory";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -131,8 +131,10 @@ router
     firstVisited(() => render(onboarding(), [onboardingAnimation]))
   )
   .on(routes.login, () =>
-    protectedRoute(() =>
-      render(loginPage(), [styleHandler, checkValidation, login])
+    secondVisited(() =>
+      protectedRoute(() =>
+        render(loginPage(), [styleHandler, checkValidation, login])
+      )
     )
   )
   .on(routes.welcome, () =>
@@ -142,47 +144,81 @@ router
     firstVisited(() => render(slider(), [sliderAnimation, splide]))
   )
   .on(routes.signup, () =>
-    protectedRoute(() =>
-      render(signupPage(), [styleHandlerSignup, checkValidationSignUp, signup])
+    secondVisited(() =>
+      protectedRoute(() =>
+        render(signupPage(), [
+          styleHandlerSignup,
+          checkValidationSignUp,
+          signup,
+        ])
+      )
     )
   )
-  .on(routes.product, () => render(productPage()))
+  .on(routes.product, () =>
+    secondVisited(() => checkAuth(() => render(productPage())))
+  )
   .on(routes.mostPopular, () =>
     homePageApi()
       .then((res) => {
-        checkAuth(() =>
-          render(mostPopularPage(res.data), [
-            getCategory,
-            handleStyleCategoryHomepage,
-            productPageHandler,
-          ])
+        secondVisited(() =>
+          checkAuth(() =>
+            render(mostPopularPage(res.data), [
+              getCategory,
+              handleStyleCategoryHomepage,
+              productPageHandler,
+            ])
+          )
         );
       })
       .catch((e) => console.log(e))
   )
   .on(routes.category, (slug) =>
-    render(categoryPage(slug.data.brand), [productPageHandler])
+    secondVisited(() =>
+      checkAuth(() =>
+        render(categoryPage(slug.data.brand), [productPageHandler])
+      )
+    )
   )
   .on(routes.cart, () =>
-    render(cartPage(), [handleNavbarStyle, handleCheckoutButton])
+    secondVisited(() =>
+      checkAuth(() =>
+        render(cartPage(), [handleNavbarStyle, handleCheckoutButton])
+      )
+    )
   )
   .on(routes.checkout, () =>
-    render(checkoutPage(), [paymentContinueButtonHandler])
+    secondVisited(() =>
+      checkAuth(() => render(checkoutPage(), [paymentContinueButtonHandler]))
+    )
   )
   .on(routes.chooseAddress, () =>
-    render(addressPage(), [handleRadioButtons, handleSubmitRadio])
+    secondVisited(() =>
+      checkAuth(() =>
+        render(addressPage(), [handleRadioButtons, handleSubmitRadio])
+      )
+    )
   )
   .on(routes.chooseShipping, () =>
-    render(shippingPage(), [
-      handleRadioButtonsShipping,
-      handleSubmitRadioShipping,
-    ])
+    secondVisited(() =>
+      checkAuth(() =>
+        render(shippingPage(), [
+          handleRadioButtonsShipping,
+          handleSubmitRadioShipping,
+        ])
+      )
+    )
   )
   .on(routes.payment, () =>
-    render(paymentPage(), [
-      handleRadioButtonsPayment,
-      handleConfirmPaymentButton,
-    ])
+    secondVisited(() =>
+      checkAuth(() =>
+        render(paymentPage(), [
+          handleRadioButtonsPayment,
+          handleConfirmPaymentButton,
+        ])
+      )
+    )
   )
-  .on(routes.orders, () => render(ordersPage()))
+  .on(routes.orders, () =>
+    secondVisited(() => checkAuth(() => render(ordersPage())))
+  )
   .resolve();

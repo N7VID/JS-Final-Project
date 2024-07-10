@@ -44,9 +44,11 @@ export function splide() {
     },
   }).mount();
   root.querySelector("#next-btn").addEventListener("click", () => {
-    if (splide.index + 1 === 3) {
-      router.navigate("/login");
+    if (splide.index + 1 === 1) {
       localStorage.setItem("FirstVisited", "true");
+      splide.go(splide.index + 1);
+    } else if (splide.index + 1 === 3) {
+      router.navigate("/login");
     } else {
       splide.go(splide.index + 1);
     }
