@@ -41,9 +41,11 @@ export function NavBar() {
   const icons = Object.values(div.querySelectorAll(".icon"));
   icons.forEach((icon) => {
     let iconName = icon.querySelector("span").innerHTML.toLowerCase();
-    if (window.location.pathname == icon.id) {
-      icon.querySelector("img").src = `/public/images/${iconName}-solid.svg`;
-    }
+    setTimeout(() => {
+      if (window.location.pathname === icon.id) {
+        icon.querySelector("img").src = `/public/images/${iconName}-solid.svg`;
+      }
+    }, 10);
   });
 
   const homeIcon = div.querySelector(".home");
@@ -60,82 +62,4 @@ export function NavBar() {
   });
 
   return div;
-}
-
-export function handleNavbarStyle() {
-  const homeBtn = document.querySelector(".home");
-  const homeIcon = homeBtn.querySelector("img");
-  const cartBtn = document.querySelector(".cart");
-  const cartIcon = cartBtn.querySelector("img");
-  const ordersBtn = document.querySelector(".orders");
-  const orderIcon = ordersBtn.querySelector("img");
-  const walletBtn = document.querySelector(".wallet");
-  const walletIcon = walletBtn.querySelector("img");
-  const profileBtn = document.querySelector(".profile");
-  const profileIcon = profileBtn.querySelector("img");
-
-  homeBtn.addEventListener("click", () => {
-    homeBtn.querySelector("img").src = "/public/images/home-solid.svg";
-    clearIcon("homeBtn");
-  });
-  cartBtn.addEventListener("click", () => {
-    cartBtn.querySelector("img").src = "/public/images/cart-solid.svg";
-    clearIcon("cartBtn");
-  });
-  ordersBtn.addEventListener("click", () => {
-    ordersBtn.querySelector("img").src = "/public/images/orders-solid.svg";
-    clearIcon("ordersBtn");
-  });
-  walletBtn.addEventListener("click", () => {
-    walletBtn.querySelector("img").src = "/public/images/wallet-solid.svg";
-    clearIcon("walletBtn");
-  });
-  profileBtn.addEventListener("click", () => {
-    profileBtn.querySelector("img").src = "/public/images/profile-solid.svg";
-    clearIcon("profileBtn");
-  });
-
-  function clearIcon(text) {
-    const outlineIcons = {
-      home: "/public/images/home-outline.svg",
-      cart: "/public/images/cart-outline.svg",
-      orders: "/public/images/shop-outline.svg",
-      wallet: "/public/images/wallet-outline.svg",
-      profile: "/public/images/profile-outline.svg",
-    };
-    switch (text) {
-      case "homeBtn":
-        cartIcon.src = outlineIcons.cart;
-        orderIcon.src = outlineIcons.orders;
-        walletIcon.src = outlineIcons.wallet;
-        profileIcon.src = outlineIcons.profile;
-        break;
-      case "cartBtn":
-        homeIcon.src = outlineIcons.home;
-        orderIcon.src = outlineIcons.orders;
-        walletIcon.src = outlineIcons.wallet;
-        profileIcon.src = outlineIcons.profile;
-        break;
-      case "ordersBtn":
-        homeIcon.src = outlineIcons.home;
-        cartIcon.src = outlineIcons.cart;
-        walletIcon.src = outlineIcons.wallet;
-        profileIcon.src = outlineIcons.profile;
-        break;
-      case "walletBtn":
-        homeIcon.src = outlineIcons.home;
-        cartIcon.src = outlineIcons.cart;
-        orderIcon.src = outlineIcons.orders;
-        profileIcon.src = outlineIcons.profile;
-        break;
-      case "profileBtn":
-        homeIcon.src = outlineIcons.home;
-        cartIcon.src = outlineIcons.cart;
-        orderIcon.src = outlineIcons.orders;
-        walletIcon.src = outlineIcons.wallet;
-        break;
-      default:
-        break;
-    }
-  }
 }

@@ -1,6 +1,6 @@
 import "@splidejs/splide/css/sea-green";
 import Navigo from "navigo";
-import { handleNavbarStyle } from "./components/navbar mobile/navbar";
+
 import { categoryPage, categoryPageHandler } from "./pages/Category/category";
 import { homePageApi } from "./pages/Home/api/product-api";
 import { homePage } from "./pages/Home/home";
@@ -120,7 +120,6 @@ router
               handleStyleCategoryHomepage,
               categoryPageHandler,
               productPageHandler,
-              handleNavbarStyle,
             ])
           )
         );
@@ -181,9 +180,7 @@ router
   )
   .on(routes.cart, () =>
     secondVisited(() =>
-      checkAuth(() =>
-        render(cartPage(), [handleNavbarStyle, handleCheckoutButton])
-      )
+      checkAuth(() => render(cartPage(), [handleCheckoutButton]))
     )
   )
   .on(routes.checkout, () =>

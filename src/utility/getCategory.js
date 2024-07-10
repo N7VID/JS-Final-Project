@@ -1,4 +1,3 @@
-import { handleNavbarStyle } from "../components/navbar mobile/navbar.js";
 import { render, root } from "../main";
 import { categoryPageHandler } from "../pages/Category/category.js";
 import { homePageCategoryApi } from "../pages/Home/api/product-api";
@@ -19,7 +18,6 @@ export function getCategory() {
             handleStyleCategoryHomepage,
             categoryPageHandler,
             productPageHandler,
-            handleNavbarStyle,
           ])
         )
         .catch((error) => console.log(error));
