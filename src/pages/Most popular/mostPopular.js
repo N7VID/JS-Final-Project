@@ -46,6 +46,7 @@ export function mostPopularPage(data) {
       price: product.price,
       imgSrc: product.images[0],
       id: product.id,
+      variant: "homePage",
     });
     cardContainer.appendChild(card);
     div.classList = "font-inter bg-white flex flex-col min-h-screen";

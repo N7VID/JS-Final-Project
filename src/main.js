@@ -1,7 +1,7 @@
 import "@splidejs/splide/css/sea-green";
 import Navigo from "navigo";
 
-import { categoryPage, categoryPageHandler } from "./pages/Category/category";
+import { categoryPageHandler } from "./pages/Category/category";
 import { homePageApi } from "./pages/Home/api/product-api";
 import { homePage } from "./pages/Home/home";
 import {
@@ -48,8 +48,10 @@ import {
 } from "./pages/shipping/shipping";
 import "./style.css";
 import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
-import { getCategory } from "./utility/getCategory";
-import { categoryApi } from "./pages/Category/api/category-api";
+import {
+  getCategoryHomePage,
+  getCategoryMostPopular,
+} from "./utility/getCategory";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -121,7 +123,7 @@ router
         secondVisited(() =>
           checkAuth(() =>
             render(homePage(res.data), [
-              getCategory,
+              getCategoryHomePage,
               handleStyleCategoryHomepage,
               categoryPageHandler,
               productPageHandler,
@@ -167,7 +169,7 @@ router
         secondVisited(() =>
           checkAuth(() =>
             render(mostPopularPage(res.data), [
-              getCategory,
+              getCategoryMostPopular,
               handleStyleCategoryHomepage,
               productPageHandler,
             ])
