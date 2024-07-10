@@ -107,8 +107,12 @@ export function signup() {
         password: passwordInput.value,
       };
       signupApi(newObj).then((data) => {
+        let user = {
+          id: data.data.user.id,
+          fullName: data.data.user.name,
+        };
         localStorage.setItem("accessToken", data?.data?.accessToken);
-        localStorage.setItem("fullName", data.data.user.name);
+        localStorage.setItem("user", JSON.stringify(user));
         router.navigate("/");
       });
     });

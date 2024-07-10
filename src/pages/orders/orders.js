@@ -55,20 +55,22 @@ export function ordersPage() {
 }
 
 async function getOrder(url) {
+  let user = JSON.parse(localStorage.getItem("user"));
   await axios
     .get(url)
-    .then((res) => render(res.data))
+    .then((res) => {
+      let data = res.data.filter((data) => data.userId === user.id);
+      render(data);
+    })
     .then(showSingleProduct())
     .catch((error) => console.log(error));
 }
 
 function render(data, status, action) {
-  console.log(data);
   const cardContainer = document.querySelector("#card-container");
   cardContainer.innerHTML = "";
   data.forEach((records) => {
     Object.values(records.cart).forEach((product) => {
-      console.log(product);
       const card = Card({
         id: product.id,
         content: product.name,

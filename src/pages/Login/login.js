@@ -98,15 +98,21 @@ export function login() {
         password: passwordInput.value,
       };
       loginApi(newObj).then((data) => {
+        let user = {
+          id: data.data.user.id,
+          fullName: data.data.user.name,
+        };
         localStorage.setItem("accessToken", data?.data?.accessToken);
-        localStorage.setItem("fullName", data.data.user.name);
-        localStorage.setItem(
-          "address",
-          JSON.stringify({
-            title: data.data.user.address.title,
-            address: data.data.user.address.address,
-          })
-        );
+        localStorage.setItem("user", JSON.stringify(user));
+        if (data.data.user.address) {
+          localStorage.setItem(
+            "address",
+            JSON.stringify({
+              title: data.data.user.address.title,
+              address: data.data.user.address.address,
+            })
+          );
+        }
         router.navigate("/");
       });
     });

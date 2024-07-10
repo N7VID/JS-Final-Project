@@ -107,7 +107,8 @@ export function homePage(data) {
   });
 
   const welcomeName = div.querySelector("#welcome-name");
-  welcomeName.innerHTML = localStorage.getItem("fullName");
+  let user = JSON.parse(localStorage.getItem("user"));
+  welcomeName.innerHTML = user.fullName;
 
   div.querySelector("#see-all-btn").addEventListener("click", () => {
     router.navigate("/mostPopular");

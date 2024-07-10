@@ -131,8 +131,10 @@ export function handleConfirmPaymentButton() {
   const confirmButton = document.querySelector("#apply-button");
   const modalContainer = document.querySelector("#modal-container");
   const cards = JSON.parse(localStorage.getItem("cart"));
+  const user = JSON.parse(localStorage.getItem("user"));
   let newObj = {
     id: Date.now(),
+    userId: user.id,
     status: "active",
     cart: cards,
   };
