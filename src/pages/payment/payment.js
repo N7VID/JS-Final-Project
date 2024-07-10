@@ -139,12 +139,18 @@ export function handleConfirmPaymentButton() {
     cart: cards,
   };
   confirmButton.addEventListener("click", async () => {
-    await axios.post("http://localhost:3000/orders", newObj).then((res) => {
-      if (res.status === 201) {
-        localStorage.removeItem("cart");
-        const modal = ModalPayment();
-        modalContainer.append(modal);
-      }
-    });
+    await axios
+      .post("http://localhost:3000/orders", newObj)
+      .then((res) => {
+        if (res.status === 201) {
+          localStorage.removeItem("cart");
+          localStorage.removeItem("totalReceipt");
+          const modal = ModalPayment();
+          modalContainer.append(modal);
+        }
+      })
+      .catch((err) => {
+        console.error("Error in request:", err);
+      });
   });
 }
