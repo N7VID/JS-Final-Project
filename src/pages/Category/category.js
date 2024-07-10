@@ -1,13 +1,13 @@
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
-import { render, root, router } from "../../main";
+import { checkAuth, render, router, secondVisited } from "../../main";
 import { productPageHandler } from "../product/product";
 import { categoryApi } from "./api/category-api";
-let brandName;
+let brandName = "";
 export function categoryPage(brand, data) {
-  if (brand) {
-    brandName = brand;
-  }
+  let url = window.location.pathname;
+  let parts = url.split("/");
+  brandName = parts[2].split("%20").join(" ");
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="flex items-center space-x-6 px-6 py-4">
@@ -21,18 +21,18 @@ export function categoryPage(brand, data) {
   const navbarContainer = div.querySelector("#navbar-container");
   navbarContainer.append(navbar);
 
-  console.log(data);
   if (data !== undefined) {
     const cardContainer = div.querySelector("#card-container");
     cardContainer.innerHTML = "";
     data.forEach((product) => {
       const card = Card({
+        id: product.id,
         content: product.name,
         price: product.price,
         imgSrc: product.images[0],
-        id: product.id,
+        variant: "homePage",
       });
-      cardContainer.appendChild(card);
+      cardContainer.append(card);
       div.classList = "font-inter bg-white flex flex-col min-h-screen";
     });
   }
@@ -41,21 +41,27 @@ export function categoryPage(brand, data) {
   });
   return div;
 }
-export function categoryPageHandler() {
-  const buttons = root.querySelectorAll(".categoryButton");
+export function categoryPageHandler(slug) {
+  let brand = slug;
+
+  const buttons = document.querySelectorAll(".categoryButton");
   buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      let target = e.target.closest("[id]");
-      if (target) {
+    if (button.id !== "More") {
+      button.addEventListener("click", (e) => {
+        let target = e.target.closest("[id]");
         let categoryId = target.id;
         categoryId = categoryId.split("-").join(" ");
         router.navigate(`/category/${categoryId}`);
         categoryApi(categoryId)
           .then((res) =>
-            render(categoryPage("", res.data), [productPageHandler])
+            secondVisited(() =>
+              checkAuth(() =>
+                render(categoryPage(brand, res.data), [productPageHandler])
+              )
+            )
           )
           .catch((err) => console.log(err));
-      }
-    });
+      });
+    }
   });
 }

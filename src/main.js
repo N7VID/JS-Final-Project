@@ -45,6 +45,7 @@ import {
 import "./style.css";
 import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
 import { getCategory } from "./utility/getCategory";
+import { categoryApi } from "./pages/Category/api/category-api";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -77,7 +78,7 @@ export function render(content, eventListeners) {
   }
 }
 
-function checkAuth(next) {
+export function checkAuth(next) {
   if (localStorage.getItem("accessToken")) {
     next();
   } else {
@@ -85,7 +86,7 @@ function checkAuth(next) {
   }
 }
 
-function protectedRoute(next) {
+export function protectedRoute(next) {
   if (!localStorage.getItem("accessToken")) {
     next();
   } else {
@@ -93,7 +94,7 @@ function protectedRoute(next) {
   }
 }
 
-function firstVisited(next) {
+export function firstVisited(next) {
   if (!localStorage.getItem("FirstVisited")) {
     next();
   } else {
@@ -101,7 +102,7 @@ function firstVisited(next) {
   }
 }
 
-function secondVisited(next) {
+export function secondVisited(next) {
   if (localStorage.getItem("FirstVisited")) {
     next();
   } else {
@@ -171,13 +172,8 @@ router
       })
       .catch((e) => console.log(e))
   )
-  .on(routes.category, (slug) =>
-    secondVisited(() =>
-      checkAuth(() =>
-        render(categoryPage(slug.data.brand), [productPageHandler])
-      )
-    )
-  )
+  .on(routes.category, (slug) => categoryPageHandler(slug.data.brand))
+
   .on(routes.cart, () =>
     secondVisited(() =>
       checkAuth(() => render(cartPage(), [handleCheckoutButton]))
