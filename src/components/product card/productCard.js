@@ -30,7 +30,7 @@ export function Card({
     cart: `
       <div id="${id}" class=" card flex items-center justify-between shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[150px] px-4 my-0 mx-auto gap-4">
             <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
-                <img id="imgSrc" class="rounded-3xl w-[120px] h-[120px]" src=${imgSrc}>
+                <img data-id="${id}" id="imgSrc" class="rounded-3xl w-[120px] h-[120px]" src=${imgSrc}>
             </div>
             <div class="flex flex-col w-[210px] gap-2">
                 <div class="flex items-center justify-between">
@@ -61,6 +61,7 @@ export function Card({
       >
         <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
           <img
+            data-id="${id}"
             id="img"
             class="rounded-3xl w-[120px] h-[120px]"
             src=${imgSrc}
@@ -106,6 +107,7 @@ export function Card({
       >
         <div class="rounded-3xl bg-[#F3F3F3] w-[120px] h-[120px]">
           <img
+            data-id="${id}"
             id="img"
             class="rounded-3xl w-[120px] h-[120px]"
             src=${imgSrc}

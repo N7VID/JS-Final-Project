@@ -1,6 +1,7 @@
 import axios from "axios";
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
+import { showSingleProduct } from "../cart/cart";
 
 export function ordersPage() {
   const div = document.createElement("div");
@@ -57,6 +58,7 @@ async function getOrder(url) {
   await axios
     .get(url)
     .then((res) => render(res.data))
+    .then(showSingleProduct())
     .catch((error) => console.log(error));
 }
 

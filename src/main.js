@@ -25,7 +25,11 @@ import {
   handleRadioButtons,
   handleSubmitRadio,
 } from "./pages/address/address";
-import { cartPage, handleCheckoutButton } from "./pages/cart/cart";
+import {
+  cartPage,
+  handleCheckoutButton,
+  showSingleProduct,
+} from "./pages/cart/cart";
 import {
   checkoutPage,
   paymentContinueButtonHandler,
@@ -176,12 +180,19 @@ router
 
   .on(routes.cart, () =>
     secondVisited(() =>
-      checkAuth(() => render(cartPage(), [handleCheckoutButton]))
+      checkAuth(() =>
+        render(cartPage(), [handleCheckoutButton, showSingleProduct])
+      )
     )
   )
   .on(routes.checkout, () =>
     secondVisited(() =>
-      checkAuth(() => render(checkoutPage(), [paymentContinueButtonHandler]))
+      checkAuth(() =>
+        render(checkoutPage(), [
+          paymentContinueButtonHandler,
+          showSingleProduct,
+        ])
+      )
     )
   )
   .on(routes.chooseAddress, () =>
@@ -212,6 +223,8 @@ router
     )
   )
   .on(routes.orders, () =>
-    secondVisited(() => checkAuth(() => render(ordersPage())))
+    secondVisited(() =>
+      checkAuth(() => render(ordersPage(), [showSingleProduct]))
+    )
   )
   .resolve();

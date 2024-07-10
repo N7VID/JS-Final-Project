@@ -2,6 +2,8 @@ import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
 import { Toast } from "../../components/toast/toast";
 import { root, router } from "../../main";
+import { productApi } from "../product/api/product-api";
+import { renderSingleProduct } from "../product/product";
 import { Modal } from "./components/modal/modal";
 
 export function cartPage() {
@@ -240,4 +242,21 @@ export function handleCheckoutButton() {
       router.navigate("/checkout");
     });
   }
+}
+
+export function showSingleProduct() {
+  setTimeout(() => {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.querySelector("img").addEventListener("click", (e) => {
+        const id = card.querySelector("img").getAttribute("data-id");
+        router.navigate(`/product/${id}`);
+        productApi(id)
+          .then((res) => renderSingleProduct(res.data))
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    });
+  }, 100);
 }

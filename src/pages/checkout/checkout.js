@@ -146,6 +146,7 @@ export function checkoutPage() {
 
   records.forEach((record) => {
     const card = Card({
+      id: record.id,
       content: record.name,
       price: record.price,
       imgSrc: record.thumbnail,

@@ -10,7 +10,7 @@ export function productPage() {
   return div;
 }
 
-function renderSingleProduct(product) {
+export function renderSingleProduct(product) {
   const productContainer = root.querySelector("#product-Container");
   productContainer.innerHTML = "";
   const single = SingleProduct({
