@@ -197,8 +197,6 @@ export function SingleProduct({
   let selectedSize, selectedColorName, selectedColorCode;
   const submitButton = div.querySelector("#button-submit");
   submitButton.addEventListener("click", () => {
-    const div = submitButton.querySelector("div");
-
     Object.values(colorButtons).forEach((colorButton) => {
       if (colorButton.dataset.selected === "true") {
         selectedColorName = colorButton.dataset.color;
@@ -210,6 +208,7 @@ export function SingleProduct({
         selectedSize = sizeButton.firstChild.data;
       }
     });
+
     if (selectedColorName && selectedColorCode && selectedSize) {
       let records = localStorage.getItem("cart");
       records = records ? JSON.parse(records) : [];
@@ -236,6 +235,8 @@ export function SingleProduct({
           thumbnail: `${images[0]}`,
           quantity: `${quantityNumber.innerHTML}`,
           size: `${selectedSize}`,
+          inStock: `${inStock}`,
+          isInStock: isInStock,
           colorName: `${selectedColorName}`,
           colorCode: `${selectedColorCode}`,
         };

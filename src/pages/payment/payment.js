@@ -138,19 +138,40 @@ export function handleConfirmPaymentButton() {
     status: "active",
     cart: cards,
   };
+  let updatedObj = [];
+  cards.forEach((card) => {
+    let in_stock = parseInt(card.inStock) - parseInt(card.quantity);
+    let is_in_stock = card.isInStock;
+    if (in_stock < 1) {
+      is_in_stock = false;
+    }
+    let eachUpdatedObj = {
+      id: parseInt(card.id),
+      in_stock: in_stock,
+      is_in_stock: is_in_stock,
+    };
+    updatedObj.push(eachUpdatedObj);
+  });
+  console.log(updatedObj);
   confirmButton.addEventListener("click", async () => {
-    await axios
-      .post("http://localhost:3000/orders", newObj)
-      .then((res) => {
-        if (res.status === 201) {
-          localStorage.removeItem("cart");
-          localStorage.removeItem("totalReceipt");
-          const modal = ModalPayment();
-          modalContainer.append(modal);
-        }
-      })
-      .catch((err) => {
-        console.error("Error in request:", err);
-      });
+    try {
+      const updatePromises = updatedObj.map((obj) =>
+        axios.patch(`http://localhost:3000/products/${obj.id}`, obj)
+      );
+      await Promise.all(updatePromises);
+
+      const orderResponse = await axios.post(
+        "http://localhost:3000/orders",
+        newObj
+      );
+      if (orderResponse.status === 201) {
+        localStorage.removeItem("cart");
+        localStorage.removeItem("totalReceipt");
+        const modal = ModalPayment();
+        modalContainer.append(modal);
+      }
+    } catch (err) {
+      console.error("Error in request:", err);
+    }
   });
 }

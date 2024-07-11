@@ -41,15 +41,17 @@ export function mostPopularPage(data) {
   const cardContainer = div.querySelector("#card-container");
   cardContainer.innerHTML = "";
   data.forEach((product) => {
-    const card = Card({
-      content: product.name,
-      price: product.price,
-      imgSrc: product.images[0],
-      id: product.id,
-      variant: "homePage",
-    });
-    cardContainer.appendChild(card);
-    div.classList = "font-inter bg-white flex flex-col min-h-screen";
+    if (product.is_in_stock) {
+      const card = Card({
+        content: product.name,
+        price: product.price,
+        imgSrc: product.images[0],
+        id: product.id,
+        variant: "homePage",
+      });
+      cardContainer.appendChild(card);
+      div.classList = "font-inter bg-white flex flex-col min-h-screen";
+    }
   });
   div.querySelector("#back-home-btn").addEventListener("click", () => {
     router.navigate("/");

@@ -95,15 +95,17 @@ export function homePage(data) {
   const cardContainer = div.querySelector("#card-container");
   cardContainer.innerHTML = "";
   data.forEach((product) => {
-    const card = Card({
-      id: product.id,
-      content: product.name,
-      price: product.price,
-      imgSrc: product.images[0],
-      variant: "homePage",
-    });
-    cardContainer.appendChild(card);
-    div.classList = "font-inter bg-white flex flex-col min-h-screen";
+    if (product.is_in_stock) {
+      const card = Card({
+        id: product.id,
+        content: product.name,
+        price: product.price,
+        imgSrc: product.images[0],
+        variant: "homePage",
+      });
+      cardContainer.appendChild(card);
+      div.classList = "font-inter bg-white flex flex-col min-h-screen";
+    }
   });
 
   const welcomeName = div.querySelector("#welcome-name");
