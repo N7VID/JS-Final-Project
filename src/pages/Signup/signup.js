@@ -1,3 +1,4 @@
+import { Toast } from "../../components/toast/toast";
 import { router } from "../../main";
 import {
   emailValidation,
@@ -23,7 +24,7 @@ export function signupPage() {
           <h2 class="font-semibold text-[32px] text-[#152536] tracking-wide cursor-default text-center">Create Your Account</h2>
 
           <form class="flex flex-col justify-center gap-2" id="signup-form">
-
+            <div id="toast-container"></div>
               <div class="relative">
                 <img src="/public/images/profile-1.svg" id="name-icon" alt="name-logo" class="w-5 absolute left-3 top-2">
                 <input autocomplete="on" type="text" placeholder="Full Name" id="name" class="rounded-[4px] w-[380px] h-[37px] bg-[#FAFAFA] pl-10 placeholder:text-[#6C757D]"/>
@@ -106,15 +107,20 @@ export function signup() {
         email: emailInput.value,
         password: passwordInput.value,
       };
-      signupApi(newObj).then((data) => {
-        let user = {
-          id: data.data.user.id,
-          fullName: data.data.user.name,
-        };
-        localStorage.setItem("accessToken", data?.data?.accessToken);
-        localStorage.setItem("user", JSON.stringify(user));
-        router.navigate("/");
-      });
+      signupApi(newObj)
+        .then((res) => {
+          let user = {
+            id: res.data.user.id,
+            fullName: res.data.user.name,
+          };
+          localStorage.setItem("accessToken", res?.data?.accessToken);
+          localStorage.setItem("user", JSON.stringify(user));
+          router.navigate("/");
+        })
+        .catch((e) => {
+          const toast = Toast({ content: e.response.data, variant: "error" });
+          document.querySelector("#toast-container").appendChild(toast);
+        });
     });
   }
 }
