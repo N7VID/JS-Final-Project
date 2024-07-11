@@ -19,12 +19,12 @@ export function Card({
   const variantClasses = {
     homePage: `
     <div id="${id}" class="card my-0 mx-auto max-w-[182px] cursor-pointer">
-        <div class="bg-[#F3F3F3] rounded-[24px] h-[180px] w-[180px] flex justify-center items-center">
-          <img src=${imgSrc} alt="shoe picture" class="w-[142px] h-[142px] object-contain rounded-full">
+        <div class="bg-[#F3F3F3] rounded-[24px] h-[180px] w-[180px] flex justify-center items-center laptop:h-[150px] laptop:w-[150px]">
+          <img src=${imgSrc} alt="shoe picture" class="w-[142px] h-[142px] object-contain rounded-full laptop:h-[110px] laptop:w-[110px]">
         </div>
         <div class="flex flex-col gap-1">
-          <span class="font-bold text-[20px] text-[#152536] pt-2 text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight">${content}</span>
-          <span class="font-semibold text-[#152536] leading-5">$ ${price}</span>
+          <span class="font-bold text-[20px] text-[#152536] pt-2 text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight laptop:text-[16px]">${content}</span>
+          <span class="font-semibold text-[#152536] leading-5 laptop:text-[14px]">$ ${price}</span>
         </div>
     </div>`,
     cart: `

@@ -12,7 +12,7 @@ export function Category({ content }) {
       defaultStyle = "font-semibold text-[#343A40]";
     }
     inner.innerHTML = `
-    <div id="${name}" class="category inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.3px] rounded-[25px] py-[3.5px] px-[16.5px] text-center ${defaultStyle}">${name}</div>
+    <div id="${name}" class="category inline-block whitespace-nowrap cursor-pointer h-[35px] border-[#343A40] border-[2.3px] rounded-[25px] py-[3.5px] px-[16.5px] text-center laptop:text-[14px] laptop:h-[30px] ${defaultStyle}">${name}</div>
   `;
     div.appendChild(inner);
   });

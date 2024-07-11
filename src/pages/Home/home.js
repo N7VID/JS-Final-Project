@@ -19,13 +19,13 @@ export function homePage(data) {
          <img src="/images/heart - outline.svg" class="w-7 cursor-pointer">
       </div>
     </header>
-    <div class="flex justify-center">
+    <div class="flex justify-center laptop:p-3">
       <div class="relative">
         <input autocomplete="on" type="text" placeholder="Search" id="search" class="rounded-[4px] w-[380px] h-[37px] bg-[#FAFAFA] placeholder:text-[#BAB8BC] placeholder:text-sm placeholder:font-normal pl-10"/>
         <img src="/images/search icon.svg" class="absolute top-2 left-3 w-[20px] cursor-pointer">
       </div>
     </div>
-    <div class="grid grid-cols-4 gap-y-6 gap-x-6 py-4 px-6">
+    <div class="grid grid-cols-4 gap-y-6 gap-x-6 py-4 px-6 w-fit my-0 mx-auto laptop:grid-cols-8 laptop:gap-x-9">
       <div id="Nike" class="categoryButton flex-col flex justify-between text-center h-[91px] items-center">
         <div class="bg-[#ECECEC] rounded-full w-[60px] h-[60px] flex justify-center cursor-pointer"><img src="/images/nike-4-logo-svgrepo-com.svg" alt="nike-logo" class="w-[32px] mix-blend-multiply"></div>
         <p class="font-semibold text-sm cursor-pointer text-nowrap overflow-hidden text-ellipsis">Nike</p>
@@ -60,14 +60,14 @@ export function homePage(data) {
       </div>
     </div>
     <div class="flex-grow flex-col items-center justify-center">
-      <div class="flex justify-between items-center w-full px-6 py-2 max-w-[1300px] my-0 mx-auto">
+      <div class="flex justify-between items-center w-full px-6 py-2 max-w-[1000px] my-0 mx-auto laptop:p-4">
         <div><span class="text-[#152536] font-semibold text-xl cursor-default">Most Popular</span></div>
         <a id="see-all-btn"><span class="text-[#152536] font-bold text-[16.2px] cursor-pointer">See All</span></a>
       </div>
 
       <div id="category-scroll-container" class="max-w-[1024px] my-0 mx-auto overflow-hidden"></div>
 
-      <div class="max-w-[1300px] my-0 mx-auto mb-[80px] grid grid-cols-2 px-6 py-4 gap-x-3 gap-y-5 laptop:grid-cols-4 laptop:gap-x-0 tablet:grid-cols-3" id="card-container"></div>
+      <div class="max-w-[1000px] my-0 mx-auto mb-[80px] grid grid-cols-2 px-6 py-4 gap-x-3 gap-y-5 laptop:grid-cols-4 laptop:gap-x-0 tablet:grid-cols-3" id="card-container"></div>
 
     </div>
     <div id="navbar-container"></div>
