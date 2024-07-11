@@ -18,9 +18,9 @@ export function ordersPage() {
         </div>
         </div>
         
-        <div class="flex justify-around w-full px-4 border-b-2 font-bold text-[#757475] text-[17px] rounded-sm">
-        <div id="active-button" class="flex justify-center items-center py-3 w-1/2 active">Active</div>
-        <div id="completed-button" class="flex justify-center items-center py-3 w-1/2">Completed</div>
+        <div class="flex justify-around w-full px-4 border-b-2 font-bold text-[#757475] text-[17px] rounded-sm max-w-[550px] my-0 mx-auto">
+        <div id="active-button" class="flex justify-center items-center py-3 w-1/2 active cursor-pointer">Active</div>
+        <div id="completed-button" class="flex justify-center items-center py-3 w-1/2 cursor-pointer">Completed</div>
         </div>
         <div id="card-container" class="flex flex-col flex-grow pt-8 pb-32 gap-7"></div>
         <div id="navbar-container"></div>
