@@ -159,11 +159,6 @@ export function checkoutPage() {
     cardContainer.append(card);
   });
 
-  const quantity = cardContainer.querySelector("#quantity");
-  const price = cardContainer.querySelector("#price");
-  let endPrice = parseInt(quantity.innerHTML) * parseInt(price.innerHTML);
-  price.innerHTML = endPrice.toString();
-
   const amountSpan = div.querySelector("#amount-span");
   const shippingSpan = div.querySelector("#shipping-span");
   const promoSpan = div.querySelector("#promo-span");
@@ -174,8 +169,11 @@ export function checkoutPage() {
   let totalReceipt = 0;
   const cards = Object.values(div.querySelectorAll(".card"));
   cards.forEach((card) => {
-    const amount = card.querySelector("#price");
-    totalAmount += parseInt(amount.innerHTML);
+    const quantity = card.querySelector("#quantity");
+    const price = card.querySelector("#price");
+    let endPrice = parseInt(quantity.innerHTML) * parseInt(price.innerHTML);
+    price.innerHTML = endPrice.toString();
+    totalAmount += parseInt(price.innerHTML);
   });
   amountSpan.innerHTML = totalAmount;
 
@@ -193,8 +191,8 @@ export function checkoutPage() {
   const toastContainer = div.querySelector("#toast-container");
   promoButton.addEventListener("click", () => {
     axios.get("http://localhost:3000/Users").then((res) => {
-      let userName = localStorage.getItem("fullName");
-      let user = res.data.find((user) => user.name === userName);
+      let userName = JSON.parse(localStorage.getItem("user"));
+      let user = res.data.find((user) => user.name === userName.fullName);
       console.log("value of input: " + promoInput.value);
       console.log("value of promo: " + user.promo.name);
       if (promoInput.value === user.promo.name) {
