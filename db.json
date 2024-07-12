@@ -23,49 +23,6 @@
   ],
   "orders": [
     {
-      "id": 1720674174311,
-      "userId": 1,
-      "status": "active",
-      "cart": [
-        {
-          "id": "3",
-          "name": "Nike Air Zoom Pegasus 37",
-          "price": "120",
-          "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-33b0a0a5-c171-46cc-ad20-04a768703e47/air-zoom-pegasus-37-womens-running-shoe-Jl0bDf.jpg",
-          "quantity": "2",
-          "size": "45",
-          "inStock": "10",
-          "isInStock": true,
-          "colorName": "Black",
-          "colorCode": "rgb(0, 0, 0)"
-        },
-        {
-          "id": "2",
-          "name": "Nike React Miler",
-          "price": "130",
-          "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-5cc7de3b-2afc-49c2-a1e4-0508997d09e6/react-miler-mens-running-shoe-DgF6nr.jpg",
-          "quantity": "1",
-          "size": "43",
-          "inStock": "10",
-          "isInStock": true,
-          "colorName": "White",
-          "colorCode": "rgb(255, 255, 255)"
-        },
-        {
-          "id": "10",
-          "name": "Puma RS-X3",
-          "price": "110",
-          "thumbnail": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/372884/07/sv01/fnd/PNA/fmt/png/RS-X%C2%B3-Super-Men's-Sneakers",
-          "quantity": "2",
-          "size": "45",
-          "inStock": "10",
-          "isInStock": true,
-          "colorName": "Red",
-          "colorCode": "rgb(255, 0, 0)"
-        }
-      ]
-    },
-    {
       "id": 1720674206192,
       "userId": 1,
       "status": "completed",

@@ -9,6 +9,7 @@ export function Card({
   colorName = "",
   quantity = "",
   size = "",
+  type = "",
   ...restProps
 }) {
   const attributesString = (props) => {
@@ -138,11 +139,15 @@ export function Card({
             <div class="flex items-center gap-2 h-[14px]">Qty=<span id="quantity">${quantity}</span></div>
           </div>
           <div class="flex justify-start items-center">
-            <div class="font-semibold text-[10px] bg-[#e9e9e9] w-fit py-[5px] px-3 rounded-lg">In Delivery</div>
+            <div class="font-semibold text-[10px] bg-[#e9e9e9] w-fit py-[5px] px-3 rounded-lg">${
+              type.includes("active") ? "In Delivery" : "Completed"
+            }</div>
           </div>          
           <div class="flex justify-between items-center">
             <div class="font-bold text-xl">$<span id="price">${price}</span></div>
-            <div class="bg-black rounded-2xl text-white px-4 py-[6px] text-[13px]">Track Order</div>
+            <div class="bg-black rounded-2xl text-white px-4 py-[6px] text-[13px]">${
+              type.includes("active") ? "Track Order" : "Leave Review"
+            }</div>
           </div>
         </div>
       </div>      

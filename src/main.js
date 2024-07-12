@@ -34,7 +34,7 @@ import {
   checkoutPage,
   paymentContinueButtonHandler,
 } from "./pages/checkout/checkout";
-import { ordersPage } from "./pages/orders/orders";
+import { handleToggleStatus, ordersPage } from "./pages/orders/orders";
 import {
   handleConfirmPaymentButton,
   handleRadioButtonsPayment,
@@ -226,7 +226,9 @@ router
   )
   .on(routes.orders, () =>
     secondVisited(() =>
-      checkAuth(() => render(ordersPage(), [showSingleProduct]))
+      checkAuth(() =>
+        render(ordersPage(), [showSingleProduct, handleToggleStatus])
+      )
     )
   )
   .resolve();

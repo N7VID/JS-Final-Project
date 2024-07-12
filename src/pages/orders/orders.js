@@ -2,6 +2,7 @@ import axios from "axios";
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
 import { showSingleProduct } from "../cart/cart";
+import { root } from "../../main";
 
 export function ordersPage() {
   const div = document.createElement("div");
@@ -30,59 +31,71 @@ export function ordersPage() {
   const navbar = NavBar();
   const navbarContainer = div.querySelector("#navbar-container");
   navbarContainer.append(navbar);
-  // let orderStatus = true;
-  getOrder("http://localhost:3000/orders?q=active");
-  const toggleActiveButton = div.querySelector("#active-button");
-  const toggleCompletedButton = div.querySelector("#completed-button");
-  toggleActiveButton.addEventListener("click", () => {
-    toggleActiveButton.classList.add("active");
-    toggleCompletedButton.classList.remove("active");
-    getOrder("http://localhost:3000/orders?q=active");
-  });
-  toggleCompletedButton.addEventListener("click", async () => {
-    toggleCompletedButton.classList.add("active");
-    toggleActiveButton.classList.remove("active");
-    // orderStatus = false;
-    getOrder("http://localhost:3000/orders?q=completed");
-  });
-  // if (orderStatus) {
-  //   getOrder("http://localhost:3000/orders?q=active");
-  // } else {
-  //   getOrder("http://localhost:3000/orders?q=completed");
-  // }
 
   return div;
 }
 
-async function getOrder(url) {
+export function handleToggleStatus() {
+  getOrder("?status=active");
+  const toggleActiveButton = root.querySelector("#active-button");
+  const toggleCompletedButton = root.querySelector("#completed-button");
+  toggleActiveButton.addEventListener("click", () => {
+    toggleActiveButton.classList.add("active");
+    toggleCompletedButton.classList.remove("active");
+    getOrder("?status=active");
+  });
+  toggleCompletedButton.addEventListener("click", async () => {
+    toggleCompletedButton.classList.add("active");
+    toggleActiveButton.classList.remove("active");
+    getOrder("?status=completed");
+  });
+}
+
+async function getOrder(endpoint) {
+  const BASE_URL = `http://localhost:3000/orders`;
   let user = JSON.parse(localStorage.getItem("user"));
   await axios
-    .get(url)
+    .get(BASE_URL + endpoint)
     .then((res) => {
       let data = res.data.filter((data) => data.userId === user.id);
-      render(data);
+      let requestedUrl = res.request.responseURL;
+      render(data, requestedUrl);
     })
     .then(showSingleProduct())
     .catch((error) => console.log(error));
 }
 
-function render(data, status, action) {
-  const cardContainer = document.querySelector("#card-container");
-  cardContainer.innerHTML = "";
-  data.forEach((records) => {
-    Object.values(records.cart).forEach((product) => {
-      const card = Card({
-        id: product.id,
-        content: product.name,
-        price: product.price,
-        imgSrc: product.thumbnail,
-        variant: "orders",
-        colorCode: product.colorCode,
-        colorName: product.colorName,
-        quantity: product.quantity,
-        size: product.size,
+function render(data, requestedUrl) {
+  const cardContainer = root.querySelector("#card-container");
+  let requestedStatus = requestedUrl.includes("active")
+    ? "Active"
+    : "Completed";
+  if (!data || data.length === 0) {
+    cardContainer.innerHTML = `
+      <div class="flex-grow flex flex-col justify-center items-center pt-16">
+        <img src="/public/images/Empty state icon..svg">
+        <div class="font-bold text-[22px]">Your ${requestedStatus} Order List Is Empty!</div>
+        <div class="font-semibold text-[#757475] pt-4">You can see the products on the Home page.</div>
+      </div>
+    `;
+  } else {
+    cardContainer.innerHTML = "";
+    data.forEach((records) => {
+      Object.values(records.cart).forEach((product) => {
+        const card = Card({
+          id: product.id,
+          content: product.name,
+          price: product.price,
+          imgSrc: product.thumbnail,
+          variant: "orders",
+          colorCode: product.colorCode,
+          colorName: product.colorName,
+          quantity: product.quantity,
+          size: product.size,
+          type: requestedUrl,
+        });
+        cardContainer.append(card);
       });
-      cardContainer.append(card);
     });
-  });
+  }
 }
