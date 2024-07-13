@@ -54,17 +54,17 @@ export function SingleProduct({
         </div>
         <div class="pt-4">
             <div>
-                <p class="text-xl font-extrabold pb-2">Description</p>
+                <p class="text-lg font-extrabold pb-2">Description</p>
                 <p class="max-h-[3em] overflow-hidden relative">${description}<a class="absolute right-0 bottom-0 font-semibold bg-white pl-2">view more...</a></p>
             </div>
             <div class="pt-4 flex items-center gap-8">
                 <div class="flex-col flex">
-                    <div class="text-xl font-extrabold pb-2">Size</div>
-                    <div id="size-container" class="flex items-center justify-between gap-3 h-[45px]">
+                    <div class="text-lg font-extrabold pb-1">Size</div>
+                    <div id="size-container" class="flex items-center justify-between gap-2 h-[45px]">
                     ${sizes
                       .map(
                         (size) => `
-                        <div data-selected="false" class="sizeButton w-10 h-10 border-[3px] flex items-center justify-center border-[#6C757D] text-[#6C757D] font-bold rounded-full">${size}</div>
+                        <div data-selected="false" class="sizeButton w-10 h-10 border-[2.4px] flex items-center justify-center border-[#6C757D] text-[#6C757D] font-bold rounded-full">${size}</div>
                       `
                       )
                       .join("")}
@@ -72,12 +72,12 @@ export function SingleProduct({
                     </div>
                 </div>
                 <div class="scroll-hidden flex-col flex overflow-x-auto flex-nowrap whitespace-nowraps">
-                    <div class="text-xl font-extrabold pb-2">Color</div>
-                    <div class="flex items-center gap-2 h-[45px]">
+                    <div class="text-lg font-extrabold pb-1">Color</div>
+                    <div class="flex items-center gap-[10px] h-[45px]">
                     ${colors
                       .map((color) => {
                         return `
-                          <div data-color="${color.colorName}" data-selected="false" class="colorButton w-10 h-10 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"><img src="" id="check-img" class="w-8"></div>
+                          <div data-color="${color.colorName}" data-selected="false" class="colorButton w-9 h-9 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"><img src="" id="check-img" class="w-6"></div>
                         `;
                       })
                       .join("")}
@@ -85,7 +85,7 @@ export function SingleProduct({
                 </div>
             </div>
             <div class="py-4 flex items-center gap-6">
-                 <div class="text-xl font-extrabold">Quantity</div>
+                 <div class="text-lg font-extrabold">Quantity</div>
                  <div class="bg-[#e9e9e9] rounded-3xl flex items-center gap-4 py-2 px-4">
                     <div><img src="/public/images/minus.svg" id="minus-button" class="w-6 cursor-pointer"></div>
                     <div class="text-xl font-extrabold" id="quantity-number">1</div>
