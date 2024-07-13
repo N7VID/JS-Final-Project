@@ -10,6 +10,8 @@ export function Card({
   quantity = "",
   size = "",
   type = "",
+  sold = "",
+  vote = "",
   ...restProps
 }) {
   const attributesString = (props) => {
@@ -152,6 +154,32 @@ export function Card({
         </div>
       </div>      
     `,
+    wishlist: `
+    <div id="${id}" class="card my-0 mx-auto max-w-[182px] cursor-pointer relative">
+    <div class="w-[30px] h-[30px] bg-gradient-to-l from-[#1b1d1d] to-[#414345] rounded-full flex justify-center items-center z-10 absolute top-5 right-5">
+      <img src="/public/images/heart-solid-white.svg" class="w-4">
+    </div>
+
+    <div class="absolute top-5 left-5 w-[30px] h-[30px] bg-gradient-to-l from-[#1b1d1d] to-[#414345] rounded-full flex justify-center items-center z-10 ">
+        <img src="/public/images/bin-white.svg" class="w-4">
+    </div>
+
+        <div class="bg-[#F3F3F3] rounded-[24px] h-[180px] w-[180px] flex justify-center items-center laptop:h-[150px] laptop:w-[150px]">
+          <img src=${imgSrc} alt="shoe picture" class="w-[142px] h-[142px] object-contain rounded-full laptop:h-[110px] laptop:w-[110px]">
+        </div>
+        <div class="flex flex-col gap-1">
+          <span class="font-bold text-[18px] text-black pt-2 text-nowrap overflow-hidden text-ellipsis leading-6 tracking-tight laptop:text-[16px]">${content}</span>
+            <div class="py-1 flex items-center gap-3 text-black">
+              <div class="text-[13px] font-medium flex items-center gap-1 justify-around border-r-2 border-[#ccc] pr-2 rounded-r-[1px]">
+                <img src="/public/images/star.svg" class="w-5">
+                <span>${vote}</span>
+              </div>
+              <div class="font-semibold text-[12px] bg-[#e9e9e9] w-fit py-[4px] px-3 rounded-lg">${sold} sold</div>
+              
+            </div>
+          <span class="text-lg font-semibold text-black leading-5 laptop:text-[14px]">$ ${price}</span>
+        </div>
+    </div>`,
   };
   const className = variantClasses[variant] || "";
   const div = document.createElement("div");

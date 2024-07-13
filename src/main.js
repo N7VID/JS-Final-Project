@@ -52,6 +52,7 @@ import {
   getCategoryHomePage,
   getCategoryMostPopular,
 } from "./utility/getCategory";
+import { wishListPage } from "./pages/wishlist/wishlist";
 
 export const router = new Navigo("/");
 export const routes = {
@@ -71,6 +72,7 @@ export const routes = {
   chooseShipping: "/chooseShipping",
   payment: "/payment",
   orders: "/orders",
+  wishlist: "/wishlist",
 };
 export const root = document.getElementById("app");
 
@@ -230,6 +232,11 @@ router
       checkAuth(() =>
         render(ordersPage(), [showSingleProduct, handleToggleStatus])
       )
+    )
+  )
+  .on(routes.wishlist, () =>
+    secondVisited(() =>
+      checkAuth(() => render(wishListPage(), [handleStyleCategoryHomepage]))
     )
   )
   .resolve();

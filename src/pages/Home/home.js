@@ -22,7 +22,7 @@ export function homePage(data) {
       </div>
       <div class="flex w-16 justify-between">
          <img src="/images/bell - outline.svg" class="w-7 cursor-pointer">
-         <img src="/images/heart - outline.svg" class="w-7 cursor-pointer">
+         <img src="/images/heart - outline.svg" class="w-7 cursor-pointer" id="wishlist">
       </div>
     </header>
     <div class="flex justify-center laptop:p-3">
@@ -121,6 +121,10 @@ export function homePage(data) {
   div.querySelector("#see-all-btn").addEventListener("click", () => {
     router.navigate("/mostPopular");
   });
+
+  div
+    .querySelector("#wishlist")
+    .addEventListener("click", () => router.navigate("/wishlist"));
 
   return div;
 }

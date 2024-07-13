@@ -41,7 +41,7 @@ export function SingleProduct({
         <div class="pt-7 border-b-2 border-[#e9e9e9]">
             <div class="flex justify-between">
                 <p class="text-[#152536] text-3xl font-extrabold text-nowrap text-ellipsis overflow-hidden">${name}</p>
-                <img src="/public/images/heart - outline.svg" class="w-8">
+                <img src="/public/images/heart - outline.svg" class="w-8" id="wishlist">
             </div>
             <div class="py-4 flex items-center gap-4 text-[#152536]">
                 <div class="font-semibold text-[12px] bg-[#e9e9e9] w-fit py-[6px] px-3 rounded-lg">${sold} sold</div>
@@ -255,6 +255,21 @@ export function SingleProduct({
       });
       toastContainer.appendChild(toast);
     }
+  });
+
+  div.querySelector("#wishlist").addEventListener("click", () => {
+    let wishList = localStorage.getItem("wishlist");
+    wishList = wishList ? JSON.parse(wishList) : [];
+    const newWishlist = {
+      id,
+      name,
+      vote,
+      sold,
+      img: images[0],
+      price,
+    };
+    wishList.push(newWishlist);
+    localStorage.setItem("wishlist", JSON.stringify(wishList));
   });
 
   return div;
