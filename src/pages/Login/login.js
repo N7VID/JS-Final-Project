@@ -12,6 +12,7 @@ import { router } from "../../main";
 import { loginApi } from "./api/login-api";
 import { Button } from "../../components/button/button";
 import { Toast } from "../../components/toast/toast";
+import debounce from "lodash.debounce";
 
 export function loginPage() {
   const div = document.createElement("div");
@@ -76,14 +77,10 @@ export function checkValidation() {
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
 
-  emailInput.addEventListener("blur", () => {
-    emailValidation();
-    formIsValid();
-  });
-  passwordInput.addEventListener("blur", () => {
-    passwordValidation();
-    formIsValid();
-  });
+  emailInput.addEventListener("keydown", debounce(emailValidation, 800));
+  passwordInput.addEventListener("keydown", debounce(passwordValidation, 800));
+  passwordInput.addEventListener("blur", debounce(formIsValid, 10));
+  emailInput.addEventListener("blur", debounce(formIsValid, 10));
 }
 
 export function login() {

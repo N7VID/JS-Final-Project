@@ -1,3 +1,4 @@
+import debounce from "lodash.debounce";
 import { Toast } from "../../components/toast/toast";
 import { router } from "../../main";
 import {
@@ -28,7 +29,7 @@ export function signupPage() {
               <div class="relative">
                 <img src="/public/images/profile-1.svg" id="name-icon" alt="name-logo" class="w-5 absolute left-3 top-2">
                 <input autocomplete="on" type="text" placeholder="Full Name" id="name" class="rounded-[4px] w-[380px] h-[37px] bg-[#FAFAFA] pl-10 placeholder:text-[#6C757D]"/>
-                <p id="error1" class="text-[12px] text-[#f71616] font-semibold mt-3"></p>
+                <p id="error" class="text-[12px] text-[#f71616] font-semibold mt-3"></p>
               </div>
 
               <div class="relative">
@@ -83,14 +84,10 @@ export function checkValidationSignUp() {
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
 
-  emailInput.addEventListener("blur", () => {
-    emailValidation();
-    formIsValid();
-  });
-  passwordInput.addEventListener("blur", () => {
-    passwordValidation();
-    formIsValid();
-  });
+  emailInput.addEventListener("keydown", debounce(emailValidation, 800));
+  passwordInput.addEventListener("keydown", debounce(passwordValidation, 800));
+  passwordInput.addEventListener("blur", debounce(formIsValid, 10));
+  emailInput.addEventListener("blur", debounce(formIsValid, 10));
 }
 
 export function signup() {
