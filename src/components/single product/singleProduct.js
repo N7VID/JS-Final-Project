@@ -1,7 +1,6 @@
 import Splide from "@splidejs/splide";
-import { Toast } from "../toast/toast";
-import { NavBar } from "../navbar mobile/navbar";
 import { router } from "../../main";
+import { Toast } from "../toast/toast";
 
 export function SingleProduct({
   id,
@@ -18,6 +17,7 @@ export function SingleProduct({
   inStock,
 }) {
   const div = document.createElement("div");
+  div.classList = "laptop:flex laptop:justify-center laptop:py-32 laptop:px-2";
   div.innerHTML = `
     <section class="my-bg splide w-[428px] h-[428px] p-0" aria-labelledby="carousel-heading">
         <a id="back-home-btn" class="absolute top-[16px] left-[24px] z-10"><img src="/public/images/arrow-left.svg" class="w-7"></a>
@@ -37,7 +37,7 @@ export function SingleProduct({
           </ul>       
         </div>
     </section>
-    <div class="font-inter px-5 pb-[85px]">
+    <div class="font-inter px-5 laptop:w-2/3 cursor-default">
         <div class="pt-7 border-b-2 border-[#e9e9e9]">
             <div class="flex justify-between">
                 <p class="text-[#152536] text-3xl font-extrabold text-nowrap text-ellipsis overflow-hidden">${name}</p>
@@ -57,10 +57,10 @@ export function SingleProduct({
                 <p class="text-lg font-extrabold pb-2">Description</p>
                 <p class="max-h-[3em] overflow-hidden relative">${description}<a class="absolute right-0 bottom-0 font-semibold bg-white pl-2">view more...</a></p>
             </div>
-            <div class="pt-4 flex items-center gap-8">
+            <div class="pt-4 flex items-center gap-8 laptop:justify-around laptop:pb-4">
                 <div class="flex-col flex">
                     <div class="text-lg font-extrabold pb-1">Size</div>
-                    <div id="size-container" class="flex items-center justify-between gap-2 h-[45px]">
+                    <div id="size-container" class="flex items-center justify-between gap-2 h-[45px] cursor-default">
                     ${sizes
                       .map(
                         (size) => `
@@ -73,7 +73,7 @@ export function SingleProduct({
                 </div>
                 <div class="scroll-hidden flex-col flex overflow-x-auto flex-nowrap whitespace-nowraps">
                     <div class="text-lg font-extrabold pb-1">Color</div>
-                    <div class="flex items-center gap-[10px] h-[45px]">
+                    <div class="flex items-center gap-[10px] h-[45px] cursor-default">
                     ${colors
                       .map((color) => {
                         return `
@@ -83,8 +83,16 @@ export function SingleProduct({
                       .join("")}
                     </div>
                 </div>
+                <div class="py-4 items-center gap-6 hidden laptop:flex">
+                 <div class="text-lg font-extrabold">Quantity</div>
+                 <div class="bg-[#e9e9e9] rounded-3xl flex items-center gap-4 py-2 px-4">
+                    <div><img src="/public/images/minus.svg" id="minus-button" class="w-6 cursor-pointer"></div>
+                    <div class="text-xl font-extrabold cursor-default" id="quantity-number">1</div>
+                    <div><img src="/public/images/add.svg" id="add-button" class="w-6 cursor-pointer"></div>
+                 </div>
             </div>
-            <div class="py-4 flex items-center gap-6">
+            </div>
+            <div class="py-4 flex items-center gap-6 laptop:hidden">
                  <div class="text-lg font-extrabold">Quantity</div>
                  <div class="bg-[#e9e9e9] rounded-3xl flex items-center gap-4 py-2 px-4">
                     <div><img src="/public/images/minus.svg" id="minus-button" class="w-6 cursor-pointer"></div>
@@ -97,19 +105,14 @@ export function SingleProduct({
                     <span class="text-[#757475]">Total price</span>
                     <span class="text-2xl font-extrabold">$<span id="price-number">${price}</span></span>
                 </div>
-                <div id="button-submit" class="bg-black rounded-full py-4 min-w-[260px] px-[70px] max-h-[56px] text-white font-medium shadow-[#acacac] shadow-md flex justify-between gap-2 items-center">
+                <div id="button-submit" class="cursor-pointer bg-black rounded-full py-4 min-w-[260px] px-[70px] max-h-[56px] text-white font-medium shadow-[#acacac] shadow-md flex justify-between gap-2 items-center">
                     <img src="/public/images/cart-single.svg" class="w-6">
                     <div>Add to Cart</div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="navbar-container"></div>
   `;
-
-  const navbar = NavBar();
-  const navbarContainer = div.querySelector("#navbar-container");
-  navbarContainer.append(navbar);
 
   setTimeout(() => {
     new Splide(".splide", {
