@@ -1,7 +1,13 @@
+import axios from "axios";
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
 import { Category } from "../../components/scrollable category/category";
-import { router } from "../../main";
+import { render, router } from "../../main";
+import { getCategoryHomePage } from "../../utility/getCategory";
+import { handleStyleCategoryHomepage } from "../../utility/StyleCategory";
+import { categoryPageHandler } from "../Category/category";
+import { productPageHandler } from "../product/product";
+import debounce from "lodash.debounce";
 
 export function homePage(data) {
   const div = document.createElement("div");
@@ -117,4 +123,23 @@ export function homePage(data) {
   });
 
   return div;
+}
+
+export function searchInputHandler() {
+  const searchInput = document.querySelector("#search");
+  searchInput.addEventListener("keydown", debounce(getSearch, 1000));
+}
+function getSearch(e) {
+  axios
+    .get(`http://localhost:3000/products?q=${e.target.value}`)
+    .then((res) => {
+      render(homePage(res.data), [
+        getCategoryHomePage,
+        handleStyleCategoryHomepage,
+        categoryPageHandler,
+        productPageHandler,
+        searchInputHandler,
+      ]);
+    })
+    .catch((err) => console.log(err));
 }

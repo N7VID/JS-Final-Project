@@ -3,7 +3,7 @@ import Navigo from "navigo";
 
 import { categoryPageHandler } from "./pages/Category/category";
 import { homePageApi } from "./pages/Home/api/product-api";
-import { homePage } from "./pages/Home/home";
+import { homePage, searchInputHandler } from "./pages/Home/home";
 import {
   checkValidation,
   login,
@@ -127,6 +127,7 @@ router
               handleStyleCategoryHomepage,
               categoryPageHandler,
               productPageHandler,
+              searchInputHandler,
             ])
           )
         );
