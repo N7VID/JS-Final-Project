@@ -4,10 +4,10 @@ import { checkAuth, render, router, secondVisited } from "../../main";
 import { productPageHandler } from "../product/product";
 import { categoryApi } from "./api/category-api";
 let brandName = "";
-export function categoryPage(brand, data) {
+export function categoryPage(data) {
   let url = window.location.pathname;
   let parts = url.split("/");
-  brandName = parts[2].split("%20").join(" ");
+  brandName = parts[2].split("-").join(" ");
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="flex items-center space-x-6 px-6 py-4">
@@ -43,26 +43,24 @@ export function categoryPage(brand, data) {
   });
   return div;
 }
-export function categoryPageHandler(slug) {
-  let brand = slug;
-
+export function categoryPageHandler(match) {
+  if (match) {
+    let brand = match.data.brand.split("-").join(" ");
+    categoryApi(brand)
+      .then((res) =>
+        secondVisited(() =>
+          checkAuth(() => render(categoryPage(res.data), [productPageHandler]))
+        )
+      )
+      .catch((err) => console.log(err));
+  }
   const buttons = document.querySelectorAll(".categoryButton");
   buttons.forEach((button) => {
     if (button.id !== "More") {
       button.addEventListener("click", (e) => {
         let target = e.target.closest("[id]");
         let categoryId = target.id;
-        categoryId = categoryId.split("-").join(" ");
         router.navigate(`/category/${categoryId}`);
-        categoryApi(categoryId)
-          .then((res) =>
-            secondVisited(() =>
-              checkAuth(() =>
-                render(categoryPage(brand, res.data), [productPageHandler])
-              )
-            )
-          )
-          .catch((err) => console.log(err));
       });
     }
   });

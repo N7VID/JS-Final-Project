@@ -30,7 +30,6 @@ export function productPage(product) {
 }
 
 export function productPageHandler(match) {
-  console.log(match);
   if (match) {
     productApi(match.data.id)
       .then((res) =>
@@ -45,13 +44,6 @@ export function productPageHandler(match) {
     card.addEventListener("click", (e) => {
       let target = e.target.closest("[id]");
       router.navigate(`/product/${target.id}`);
-      productApi(target.id)
-        .then((res) =>
-          secondVisited(() => checkAuth(() => render(productPage(res.data))))
-        )
-        .catch((err) => {
-          console.log(err);
-        });
     });
   });
 }

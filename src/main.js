@@ -179,7 +179,7 @@ router
       })
       .catch((e) => console.log(e))
   )
-  .on(routes.category, (slug) => categoryPageHandler(slug.data.brand))
+  .on(routes.category, (match) => categoryPageHandler(match))
 
   .on(routes.cart, () =>
     secondVisited(() =>
