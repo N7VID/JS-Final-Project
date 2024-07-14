@@ -42,6 +42,7 @@ export function SingleProduct({
             <div class="flex justify-between">
                 <p class="text-[#152536] text-3xl font-extrabold text-nowrap text-ellipsis overflow-hidden">${name}</p>
                 <img src="/public/images/heart - outline.svg" class="w-8" id="wishlist">
+                <img src="/public/images/heart - solid.svg" class="w-8 hidden" id="del-wishlist">
             </div>
             <div class="py-4 flex items-center gap-4 text-[#152536]">
                 <div class="font-semibold text-[12px] bg-[#e9e9e9] w-fit py-[6px] px-3 rounded-lg">${sold} sold</div>
@@ -254,7 +255,11 @@ export function SingleProduct({
     }
   });
 
-  div.querySelector("#wishlist").addEventListener("click", () => {
+  const wishlistButton = div.querySelector("#wishlist");
+  const deleteWishList = div.querySelector("#del-wishlist");
+  wishlistButton.addEventListener("click", () => {
+    wishlistButton.classList.add("hidden");
+    deleteWishList.classList.remove("hidden");
     let wishList = localStorage.getItem("wishlist");
     wishList = wishList ? JSON.parse(wishList) : [];
     const newWishlist = {
@@ -268,6 +273,25 @@ export function SingleProduct({
     wishList.push(newWishlist);
     localStorage.setItem("wishlist", JSON.stringify(wishList));
   });
+  deleteWishList.addEventListener("click", () => {
+    wishlistButton.classList.remove("hidden");
+    deleteWishList.classList.add("hidden");
+    let wishList = localStorage.getItem("wishlist");
+    wishList = wishList ? JSON.parse(wishList) : [];
+    wishList = wishList.filter((card) => card.id !== id);
+    localStorage.setItem("wishlist", JSON.stringify(wishList));
+  });
+
+  let wishList = localStorage.getItem("wishlist");
+  wishList = wishList ? JSON.parse(wishList) : [];
+  wishList = wishList?.filter((card) => card.id === id);
+  if (!wishList || wishList.length === 0) {
+    wishlistButton.classList.remove("hidden");
+    deleteWishList.classList.add("hidden");
+  } else {
+    wishlistButton.classList.add("hidden");
+    deleteWishList.classList.remove("hidden");
+  }
 
   return div;
 }

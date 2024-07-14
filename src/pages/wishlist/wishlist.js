@@ -14,7 +14,7 @@ export function wishListPage() {
         <a href="/" data-navigo><img src="/public/images/search icon.svg" class="w-8"></a>
     </div>
     <div id="category-scroll-container" class="max-w-[1024px] my-0 mx-auto overflow-hidden"></div>
-    <div class="flex flex-col pt-8 pb-48 gap-8" id="empty-container"></div>
+    <div class="hidden flex-col pt-8 pb-48 gap-8" id="empty-container"></div>
     <div class="max-w-[1300px] my-0 mx-auto mb-[80px] grid grid-cols-2 px-6 pt-4 pb-[85px] gap-x-3 gap-y-5 laptop:grid-cols-4 tablet:grid-cols-3" id="card-container"></div>    
   </div>
     <div id="navbar-container"></div>
@@ -39,10 +39,16 @@ export function wishListPage() {
   const categoryContainer = div.querySelector("#category-scroll-container");
   categoryContainer.append(category);
 
-  const cardContainer = div.querySelector("#card-container");
-  const empty = div.querySelector("#empty-container");
+  return div;
+}
+
+export function showWishlistCards() {
+  const cardContainer = document.querySelector("#card-container");
+  const empty = document.querySelector("#empty-container");
   const wishList = JSON.parse(localStorage.getItem("wishlist"));
   if (!wishList || wishList.length === 0) {
+    empty.classList.add("flex");
+    empty.classList.remove("hidden");
     empty.innerHTML = `
     <div class="flex-grow flex flex-col justify-center items-center pt-16">
     <img src="/public/images/Empty state icon..svg">
@@ -65,6 +71,4 @@ export function wishListPage() {
       cardContainer.append(cardComponent);
     });
   }
-
-  return div;
 }
