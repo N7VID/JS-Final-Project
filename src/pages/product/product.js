@@ -29,7 +29,17 @@ export function productPage(product) {
   return div;
 }
 
-export function productPageHandler() {
+export function productPageHandler(match) {
+  console.log(match);
+  if (match) {
+    productApi(match.data.id)
+      .then((res) =>
+        secondVisited(() => checkAuth(() => render(productPage(res.data))))
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     card.addEventListener("click", (e) => {

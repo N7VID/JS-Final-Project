@@ -163,7 +163,7 @@ router
       )
     )
   )
-  .on(routes.product, () => productPageHandler())
+  .on(routes.product, (match) => productPageHandler(match))
   .on(routes.mostPopular, () =>
     homePageApi()
       .then((res) => {

@@ -19,6 +19,12 @@
       "password": "$2a$10$.gWimJ.FUaDwpr2XOdanTumEWP/6nMzORhNdztEBZy4n5kSLJK66a",
       "name": "isabel jones",
       "id": 2
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$aIyM1lTKhYjcQHR3tHHeHug2wccsVyXxFjMGQ1UbjeaPEiHQe4iyK",
+      "name": "Pouria",
+      "id": 3
     }
   ],
   "orders": [
