@@ -1,17 +1,13 @@
 import { SingleProduct } from "../../components/single product/singleProduct";
-import { root, router } from "../../main";
+import { checkAuth, render, root, router, secondVisited } from "../../main";
 import { productApi } from "./api/product-api";
 
-export function productPage() {
+export function productPage(product) {
   const div = document.createElement("div");
   div.innerHTML = `
   <div id="product-Container"></div>
   `;
-  return div;
-}
-
-export function renderSingleProduct(product) {
-  const productContainer = root.querySelector("#product-Container");
+  const productContainer = div.querySelector("#product-Container");
   productContainer.innerHTML = "";
   const single = SingleProduct({
     id: product.id,
@@ -29,21 +25,23 @@ export function renderSingleProduct(product) {
   });
 
   productContainer.append(single);
+
+  return div;
 }
 
 export function productPageHandler() {
-  setTimeout(() => {
-    const cards = document.querySelectorAll(".card");
-    cards.forEach((card) => {
-      card.addEventListener("click", (e) => {
-        let target = e.target.closest("[id]");
-        router.navigate(`/product/${target.id}`);
-        productApi(target.id)
-          .then((res) => renderSingleProduct(res.data))
-          .catch((err) => {
-            console.log(err);
-          });
-      });
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      let target = e.target.closest("[id]");
+      router.navigate(`/product/${target.id}`);
+      productApi(target.id)
+        .then((res) =>
+          secondVisited(() => checkAuth(() => render(productPage(res.data))))
+        )
+        .catch((err) => {
+          console.log(err);
+        });
     });
-  }, 100);
+  });
 }

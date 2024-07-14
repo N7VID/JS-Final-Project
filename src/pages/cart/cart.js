@@ -1,9 +1,8 @@
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
 import { Toast } from "../../components/toast/toast";
-import { root, router } from "../../main";
+import { router } from "../../main";
 import { productApi } from "../product/api/product-api";
-import { renderSingleProduct } from "../product/product";
 import { Modal } from "./components/modal/modal";
 
 export function cartPage() {
@@ -252,7 +251,7 @@ export function showSingleProduct() {
         const id = card.querySelector("img").getAttribute("data-id");
         router.navigate(`/product/${id}`);
         productApi(id)
-          .then((res) => renderSingleProduct(res.data))
+          .then((res) => productPage(res.data))
           .catch((err) => {
             console.log(err);
           });

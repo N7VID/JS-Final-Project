@@ -163,9 +163,7 @@ router
       )
     )
   )
-  .on(routes.product, () =>
-    secondVisited(() => checkAuth(() => render(productPage())))
-  )
+  .on(routes.product, () => productPageHandler())
   .on(routes.mostPopular, () =>
     homePageApi()
       .then((res) => {
