@@ -83,20 +83,14 @@ export function SingleProduct({
                       .join("")}
                     </div>
                 </div>
-                <div class="py-4 items-center gap-6 hidden laptop:flex">
+
+            </div>
+            </div>
+            <div class="py-4 flex items-center gap-6">
                  <div class="text-lg font-extrabold">Quantity</div>
                  <div class="bg-[#e9e9e9] rounded-3xl flex items-center gap-4 py-2 px-4">
                     <div><img src="/public/images/minus.svg" id="minus-button" class="w-6 cursor-pointer"></div>
                     <div class="text-xl font-extrabold cursor-default" id="quantity-number">1</div>
-                    <div><img src="/public/images/add.svg" id="add-button" class="w-6 cursor-pointer"></div>
-                 </div>
-            </div>
-            </div>
-            <div class="py-4 flex items-center gap-6 laptop:hidden">
-                 <div class="text-lg font-extrabold">Quantity</div>
-                 <div class="bg-[#e9e9e9] rounded-3xl flex items-center gap-4 py-2 px-4">
-                    <div><img src="/public/images/minus.svg" id="minus-button" class="w-6 cursor-pointer"></div>
-                    <div class="text-xl font-extrabold" id="quantity-number">1</div>
                     <div><img src="/public/images/add.svg" id="add-button" class="w-6 cursor-pointer"></div>
                  </div>
             </div>

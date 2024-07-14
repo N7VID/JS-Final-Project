@@ -14,6 +14,7 @@ export function wishListPage() {
         <a href="/" data-navigo><img src="/public/images/search icon.svg" class="w-8"></a>
     </div>
     <div id="category-scroll-container" class="max-w-[1024px] my-0 mx-auto overflow-hidden"></div>
+    <div class="flex flex-col pt-8 pb-48 gap-8" id="empty-container"></div>
     <div class="max-w-[1300px] my-0 mx-auto mb-[80px] grid grid-cols-2 px-6 pt-4 pb-[85px] gap-x-3 gap-y-5 laptop:grid-cols-4 tablet:grid-cols-3" id="card-container"></div>    
   </div>
     <div id="navbar-container"></div>
@@ -39,20 +40,31 @@ export function wishListPage() {
   categoryContainer.append(category);
 
   const cardContainer = div.querySelector("#card-container");
+  const empty = div.querySelector("#empty-container");
   const wishList = JSON.parse(localStorage.getItem("wishlist"));
-  cardContainer.innerHTML = "";
-  wishList.forEach((card) => {
-    const cardComponent = Card({
-      id: card.id,
-      content: card.name,
-      price: card.price,
-      imgSrc: card.img,
-      variant: "wishlist",
-      sold: card.sold,
-      vote: card.vote,
+  if (!wishList || wishList.length === 0) {
+    empty.innerHTML = `
+    <div class="flex-grow flex flex-col justify-center items-center pt-16">
+    <img src="/public/images/Empty state icon..svg">
+    <div class="font-bold text-[22px]">Your WishList is Empty!</div>
+    <div class="font-semibold text-[#757475] pt-4">You can see the products on the Home page.</div>
+    </div>
+    `;
+  } else {
+    cardContainer.innerHTML = "";
+    wishList.forEach((card) => {
+      const cardComponent = Card({
+        id: card.id,
+        content: card.name,
+        price: card.price,
+        imgSrc: card.img,
+        variant: "wishlist",
+        sold: card.sold,
+        vote: card.vote,
+      });
+      cardContainer.append(cardComponent);
     });
-    cardContainer.append(cardComponent);
-  });
+  }
 
   return div;
 }
