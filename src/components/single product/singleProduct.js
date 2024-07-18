@@ -272,6 +272,12 @@ export function SingleProduct({
     };
     wishList.push(newWishlist);
     localStorage.setItem("wishlist", JSON.stringify(wishList));
+
+    const toast = Toast({
+      content: "Added to your WishList!",
+      variant: "success",
+    });
+    toastContainer.appendChild(toast);
   });
   deleteWishList.addEventListener("click", () => {
     wishlistButton.classList.remove("hidden");
@@ -280,6 +286,12 @@ export function SingleProduct({
     wishList = wishList ? JSON.parse(wishList) : [];
     wishList = wishList.filter((card) => card.id !== id);
     localStorage.setItem("wishlist", JSON.stringify(wishList));
+
+    const toast = Toast({
+      content: "Removed from your WishList!",
+      variant: "success",
+    });
+    toastContainer.appendChild(toast);
   });
 
   let wishList = localStorage.getItem("wishlist");
