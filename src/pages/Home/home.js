@@ -119,7 +119,7 @@ export function homePage(data) {
   welcomeName.innerHTML = user.fullName;
 
   div.querySelector("#see-all-btn").addEventListener("click", () => {
-    router.navigate("/mostPopular");
+    router.navigate("/most-popular");
   });
 
   div

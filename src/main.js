@@ -64,7 +64,7 @@ export const routes = {
   home: "/",
   signup: "/signup",
   product: "/product/:id",
-  mostPopular: "/mostPopular",
+  mostPopular: "/most-popular",
   category: "/category/:brand",
   cart: "/cart",
   checkout: "/checkout",
