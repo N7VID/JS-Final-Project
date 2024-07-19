@@ -51,6 +51,7 @@ import { handleStyleCategoryHomepage } from "./utility/StyleCategory";
 import {
   getCategoryHomePage,
   getCategoryMostPopular,
+  getCategoryWishList,
 } from "./utility/getCategory";
 import { showWishlistCards, wishListPage } from "./pages/wishlist/wishlist";
 
@@ -235,7 +236,12 @@ router
   .on(routes.wishlist, () =>
     secondVisited(() =>
       checkAuth(() =>
-        render(wishListPage(), [handleStyleCategoryHomepage, showWishlistCards])
+        render(wishListPage(), [
+          handleStyleCategoryHomepage,
+          showWishlistCards,
+          productPageHandler,
+          getCategoryWishList,
+        ])
       )
     )
   )

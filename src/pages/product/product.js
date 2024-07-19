@@ -22,6 +22,7 @@ export function productPage(product) {
     price: product.price,
     isInStock: product.is_in_stock,
     inStock: product.in_stock,
+    brand: product.brand,
   });
 
   productContainer.append(single);

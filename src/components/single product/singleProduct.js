@@ -15,6 +15,7 @@ export function SingleProduct({
   price,
   isInStock,
   inStock,
+  brand,
 }) {
   const div = document.createElement("div");
   div.classList = "laptop:flex laptop:justify-center laptop:py-32 laptop:px-2";
@@ -269,6 +270,7 @@ export function SingleProduct({
       sold,
       img: images[0],
       price,
+      brand,
     };
     wishList.push(newWishlist);
     localStorage.setItem("wishlist", JSON.stringify(wishList));

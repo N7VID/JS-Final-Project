@@ -42,13 +42,14 @@ export function wishListPage() {
   return div;
 }
 
-export function showWishlistCards() {
+export function showWishlistCards(data) {
   const cardContainer = document.querySelector("#card-container");
   const empty = document.querySelector("#empty-container");
   const wishList = JSON.parse(localStorage.getItem("wishlist"));
-  if (!wishList || wishList.length === 0) {
+  if (!data || data.length === 0) {
     empty.classList.add("flex");
     empty.classList.remove("hidden");
+    cardContainer.innerHTML = "";
     empty.innerHTML = `
     <div class="flex-grow flex flex-col justify-center items-center pt-16">
     <img src="/public/images/Empty state icon..svg">
@@ -57,8 +58,12 @@ export function showWishlistCards() {
     </div>
     `;
   } else {
+    empty.classList.remove("flex");
+    empty.classList.add("hidden");
     cardContainer.innerHTML = "";
-    wishList.forEach((card) => {
+
+    const cardsToShow = data && data.length > 0 ? data : wishList;
+    cardsToShow.forEach((card) => {
       const cardComponent = Card({
         id: card.id,
         content: card.name,
