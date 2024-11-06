@@ -8,6 +8,7 @@ import { handleStyleCategoryHomepage } from "../../utility/StyleCategory";
 import { categoryPageHandler } from "../Category/category";
 import { productPageHandler } from "../product/product";
 import debounce from "lodash.debounce";
+import { BASE_URL } from "../../constants";
 
 export function homePage(data) {
   const div = document.createElement("div");
@@ -135,7 +136,7 @@ export function searchInputHandler() {
 }
 function getSearch(e) {
   axios
-    .get(`http://localhost:3000/products?q=${e.target.value}`)
+    .get(`${BASE_URL}/products?q=${e.target.value}`)
     .then((res) => {
       render(homePage(res.data), [
         getCategoryHomePage,

@@ -3,6 +3,7 @@ import { Card } from "../../components/product card/productCard";
 import { Toast } from "../../components/toast/toast";
 import { router } from "../../main";
 import { NavBar } from "../../components/navbar mobile/navbar";
+import { BASE_URL } from "../../constants";
 
 export function checkoutPage() {
   const div = document.createElement("div");
@@ -194,7 +195,7 @@ export function checkoutPage() {
 
   promoButton.addEventListener("click", () => {
     if (promoInput.value) {
-      axios.get("http://localhost:3000/Users").then((res) => {
+      axios.get(`${BASE_URL}/Users`).then((res) => {
         let userName = JSON.parse(localStorage.getItem("user"));
         let user = res.data.find((user) => user.name === userName.fullName);
         if (promoInput.value === user.promo.name) {

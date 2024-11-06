@@ -1,6 +1,7 @@
 import axios from "axios";
 import { NavBar } from "../../components/navbar mobile/navbar";
 import { ModalPayment } from "../Home/components/modal/modalPayment";
+import { BASE_URL } from "../../constants";
 
 export function paymentPage() {
   let totalReceipt = JSON.parse(localStorage.getItem("totalReceipt"));
@@ -156,14 +157,11 @@ export function handleConfirmPaymentButton() {
   confirmButton.addEventListener("click", async () => {
     try {
       const updatePromises = updatedObj.map((obj) =>
-        axios.patch(`http://localhost:3000/products/${obj.id}`, obj)
+        axios.patch(`${BASE_URL}/products/${obj.id}`, obj)
       );
       await Promise.all(updatePromises);
 
-      const orderResponse = await axios.post(
-        "http://localhost:3000/orders",
-        newObj
-      );
+      const orderResponse = await axios.post(`${BASE_URL}/orders`, newObj);
       if (orderResponse.status === 201) {
         localStorage.removeItem("cart");
         localStorage.removeItem("totalReceipt");

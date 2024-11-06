@@ -3,6 +3,7 @@ import { NavBar } from "../../components/navbar mobile/navbar";
 import { Card } from "../../components/product card/productCard";
 import { showSingleProduct } from "../cart/cart";
 import { root } from "../../main";
+import { BASE_URL } from "../../constants";
 
 export function ordersPage() {
   const div = document.createElement("div");
@@ -52,10 +53,9 @@ export function handleToggleStatus() {
 }
 
 async function getOrder(endpoint) {
-  const BASE_URL = `http://localhost:3000/orders`;
   let user = JSON.parse(localStorage.getItem("user"));
   await axios
-    .get(BASE_URL + endpoint)
+    .get(`${BASE_URL}/orders` + endpoint)
     .then((res) => {
       let data = res.data.filter((data) => data.userId === user.id);
       let requestedUrl = res.request.responseURL;
