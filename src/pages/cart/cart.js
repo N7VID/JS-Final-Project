@@ -83,9 +83,7 @@ export function cartPage() {
       const modalContainer = div.querySelector("#modal-container");
       let carts = JSON.parse(localStorage.getItem("cart"));
       const cardId = card.id;
-      console.log(card);
       let selectedCart = carts.find((cart) => cart.id === cardId);
-      console.log(selectedCart);
       if (selectedCart) {
         modalContainer.innerHTML = "";
         const modal = Modal({

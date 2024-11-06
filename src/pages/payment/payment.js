@@ -153,7 +153,6 @@ export function handleConfirmPaymentButton() {
     };
     updatedObj.push(eachUpdatedObj);
   });
-  console.log(updatedObj);
   confirmButton.addEventListener("click", async () => {
     try {
       const updatePromises = updatedObj.map((obj) =>
