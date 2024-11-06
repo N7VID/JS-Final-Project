@@ -50,6 +50,7 @@ export function checkoutPage() {
              <div class="flex items-center gap-8 pb-6">
                 <div id="input-container">
                     <input autocomplete="on" type="text" placeholder="Enter Promo Code" id="promo-input" class="rounded-xl w-[310px] h-11 bg-[#f5f5f5] placeholder:text-[#BAB8BC]  placeholder:font-normal pl-5 placeholder:tracking-tight"/>
+                    <div id="promo-value-container" class="hidden"></div>
                 </div>
                 <button id="promo-button" class="bg-black rounded-full w-11 h-11 flex justify-center items-center cursor-pointer"><img src="/public/images/add-white.svg" class="w-5"></button>
             </div> 
@@ -76,8 +77,10 @@ export function checkoutPage() {
 
             </div>
             <div class="w-full rounded-t-3xl flex items-center justify-around border-t-2 border-[#e9e9e9] bg-white pt-4 pb-[85px]">
-                <div id="button-container" class="bg-black rounded-full py-4 w-[380px] px-[70px] text-white font-medium flex justify-center gap-4 items-center shadow-cart">
-                    <div>Continue to Payment</div>
+                <div id="button-container" class="bg-black rounded-full py-4 w-[380px] px-[70px] text-white font-medium flex justify-center gap-4 items-center shadow-cart cursor-pointer">
+                    <span>
+                      Continue to Payment
+                    </span>
                     <img src="/public/images/arrow-right-white.svg" class="w-6">
                 </div>
             </div>
@@ -99,9 +102,7 @@ export function checkoutPage() {
   let shippingRecord = localStorage.getItem("shipping");
   if (shippingRecord) {
     shippingRecord = JSON.parse(shippingRecord);
-    let type = shippingRecord.type;
-    let price = shippingRecord.price;
-    let date = shippingRecord.date;
+    let { type, price, date } = shippingRecord;
     shippingContainer.innerHTML = `
         <div class="flex items-center justify-around shadow-cart shadow-gray-200 rounded-3xl w-[390px] h-[90px] px-4 my-0 mx-auto">
             <div class="rounded-full bg-gradient-to-tr from-[#232526] to-[#414345] w-14 h-14 flex justify-center items-center">
@@ -116,7 +117,7 @@ export function checkoutPage() {
                 </div>
             </div>
             <div class="font-bold leading-6 tracking-tight text-lg">$<span id="shipping">${price}</span></div>
-            <div class="">
+            <div>
                 <a href="/chooseShipping" data-navigo><img src="/public/images/edit.svg" class="w-6 cursor-pointer"></a>  
             </div>
         </div> 
@@ -130,7 +131,7 @@ export function checkoutPage() {
                     <span class="font-bold leading-6 tracking-tight w-[160px]">Choose Shipping Type</span> 
                 </div>
             </div>
-            <div class="">
+            <div>
                 <a href="/chooseShipping" data-navigo><img src="/public/images/chevron-right.svg" class="w-7"></a>  
             </div>
         </div>
@@ -189,54 +190,57 @@ export function checkoutPage() {
   const promoButton = div.querySelector("#promo-button");
   const promoInputContainer = div.querySelector("#input-container");
   const toastContainer = div.querySelector("#toast-container");
+  const promoValueContainer = div.querySelector("#promo-value-container");
+
   promoButton.addEventListener("click", () => {
-    axios.get("http://localhost:3000/Users").then((res) => {
-      let userName = JSON.parse(localStorage.getItem("user"));
-      let user = res.data.find((user) => user.name === userName.fullName);
-      console.log("value of input: " + promoInput.value);
-      console.log("value of promo: " + user.promo.name);
-      if (promoInput.value === user.promo.name) {
-        promoInputContainer.innerHTML = `
-            <div id="inner-container" data-promo="${user.promo.value}" class="px-7 py-2 bg-black rounded-[30px] flex items-center gap-4">
-                <div class="text-white font-semibold text-[18px]">Discount ${user.promo.value}% Off</div>
-                <div id="delete-promo" class="text-white font-semibold pb-[2px] text-[18px]">&times</div>
-            </div>
+    if (promoInput.value) {
+      axios.get("http://localhost:3000/Users").then((res) => {
+        let userName = JSON.parse(localStorage.getItem("user"));
+        let user = res.data.find((user) => user.name === userName.fullName);
+        if (promoInput.value === user.promo.name) {
+          promoValueContainer.classList.remove("hidden");
+          promoInput.classList.add("hidden");
+          promoValueContainer.innerHTML = `
+          <div id="inner-container" data-promo="${user.promo.value}" class="px-7 py-2 bg-black rounded-[30px] flex items-center gap-4">
+              <div class="text-white font-semibold text-[18px]">Discount ${user.promo.value}% Off</div>
+              <div id="delete-promo" class="text-white font-semibold pb-[2px] text-[18px]">&times</div>
+          </div>
         `;
-        promoInputContainer
-          .querySelector("#delete-promo")
-          .addEventListener("click", () => {
-            promoSpan.innerHTML = "-";
-            totalReceipt = parseFloat(totalAmount) + parseFloat(shippingAmount);
-            localStorage.setItem("totalReceipt", totalReceipt);
+          promoInputContainer
+            .querySelector("#delete-promo")
+            .addEventListener("click", () => {
+              promoSpan.innerHTML = "-";
+              totalReceipt =
+                parseFloat(totalAmount) + parseFloat(shippingAmount);
+              localStorage.setItem("totalReceipt", totalReceipt);
+              totalSpan.innerHTML = "$" + totalReceipt;
+              promoInput.value = "";
+              promoInput.classList.remove("hidden");
+              promoValueContainer.classList.add("hidden");
+            });
+          let promoValue = promoInputContainer
+            .querySelector("#inner-container")
+            .getAttribute("data-promo");
+          if (promoValue) {
+            promoAmount = (totalAmount * promoValue) / 100;
+            promoSpan.innerHTML = "-$" + promoAmount;
+            totalReceipt =
+              parseFloat(totalAmount) +
+              parseFloat(shippingAmount) -
+              parseFloat(promoAmount);
             totalSpan.innerHTML = "$" + totalReceipt;
-            promoInputContainer.innerHTML = `
-                <div id="input-container">
-                    <input autocomplete="on" type="text" placeholder="Enter Promo Code" id="promo-input" class="rounded-xl w-[310px] h-11 bg-[#f5f5f5] placeholder:text-[#BAB8BC]  placeholder:font-normal pl-5 placeholder:tracking-tight"/>
-                </div>
-        `;
+            localStorage.setItem("totalReceipt", totalReceipt);
+          }
+        } else {
+          promoInput.value = "";
+          const toast = Toast({
+            content: "Incorrect Promo!",
+            variant: "error",
           });
-        let promoValue = promoInputContainer
-          .querySelector("#inner-container")
-          .getAttribute("data-promo");
-        if (promoValue) {
-          promoAmount = (totalAmount * promoValue) / 100;
-          promoSpan.innerHTML = "-$" + promoAmount;
-          totalReceipt =
-            parseFloat(totalAmount) +
-            parseFloat(shippingAmount) -
-            parseFloat(promoAmount);
-          totalSpan.innerHTML = "$" + totalReceipt;
-          localStorage.setItem("totalReceipt", totalReceipt);
+          toastContainer.appendChild(toast);
         }
-      } else {
-        promoInput.value = "";
-        const toast = Toast({
-          content: "Incorrect Promo!",
-          variant: "error",
-        });
-        toastContainer.appendChild(toast);
-      }
-    });
+      });
+    }
   });
 
   totalReceipt =
