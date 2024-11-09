@@ -18,96 +18,100 @@ export function SingleProduct({
   brand,
 }) {
   const div = document.createElement("div");
-  div.classList = "laptop:flex laptop:justify-center laptop:py-32 laptop:px-2";
+  div.classList = "laptop:flex laptop:justify-center laptop:py-32 laptop:px-24";
   div.innerHTML = `
-    <section class="my-bg splide w-[428px] h-[428px] p-0" aria-labelledby="carousel-heading">
-        <a id="back-home-btn" class="absolute top-[16px] left-[24px] z-10"><img src="/public/images/arrow-left.svg" class="w-7"></a>
-        <div class="splide__track mx-auto my-0 w-full"> 
-        <div id="toast-container"></div>
-          <ul class="splide__list">
-          ${images
-            .map(
-              (image, index) => `
-            <li class="splide__slide">
-              <img src="${image}" alt="slide${
-                index + 1
-              }" class="object-fill w-[428px] h-[428px]"/>
+  <section class="flex justify-center items-center w-full">
+    <div class="my-bg splide w-[428px] h-[428px] p-0" aria-labelledby="carousel-heading">
+      <a id="back-home-btn" class="absolute top-[16px] left-[24px] z-10"><img src="/public/images/arrow-left.svg" class="w-7"></a>
+      <div class="splide__track mx-auto my-0 w-full laptop:rounded-lg"> 
+      <div id="toast-container"></div>
+      <ul class="splide__list">
+      ${images
+        .map(
+          (image, index) => `
+          <li class="splide__slide">
+          <img src="${image}" alt="slide${
+            index + 1
+          }" class="object-fill w-[428px] h-[428px]"/>
             </li>`
-            )
-            .join("")}
-          </ul>       
-        </div>
-    </section>
-    <div class="font-inter px-5 laptop:w-2/3 cursor-default">
-        <div class="pt-7 border-b-2 border-[#e9e9e9]">
-            <div class="flex justify-between">
-                <p class="text-[#152536] text-3xl font-extrabold text-nowrap text-ellipsis overflow-hidden">${name}</p>
-                <img src="/public/images/heart - outline.svg" class="w-8" id="wishlist">
-                <img src="/public/images/heart - solid.svg" class="w-8 hidden" id="del-wishlist">
-            </div>
-            <div class="py-4 flex items-center gap-4 text-[#152536]">
-                <div class="font-semibold text-[12px] bg-[#e9e9e9] w-fit py-[6px] px-3 rounded-lg">${sold} sold</div>
-                <div class="text-[13px] font-medium flex items-center gap-2 justify-around">
-                    <img src="/public/images/star.svg" class="w-5">
-                    <span>${vote}</span>
-                    <span>(${reviews} reviews)</span>
-                </div>
-            </div>
-        </div>
-        <div class="pt-4">
-            <div>
-                <p class="text-lg font-extrabold pb-2">Description</p>
-                <p class="max-h-[3em] overflow-hidden relative">${description}<a class="absolute right-0 bottom-0 font-semibold bg-white pl-2">view more...</a></p>
-            </div>
-            <div class="pt-4 flex items-center gap-8 laptop:justify-around laptop:pb-4">
-                <div class="flex-col flex">
-                    <div class="text-lg font-extrabold pb-1">Size</div>
-                    <div id="size-container" class="flex items-center justify-between gap-2 h-[45px] cursor-default">
-                    ${sizes
-                      .map(
-                        (size) => `
-                        <div data-selected="false" class="sizeButton w-10 h-10 border-[2.4px] flex items-center justify-center border-[#6C757D] text-[#6C757D] font-bold rounded-full">${size}</div>
-                      `
-                      )
-                      .join("")}
-                    
-                    </div>
-                </div>
-                <div class="scroll-hidden flex-col flex overflow-x-auto flex-nowrap whitespace-nowraps">
-                    <div class="text-lg font-extrabold pb-1">Color</div>
-                    <div class="flex items-center gap-[10px] h-[45px] cursor-default">
-                    ${colors
-                      .map((color) => {
-                        return `
-                          <div data-color="${color.colorName}" data-selected="false" class="colorButton w-9 h-9 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"><img src="" id="check-img" class="w-6"></div>
-                        `;
-                      })
-                      .join("")}
-                    </div>
-                </div>
-
-            </div>
-            </div>
-            <div class="py-4 flex items-center gap-6">
-                 <div class="text-lg font-extrabold">Quantity</div>
-                 <div class="bg-[#e9e9e9] rounded-3xl flex items-center gap-4 py-2 px-4">
-                    <div><img src="/public/images/minus.svg" id="minus-button" class="w-6 cursor-pointer"></div>
-                    <div class="text-xl font-extrabold cursor-default" id="quantity-number">1</div>
-                    <div><img src="/public/images/add.svg" id="add-button" class="w-6 cursor-pointer"></div>
-                 </div>
-            </div>
-            <div class="pt-4 flex items-center justify-between gap-6 border-t-2 border-[#e9e9e9]">
-                <div class="flex flex-col">
-                    <span class="text-[#757475]">Total price</span>
-                    <span class="text-2xl font-extrabold">$<span id="price-number">${price}</span></span>
-                </div>
-                <div id="button-submit" class="cursor-pointer bg-black rounded-full py-4 min-w-[260px] px-[70px] max-h-[56px] text-white font-medium shadow-[#acacac] shadow-md flex justify-between gap-2 items-center">
-                    <img src="/public/images/cart-single.svg" class="w-6">
-                    <div>Add to Cart</div>
-                </div>
-            </div>
-        </div>
+        )
+        .join("")}
+        </ul>       
+      </div>
     </div>
+    </section>
+    <section class="flex justify-center items-center w-full px-4">
+      <div class="font-inter cursor-default max-w-[500px] laptop:max-w-full">
+          <div class="pt-7 border-b-2 border-[#e9e9e9]">
+              <div class="flex justify-between">
+                  <p class="text-[#152536] text-3xl font-extrabold text-nowrap text-ellipsis overflow-hidden">${name}</p>
+                  <img src="/public/images/heart - outline.svg" class="w-8" id="wishlist">
+                  <img src="/public/images/heart - solid.svg" class="w-8 hidden" id="del-wishlist">
+              </div>
+              <div class="py-4 flex items-center gap-4 text-[#152536]">
+                  <div class="font-semibold text-[12px] bg-[#e9e9e9] w-fit py-[6px] px-3 rounded-lg">${sold} sold</div>
+                  <div class="text-[13px] font-medium flex items-center gap-2 justify-around">
+                      <img src="/public/images/star.svg" class="w-5">
+                      <span>${vote}</span>
+                      <span>(${reviews} reviews)</span>
+                  </div>
+              </div>
+          </div>
+          <div class="pt-4">
+              <div>
+                  <p class="text-lg font-extrabold pb-2">Description</p>
+                  <p class="max-h-[3em] overflow-hidden relative">${description}<a class="absolute right-0 bottom-0 font-semibold bg-white pl-2">view more...</a></p>
+              </div>
+              <div class="pt-4 flex items-center gap-8 laptop:justify-around laptop:pb-4">
+                  <div class="flex-col flex">
+                      <div class="text-lg font-extrabold pb-1">Size</div>
+                      <div id="size-container" class="flex items-center justify-between gap-2 h-[45px] cursor-default">
+                      ${sizes
+                        .map(
+                          (size) => `
+                          <div data-selected="false" class="sizeButton w-10 h-10 border-[2.4px] flex items-center justify-center border-[#6C757D] text-[#6C757D] font-bold rounded-full">${size}</div>
+                        `
+                        )
+                        .join("")}
+                      
+                      </div>
+                  </div>
+                  <div class="scroll-hidden flex-col flex overflow-x-auto flex-nowrap whitespace-nowraps">
+                      <div class="text-lg font-extrabold pb-1">Color</div>
+                      <div class="flex items-center gap-[10px] h-[45px] cursor-default">
+                      ${colors
+                        .map((color) => {
+                          return `
+                            <div data-color="${color.colorName}" data-selected="false" class="colorButton w-9 h-9 flex items-center justify-center shadow-sm shadow-black font-bold rounded-full flex-shrink-0 flex-grow-0 basis-auto" style="background-color: ${color.code};"><img src="" id="check-img" class="w-6"></div>
+                          `;
+                        })
+                        .join("")}
+                      </div>
+                  </div>
+
+              </div>
+              </div>
+              <div class="py-4 flex items-center gap-6">
+                  <div class="text-lg font-extrabold">Quantity</div>
+                  <div class="bg-[#e9e9e9] rounded-3xl flex items-center gap-4 py-2 px-4">
+                      <div><img src="/public/images/minus.svg" id="minus-button" class="w-6 cursor-pointer"></div>
+                      <div class="text-xl font-extrabold cursor-default" id="quantity-number">1</div>
+                      <div><img src="/public/images/add.svg" id="add-button" class="w-6 cursor-pointer"></div>
+                  </div>
+              </div>
+              <div class="pt-4 flex items-center justify-between gap-6 border-t-2 border-[#e9e9e9]">
+                  <div class="flex flex-col">
+                      <span class="text-[#757475]">Total price</span>
+                      <span class="text-2xl font-extrabold">$<span id="price-number">${price}</span></span>
+                  </div>
+                  <div id="button-submit" class="cursor-pointer bg-black rounded-full py-4 min-w-[260px] px-[70px] max-h-[56px] text-white font-medium shadow-[#acacac] shadow-md flex justify-between gap-2 items-center">
+                      <img src="/public/images/cart-single.svg" class="w-6">
+                      <div>Add to Cart</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
   `;
 
   setTimeout(() => {
