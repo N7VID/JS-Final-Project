@@ -20,7 +20,7 @@ export function SingleProduct({
   const div = document.createElement("div");
   div.classList = "laptop:flex laptop:justify-center laptop:py-32 laptop:px-24";
   div.innerHTML = `
-  <section class="flex justify-center items-center w-full">
+  <section class="flex justify-center items-center laptop:w-[800px] w-full">
     <div class="my-bg splide w-[428px] h-[428px] p-0" aria-labelledby="carousel-heading">
       <a id="back-home-btn" class="absolute top-[16px] left-[24px] z-10"><img src="/public/images/arrow-left.svg" class="w-7"></a>
       <div class="splide__track mx-auto my-0 w-full laptop:rounded-lg"> 
